@@ -1,0 +1,15 @@
+.v-btn--is-elevated {
+    box-shadow: none;
+}
+
+.v-input__control {
+    padding: 10px;
+}
+
+.center {
+    text-align: center;
+}
+
+.v-btn {
+    padding: 10px;
+}

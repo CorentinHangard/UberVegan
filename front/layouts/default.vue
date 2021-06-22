@@ -29,32 +29,16 @@
       fixed
       app
     >
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-btn
-        icon
-        @click.stop="miniVariant = !miniVariant"
-      >
-        <v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
-      </v-btn>
-      <v-btn
-        icon
-        @click.stop="clipped = !clipped"
-      >
-        <v-icon>mdi-application</v-icon>
-      </v-btn>
-      <v-btn
-        icon
-        @click.stop="fixed = !fixed"
-      >
-        <v-icon>mdi-minus</v-icon>
-      </v-btn>
-      <v-toolbar-title v-text="title" />
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />      
+      <img src="UberVeganTitle.png" style="height: 75px; width: auto;"/>
       <v-spacer />
-      <v-btn
-        icon
-        @click.stop="rightDrawer = !rightDrawer"
-      >
-        <v-icon>mdi-menu</v-icon>
+      <v-btn>
+        <v-icon>
+          mdi-cart
+        </v-icon>
+      </v-btn>
+      <v-btn class="blue">
+        Se connecter
       </v-btn>
     </v-app-bar>
     <v-main>
@@ -97,14 +81,19 @@ export default {
       fixed: false,
       items: [
         {
-          icon: 'mdi-apps',
-          title: 'Welcome',
-          to: '/'
+          icon: 'mdi-account-key',
+          title: 'Se connecter',
+          to: '/connexion'
         },
         {
-          icon: 'mdi-chart-bubble',
-          title: 'Inspire',
-          to: '/inspire'
+          icon: 'mdi-truck-delivery',
+          title: 'Devenir livreur',
+          to: '/devenirLivreur'
+        },
+        {
+          icon: 'mdi-silverware-fork-knife',
+          title: 'Devenir restaurateur',
+          to: '/devenirRestaurateur'
         }
       ],
       miniVariant: false,
@@ -115,3 +104,6 @@ export default {
   }
 }
 </script>
+<style>
+  @import '../assets/css/layout.css';
+</style>
