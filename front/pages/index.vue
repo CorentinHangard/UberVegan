@@ -85,5 +85,6 @@ export default {
     Logo,
     VuetifyLogo
   }
+  
 }
 </script>

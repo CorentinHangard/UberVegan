@@ -30,16 +30,18 @@
       app
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />      
-      <img src="UberVeganTitle.png" style="height: 75px; width: auto;"/>
+      <router-link :to="{ name: 'index'}"><img src="UberVeganTitle.png" style="height: 75px; width: auto;"/></router-link>
       <v-spacer />
       <v-btn>
         <v-icon>
           mdi-cart
         </v-icon>
       </v-btn>
+      <router-link :to="{ name: 'connexion'}">
       <v-btn class="blue">
         Se connecter
       </v-btn>
+      </router-link>
     </v-app-bar>
     <v-main>
       <v-container>

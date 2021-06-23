@@ -4,26 +4,25 @@
       <h1 class="center">Connexion</h1>
       <v-form ref="form" lazy-validation>
         <v-text-field
-          v-model="identifiant"
-          :rules="nameRules"
-          label="Identifiant"
+          v-model="email"
+          label="E-mail"
+          :rules="emailRules"
           required
         ></v-text-field>
 
         <v-text-field
           v-model="password"
-          :rules="passwordRules"
           label="Mot de passe"
           required
         ></v-text-field>
 
         <div class="center">
-          <v-btn color="blue" @click="validate(identifiant, password)">
+          <v-btn color="blue" @click="validate(email, password)">
             Se connecter
           </v-btn>
           <p>
             Pas encore inscrit ?
-            <button @click="redirectToInscription()">S'inscrire</button>
+            <router-link :to="{ name: 'inscription'}">S'inscrire</router-link>
           </p>
         </div>
         <br />
@@ -35,17 +34,16 @@
 export default {
   data() {
     return {
+      email: "",
       password: "",
-      identifiant: "",
     };
   },
 
   methods: {
-    validate(identifiant, password) {
+    validate(email, password) {
+      console.log("Bouton connexion")
+      console.log("Email: "+ email + " - Mot de passe : "+password)
       //TODO : Authentification
-    },
-    redirectToInscription() {
-      this.$router.push({ path: "/devenirLivreur" });
     },
   },
 };
