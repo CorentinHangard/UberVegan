@@ -6,14 +6,17 @@
         <v-text-field
           v-model="email"
           label="E-mail"
-          :rules="emailRules"
+          prepend-icon="mdi-account"
+          :rules="rules.email"
           required
         ></v-text-field>
 
         <v-text-field
           v-model="password"
           label="Mot de passe"
+          prepend-icon="mdi-lock"
           required
+          :rules="rules.password"
         ></v-text-field>
 
         <div class="center">
@@ -22,7 +25,7 @@
           </v-btn>
           <p>
             Pas encore inscrit ?
-            <router-link :to="{ name: 'inscription'}">S'inscrire</router-link>
+            <router-link :to="{ name: 'inscription' }">S'inscrire</router-link>
           </p>
         </div>
         <br />
@@ -36,13 +39,17 @@ export default {
     return {
       email: "",
       password: "",
+      rules: {
+        email: [(v) => !!v || "Votre email est obligatoire"],
+        password: [(v) => !!v || "Votre mot de passe est obligatoire"],
+      },
     };
   },
 
   methods: {
     validate(email, password) {
-      console.log("Bouton connexion")
-      console.log("Email: "+ email + " - Mot de passe : "+password)
+      console.log("Bouton connexion");
+      console.log("Email: " + email + " - Mot de passe : " + password);
       //TODO : Authentification
     },
   },
