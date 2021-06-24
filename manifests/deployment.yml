@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: "ubervegan-908a"
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: "ubervegan-908a"
+  template:
+    metadata:
+      labels:
+        app: "ubervegan-908a"
+    spec:
+      containers:
+        - name: "ubervegan-908a"
+          image: "uberveganregistry.azurecr.io/ubervegan"
+          ports:
+          - containerPort: 3001
