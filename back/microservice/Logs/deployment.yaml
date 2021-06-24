@@ -3,40 +3,40 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ms-users-deployment
+  name: ms-logs-deployment
   labels:
-    app: ms-users
+    app: ms-logs
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ms-users
+      app: ms-logs
   template:
     metadata:
       labels:
-        app: ms-users
+        app: ms-logs
     spec:
       containers:
-        - name: ms-users
-          image: ms_users_image
+        - name: ms-logs
+          image: ms_logs_image
           imagePullPolicy: Never
           ports:
-            - containerPort: 3008
+            - containerPort: 3004
 ---
 # Service file
 
 apiVersion: v1
 kind: Service
 metadata:
-  name: ms-users-service
+  name: ms-logs-service
 spec:
   # Décommenter la ligne suivante pour fonctionner en local
   type: LoadBalancer
   selector:
-    app: ms-users
+    app: ms-logs
   ports:
     - protocol: TCP
-      port: 3008
-      targetPort: 3008
+      port: 3004
+      targetPort: 3004
       # Décommenter la ligne suivante pour fonctionner en local
-      nodePort: 30008
+      nodePort: 30004

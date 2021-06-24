@@ -3,40 +3,40 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ms-users-deployment
+  name: ms-deliverys-deployment
   labels:
-    app: ms-users
+    app: ms-deliverys
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ms-users
+      app: ms-deliverys
   template:
     metadata:
       labels:
-        app: ms-users
+        app: ms-deliverys
     spec:
       containers:
-        - name: ms-users
-          image: ms_users_image
+        - name: ms-deliverys
+          image: ms_deliverys_image
           imagePullPolicy: Never
           ports:
-            - containerPort: 3008
+            - containerPort: 3002
 ---
 # Service file
 
 apiVersion: v1
 kind: Service
 metadata:
-  name: ms-users-service
+  name: ms-deliverys-service
 spec:
   # Décommenter la ligne suivante pour fonctionner en local
   type: LoadBalancer
   selector:
-    app: ms-users
+    app: ms-deliverys
   ports:
     - protocol: TCP
-      port: 3008
-      targetPort: 3008
+      port: 3002
+      targetPort: 3002
       # Décommenter la ligne suivante pour fonctionner en local
-      nodePort: 30008
+      nodePort: 30002

@@ -3,40 +3,40 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ms-users-deployment
+  name: ms-irttrackings-deployment
   labels:
-    app: ms-users
+    app: ms-irttrackings
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ms-users
+      app: ms-irttrackings
   template:
     metadata:
       labels:
-        app: ms-users
+        app: ms-irttrackings
     spec:
       containers:
-        - name: ms-users
-          image: ms_users_image
+        - name: ms-irttrackings
+          image: ms_irttrackings_image
           imagePullPolicy: Never
           ports:
-            - containerPort: 3008
+            - containerPort: 3003
 ---
 # Service file
 
 apiVersion: v1
 kind: Service
 metadata:
-  name: ms-users-service
+  name: ms-irttrackings-service
 spec:
   # Décommenter la ligne suivante pour fonctionner en local
   type: LoadBalancer
   selector:
-    app: ms-users
+    app: ms-irttrackings
   ports:
     - protocol: TCP
-      port: 3008
-      targetPort: 3008
+      port: 3003
+      targetPort: 3003
       # Décommenter la ligne suivante pour fonctionner en local
-      nodePort: 30008
+      nodePort: 30003
