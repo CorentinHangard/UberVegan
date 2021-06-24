@@ -34,6 +34,7 @@
   </v-container>
 </template>
 <script>
+import axios from 'axios'
 export default {
   data() {
     return {
@@ -50,8 +51,12 @@ export default {
     validate(email, password) {
       console.log("Bouton connexion");
       console.log("Email: " + email + " - Mot de passe : " + password);
+      axios
+        .get('https://localhost:3000')
+        .then(response => (this.info = response))
+      console.log(this.info)
+    }
       //TODO : Authentification
-    },
   },
 };
 </script>
