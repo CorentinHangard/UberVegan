@@ -81,6 +81,7 @@ export default {
       clipped: false,
       drawer: false,
       fixed: false,
+      info: {},
       items: [
         {
           icon: 'mdi-account-key',
@@ -102,6 +103,21 @@ export default {
       right: true,
       rightDrawer: false,
       title: 'Vuetify.js'
+    }
+  },
+
+  methods: {
+    // Fonction retournant tous les éléments d'une table
+    selectAll(cible){
+      axios
+        .get('https://localhost:3000/' + cible + '/')
+        .then(response => (this.info = response))
+    },
+    // Fonction retournant un élément précis d'une table en fonction de son ID
+    selectOne(cible, idElement){
+      axios
+        .get('https://localhost:3000/' + cible + '/' + idElement + '/')
+        .then(response => (this.info = response))
     }
   }
 }
