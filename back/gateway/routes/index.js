@@ -2,26 +2,69 @@ const express = require('express')
 const router = express.Router()
 const axios = require('axios')
 const registry = require('./registry.json')
+let model = require('../user/user')
+const { createJWT, checkJWT, createRefreshToken } = require('../modules/jwt')
 
 
-router.all('/:apiName/:path', (req, res) => {
-    console.log(req.params.apiName)
+
+router.all('/:apiName/*', (req, res) => {
     if (registry.services[req.params.apiName]) {
         axios({
-            method : req.method,
-            url : registry.services[req.params.apiName].url + req.params.path,
+            method: req.method,
+            url: registry.services[req.params.apiName].url + req.params[0],
             headers: req.headers,
-            data : req.body
+            data: req.body
         }).then((response) => {
             res.send(response.data)
         }).catch((error) => {
             res.send(error)
         })
-    }else{
-         res.send("API name doesn't exist")
+    } else {
+        res.send("API name doesn't exist")
     }
 
 })
+
+router.post('/authenticate', (req, res) => {
+    const mail = req.body.email
+    const password = req.body.password
+    if(typeof(req.params.token) !== 'undefined'){
+        let token = req.params.token
+    } 
+
+    model.user.findOne({
+        where:
+        {
+            email: mail,
+            password: password
+        },
+        include : [{model : model.refresh_token}]
+    }).then(user => {
+
+        if (!user) {
+            return res.status(550).send('Utilisateur inconnu')
+        }
+      
+        if(token){
+            let checkJwt = checkJWT(token)
+            if (checkJwt == 'renew'){
+                 token = createJWT({ id: user.id, role: user.id_role, nom : user.nom , prenom : user.prenom })
+            }
+
+        }else{
+             token = createJWT({ id: user.id, role: user.id_role, nom : user.nom , prenom : user.prenom })
+         
+        }
+
+     
+
+        res.status(200).json({ isConnected: true, token: token })
+    }).catch((error) => {
+        console.log(error)
+        res.status(500).json({ isConnected: false })
+    })
+})
+
 
 
 module.exports = router
