@@ -34,4 +34,8 @@ router.get("/:id", function (req, res, next) {
     .catch((err) => console.log(err));
 });
 
+router.post("/login", function (req, res, next) {
+  console.log(req.body);
+});
+
 module.exports = router;

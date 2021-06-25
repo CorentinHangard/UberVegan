@@ -8,7 +8,7 @@
       app
     >
       <div align="center" class="padding">
-        <router-link :to="{ name: 'authentification-connexion'}">
+        <router-link :to="{ name: 'authentification-connexion' }">
           <v-btn class="blue"> Se connecter </v-btn>
         </router-link>
       </div>
@@ -40,7 +40,7 @@
       <v-btn>
         <v-icon> mdi-cart </v-icon>
       </v-btn>
-      <router-link :to="{name: 'authentification-connexion'}">
+      <router-link :to="{ name: 'authentification-connexion' }">
         <v-btn class="blue"> Se connecter </v-btn>
       </router-link>
     </v-app-bar>
@@ -87,12 +87,12 @@ export default {
           to: {
             name: "authentification-devenirRestaurateur"
           }
-        },
+        }
       ],
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: "Vuetify.js",
+      title: "Vuetify.js"
     };
   },
 
@@ -100,16 +100,16 @@ export default {
     // Fonction retournant tous les éléments d'une table
     selectAll(cible) {
       axios
-        .get("https://localhost:3000/" + cible + "/")
-        .then((response) => (this.info = response));
+        .get("https://localhost:8000/" + cible + "/")
+        .then(response => (this.info = response));
     },
     // Fonction retournant un élément précis d'une table en fonction de son ID
     selectOne(cible, idElement) {
       axios
-        .get("https://localhost:3000/" + cible + "/" + idElement + "/")
-        .then((response) => (this.info = response));
-    },
-  },
+        .get("https://localhost:8000/" + cible + "/" + idElement + "/")
+        .then(response => (this.info = response));
+    }
+  }
 };
 </script>
 <style>

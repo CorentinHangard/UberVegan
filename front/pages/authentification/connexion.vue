@@ -43,9 +43,9 @@ export default {
       email: "",
       password: "",
       rules: {
-        email: [(v) => !!v || "Votre email est obligatoire"],
-        password: [(v) => !!v || "Votre mot de passe est obligatoire"],
-      },
+        email: [v => !!v || "Votre email est obligatoire"],
+        password: [v => !!v || "Votre mot de passe est obligatoire"]
+      }
     };
   },
 
@@ -53,12 +53,20 @@ export default {
     validate(email, password) {
       console.log("Bouton connexion");
       console.log("Email: " + email + " - Mot de passe : " + password);
+      const body = {
+        email: this.email,
+        password: this.password
+      };
       axios
-        .get("https://localhost:3000")
-        .then((response) => (this.info = response));
+        .post("http://localhost:8000/ms-users/users/login", body, {
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+          }
+        })
+        .then(response => (this.info = response));
       console.log(this.info);
-    },
+    }
     //TODO : Authentification
-  },
+  }
 };
 </script>

@@ -1,12 +1,15 @@
-const express = require('express')
-const app = express()
-const helmet = require('helmet')
-const routes = require('./routes')
-const PORT = 3000
+const express = require("express");
+var bodyParser = require("body-parser");
 
-app.use(express.json())
-app.use(helmet())
-app.use('/', routes)
+const app = express();
+const helmet = require("helmet");
+const routes = require("./routes");
+const PORT = 8000;
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(helmet());
+app.use("/", routes);
 app.listen(PORT, () => {
-    console.log('Gateway has started on port ' + PORT)
-})
+  console.log("Gateway has started on port " + PORT);
+});
