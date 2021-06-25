@@ -17,3 +17,11 @@
 .link {
     color: blue;
 }
+
+.v-text-field{
+    max-width: 400px;
+}
+
+.padding {
+    padding: 10px;
+}
