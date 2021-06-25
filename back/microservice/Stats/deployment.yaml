@@ -1,0 +1,42 @@
+# Deployment file
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ms-stats-deployment
+  labels:
+    app: ms-stats
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ms-stats
+  template:
+    metadata:
+      labels:
+        app: ms-stats
+    spec:
+      containers:
+        - name: ms-stats
+          image: ms_stats_image
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 3007
+---
+# Service file
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: ms-stats-service
+spec:
+  # Décommenter la ligne suivante pour fonctionner en local
+  type: LoadBalancer
+  selector:
+    app: ms-stats
+  ports:
+    - protocol: TCP
+      port: 3007
+      targetPort: 3007
+      # Décommenter la ligne suivante pour fonctionner en local
+      nodePort: 30007

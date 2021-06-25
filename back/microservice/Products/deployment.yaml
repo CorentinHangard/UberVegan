@@ -1,0 +1,42 @@
+# Deployment file
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ms-products-deployment
+  labels:
+    app: ms-products
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ms-products
+  template:
+    metadata:
+      labels:
+        app: ms-products
+    spec:
+      containers:
+        - name: ms-products
+          image: ms_products_image
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 3006
+---
+# Service file
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: ms-products-service
+spec:
+  # Décommenter la ligne suivante pour fonctionner en local
+  type: LoadBalancer
+  selector:
+    app: ms-products
+  ports:
+    - protocol: TCP
+      port: 3006
+      targetPort: 3006
+      # Décommenter la ligne suivante pour fonctionner en local
+      nodePort: 30006

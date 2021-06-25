@@ -1,8 +1,8 @@
 <template>
   <v-container>
-    <v-card elevation="10" shaped>
-      <h1 class="center">Devenir restaurateur ?</h1>
-      <v-form ref="form" lazy-validation>
+    <h1 class="center">Devenir restaurateur ?</h1>
+    <v-form ref="form" lazy-validation>
+      <div align="center" class="padding">
         <v-text-field
           v-model="nom"
           label="Nom"
@@ -74,24 +74,24 @@
           label="Code de parrainage (facultatif)"
           prepend-icon="mdi-account-cowboy-hat"
         ></v-text-field>
+      </div>
 
-        <div class="center">
-          <v-btn
-            color="blue"
-            @click="
-              validate(nom, prenom, telephone, email, password, codeParrainage)
-            "
-          >
-            Valider
-          </v-btn>
-          <p>
-            Déjà un compte ?
-            <router-link :to="{ name: 'connexion' }">Se connecter</router-link>
-          </p>
-        </div>
-        <br />
-      </v-form>
-    </v-card>
+      <div class="center">
+        <v-btn
+          color="blue"
+          @click="
+            validate(nom, prenom, telephone, email, password, codeParrainage)
+          "
+        >
+          Valider
+        </v-btn>
+        <p>
+          Déjà un compte ?
+          <router-link :to="{ name: 'authentification-connexion' }">Se connecter</router-link>
+        </p>
+      </div>
+      <br />
+    </v-form>
   </v-container>
 </template>
 <script>
@@ -117,8 +117,12 @@ export default {
         confirmationPassword: [
           (v) => !!v || "Votre mot de passe est obligatoire",
         ],
-        entreprise: [(v) => !!v || "Le nom de votre entreprise est obligatoire"],
-        adresseEntreprise: [(v) => !!v || "L'adresse de votre entreprise est obligatoire"],
+        entreprise: [
+          (v) => !!v || "Le nom de votre entreprise est obligatoire",
+        ],
+        adresseEntreprise: [
+          (v) => !!v || "L'adresse de votre entreprise est obligatoire",
+        ],
       },
     };
   },
@@ -127,9 +131,6 @@ export default {
     validate(nom, prenom, telephone, email, password, codeParrainage) {
       console.log("bouton valider");
       //TODO : Authentification
-    },
-    redirectToConnexion() {
-      router.push({ path: "/connexion" });
     },
   },
 };

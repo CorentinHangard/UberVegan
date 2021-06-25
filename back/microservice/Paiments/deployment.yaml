@@ -1,0 +1,42 @@
+# Deployment file
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ms-paiments-deployment
+  labels:
+    app: ms-paiments
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ms-paiments
+  template:
+    metadata:
+      labels:
+        app: ms-paiments
+    spec:
+      containers:
+        - name: ms-paiments
+          image: ms_paiments_image
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 3005
+---
+# Service file
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: ms-paiments-service
+spec:
+  # Décommenter la ligne suivante pour fonctionner en local
+  type: LoadBalancer
+  selector:
+    app: ms-paiments
+  ports:
+    - protocol: TCP
+      port: 3005
+      targetPort: 3005
+      # Décommenter la ligne suivante pour fonctionner en local
+      nodePort: 30005

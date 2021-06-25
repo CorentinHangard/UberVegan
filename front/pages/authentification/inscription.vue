@@ -1,8 +1,8 @@
 <template>
   <v-container>
-    <v-card elevation="10" shaped>
-      <h1 class="center">Devenir livreur ?</h1>
-      <v-form ref="form" lazy-validation>
+    <h1 class="center">Inscription</h1>
+    <v-form ref="form" lazy-validation>
+      <div align="center" class="padding">
         <v-text-field
           v-model="nom"
           label="Nom"
@@ -57,26 +57,24 @@
           v-model="codeParrainage"
           label="Code de parrainage (facultatif)"
           prepend-icon="mdi-account-cowboy-hat"
-          required
         ></v-text-field>
-
-        <div class="center">
-          <v-btn
-            color="blue"
-            @click="
-              validate(nom, prenom, telephone, email, password, codeParrainage)
-            "
-          >
-            Valider
-          </v-btn>
-          <p>
-            Déjà un compte ?
-            <router-link :to="{ name: 'connexion' }">Se connecter</router-link>
-          </p>
-        </div>
-        <br />
-      </v-form>
-    </v-card>
+      </div>
+      <div class="center">
+        <v-btn
+          color="blue"
+          @click="
+            validate(nom, prenom, telephone, email, password, codeParrainage)
+          "
+        >
+          Valider
+        </v-btn>
+        <p>
+          Déjà un compte ?
+          <router-link :to="{ name: 'authentification-connexion' }">Se connecter</router-link>
+        </p>
+      </div>
+      <br />
+    </v-form>
   </v-container>
 </template>
 <script>

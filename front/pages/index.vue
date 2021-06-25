@@ -1,6 +1,5 @@
 <template>
   <v-row justify="center" align="center">
-    <v-col cols="12" sm="8" md="6">
       <v-card class="mx-auto my-4" max-width="374" v-for="item in items" :key="item.id">
         <template slot="progress">
           <v-progress-linear
@@ -38,7 +37,6 @@
           </div>
         </v-card-text>
       </v-card>
-    </v-col>
   </v-row>
 </template>
 

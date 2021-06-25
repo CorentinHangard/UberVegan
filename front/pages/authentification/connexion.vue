@@ -1,8 +1,8 @@
 <template>
   <v-container>
-    <v-card elevation="10" shaped>
-      <h1 class="center">Connexion</h1>
-      <v-form ref="form" lazy-validation>
+    <h1 class="center">Connexion</h1>
+    <v-form ref="form" lazy-validation>
+      <div align="center" class="padding">
         <v-text-field
           v-model="email"
           label="E-mail"
@@ -18,22 +18,25 @@
           required
           :rules="rules.password"
         ></v-text-field>
+      </div>
 
-        <div class="center">
-          <v-btn color="blue" @click="validate(email, password)">
-            Se connecter
-          </v-btn>
-          <p>
-            Pas encore inscrit ?
-            <router-link :to="{ name: 'inscription' }">S'inscrire</router-link>
-          </p>
-        </div>
-        <br />
-      </v-form>
-    </v-card>
+      <div class="center padding">
+        <v-btn color="blue" @click="validate(email, password)" class="v-btn">
+          Se connecter
+        </v-btn>
+        <p class="padding">
+          Vous découvrer UberVegan ?
+          <router-link :to="{ name: 'authentification-inscription' }"
+            >Créez un compte</router-link
+          >
+        </p>
+      </div>
+      <br />
+    </v-form>
   </v-container>
 </template>
 <script>
+import axios from "axios";
 export default {
   data() {
     return {
@@ -50,8 +53,12 @@ export default {
     validate(email, password) {
       console.log("Bouton connexion");
       console.log("Email: " + email + " - Mot de passe : " + password);
-      //TODO : Authentification
+      axios
+        .get("https://localhost:3000")
+        .then((response) => (this.info = response));
+      console.log(this.info);
     },
+    //TODO : Authentification
   },
 };
 </script>

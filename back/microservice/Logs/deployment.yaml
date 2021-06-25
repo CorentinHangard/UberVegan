@@ -1,0 +1,42 @@
+# Deployment file
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ms-logs-deployment
+  labels:
+    app: ms-logs
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ms-logs
+  template:
+    metadata:
+      labels:
+        app: ms-logs
+    spec:
+      containers:
+        - name: ms-logs
+          image: ms_logs_image
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 3004
+---
+# Service file
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: ms-logs-service
+spec:
+  # Décommenter la ligne suivante pour fonctionner en local
+  type: LoadBalancer
+  selector:
+    app: ms-logs
+  ports:
+    - protocol: TCP
+      port: 3004
+      targetPort: 3004
+      # Décommenter la ligne suivante pour fonctionner en local
+      nodePort: 30004
