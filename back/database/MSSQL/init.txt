@@ -1,0 +1,6 @@
+CREATE DATABASE UberVegan;
+USE UberVegan;
+CREATE TABLE T_ROLE_ROL(rol_id INT PRIMARY KEY NOT NULL IDENTITY(1, 1),rol_name VARCHAR(25));
+CREATE TABLE T_USER_USR(usr_id INT PRIMARY KEY NOT NULL IDENTITY(1, 1),usr_email VARCHAR(25),usr_password VARCHAR(25),usr_status INT,rol_id INT FOREIGN KEY REFERENCES T_ROLE_ROL(rol_id));
+INSERT INTO T_ROLE_ROL (rol_name) VALUES ('user');
+INSERT INTO T_USER_USR (usr_email, usr_password, usr_status, rol_id) VALUES ('user@email.com','123456',0,1);

@@ -1,0 +1,70 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mssql-volume
+  labels:
+    app: mssql-volume
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+
+---
+# Deployment file
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mssql-deployment
+  labels:
+    app: mssqldb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mssqldb
+  template:
+    metadata:
+      labels:
+        app: mssqldb
+    spec:
+      containers:
+        - name: mssqldb
+          image: mcr.microsoft.com/mssql/server:2019-latest
+          ports:
+            - containerPort: 1433
+          env:
+            - name: MSSQL_PID
+              value: "Developer"
+            - name: ACCEPT_EULA
+              value: "Y"
+            - name: SA_PASSWORD
+              value: "123456Example"
+          volumeMounts:
+            - mountPath: /var/opt/mssql
+              name: mssql-volume
+      volumes:
+        - name: mssql-volume
+          persistentVolumeClaim:
+            claimName: mssql-volume
+
+---
+# Service file
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: mssql-service
+spec:
+  # Décommenter la ligne suivante pour fonctionner en local
+  type: LoadBalancer
+  selector:
+    app: mssqldb
+  ports:
+    - protocol: TCP
+      port: 1433
+      targetPort: 1433
+      # Décommenter la ligne suivante pour fonctionner en local
+      nodePort: 30011
