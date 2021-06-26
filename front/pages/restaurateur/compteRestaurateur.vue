@@ -45,6 +45,7 @@ import Logo from "~/components/Logo.vue";
 import VuetifyLogo from "~/components/VuetifyLogo.vue";
 
 export default {
+  layout: "restaurateurLayout",
   components: {
     Logo,
     VuetifyLogo,
@@ -72,7 +73,7 @@ export default {
         },
         {
           id: 3,
-          img: '../assets/images/sushi.jpg',
+          img: "sushi.jpg",
           titre: "Fujiya Sushi",
           prix: "$$$",
           description: "Restaurant japonais avec buffet à volonté, sushi fait maison.",

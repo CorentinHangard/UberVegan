@@ -75,17 +75,45 @@ export default {
       info: {},
       items: [
         {
-          icon: "mdi-truck-delivery",
-          title: "Devenir livreur",
+          icon: "mdi-food-fork-drink",
+          title: "Mes articles",
           to: {
-            name: "authentification-devenirLivreur"
+            name: "restaurateur-article"
           }
         },
         {
-          icon: "mdi-silverware-fork-knife",
-          title: "Devenir restaurateur",
+          icon: "mdi-food",
+          title: "Mes menus",
           to: {
-            name: "authentification-devenirRestaurateur"
+            name: "restaurateur-menu"
+          }
+        },
+        {
+          icon: "mdi-truck-delivery",
+          title: "Commandes",
+          to: {
+            name: "restaurateur-commande"
+          }
+        },
+        {
+          icon: "mdi-bike",
+          title: "Suivre une livraison",
+          to: {
+            name: "restaurateur-suiviLivraison"
+          }
+        },
+        {
+          icon: "mdi-history",
+          title: "Historique commandes",
+          to: {
+            name: "restaurateur-historiqueCommande"
+          }
+        },
+        {
+          icon: "mdi-account-cowboy-hat",
+          title: "Parrainer restaurateur",
+          to: {
+            name: "restaurateur-parrainageRestaurateur"
           }
         },
       ],

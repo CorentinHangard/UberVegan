@@ -11,8 +11,9 @@ import '..\\assets\\css\\layout.css'
 import '..\\node_modules\\vuetify\\dist\\vuetify.css'
 
 import _6f6c098b from '..\\layouts\\default.vue'
+import _19876a85 from '..\\layouts\\restaurateurLayout.vue'
 
-const layouts = { "_default": sanitizeComponent(_6f6c098b) }
+const layouts = { "_default": sanitizeComponent(_6f6c098b),"_restaurateurLayout": sanitizeComponent(_19876a85) }
 
 export default {
   render (h, props) {
