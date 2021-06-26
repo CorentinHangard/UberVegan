@@ -1,0 +1,38 @@
+[
+  {
+    "name": "inspire",
+    "path": "/inspire",
+    "component": "C:\\\\Users\\\\Gwendal\\\\OneDrive\\\\Bureau\\\\Travail\\\\A4\\\\3 - Logiciel\\\\Projet\\\\UberVegan\\\\front\\\\pages\\\\inspire.vue",
+    "chunkName": "pages/inspire"
+  },
+  {
+    "name": "authentification-connexion",
+    "path": "/authentification/connexion",
+    "component": "C:\\\\Users\\\\Gwendal\\\\OneDrive\\\\Bureau\\\\Travail\\\\A4\\\\3 - Logiciel\\\\Projet\\\\UberVegan\\\\front\\\\pages\\\\authentification\\\\connexion.vue",
+    "chunkName": "pages/authentification/connexion"
+  },
+  {
+    "name": "authentification-devenirLivreur",
+    "path": "/authentification/devenirLivreur",
+    "component": "C:\\\\Users\\\\Gwendal\\\\OneDrive\\\\Bureau\\\\Travail\\\\A4\\\\3 - Logiciel\\\\Projet\\\\UberVegan\\\\front\\\\pages\\\\authentification\\\\devenirLivreur.vue",
+    "chunkName": "pages/authentification/devenirLivreur"
+  },
+  {
+    "name": "authentification-devenirRestaurateur",
+    "path": "/authentification/devenirRestaurateur",
+    "component": "C:\\\\Users\\\\Gwendal\\\\OneDrive\\\\Bureau\\\\Travail\\\\A4\\\\3 - Logiciel\\\\Projet\\\\UberVegan\\\\front\\\\pages\\\\authentification\\\\devenirRestaurateur.vue",
+    "chunkName": "pages/authentification/devenirRestaurateur"
+  },
+  {
+    "name": "authentification-inscription",
+    "path": "/authentification/inscription",
+    "component": "C:\\\\Users\\\\Gwendal\\\\OneDrive\\\\Bureau\\\\Travail\\\\A4\\\\3 - Logiciel\\\\Projet\\\\UberVegan\\\\front\\\\pages\\\\authentification\\\\inscription.vue",
+    "chunkName": "pages/authentification/inscription"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "C:\\\\Users\\\\Gwendal\\\\OneDrive\\\\Bureau\\\\Travail\\\\A4\\\\3 - Logiciel\\\\Projet\\\\UberVegan\\\\front\\\\pages\\\\index.vue",
+    "chunkName": "pages/index"
+  }
+]
