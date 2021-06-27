@@ -1,7 +1,7 @@
 const { Sequelize, DataTypes } = require("sequelize");
 
 const sequelize = new Sequelize(
-  "UberVegan",
+  process.env.MSSQL_DB,
   process.env.MSSQL_USER,
   process.env.MSSQL_PASS,
   {
@@ -49,15 +49,40 @@ const user = sequelize.define(
   }
 );
 
-const role = sequelize.define(
-  "role",
+const refreshToken = sequelize.define(
+  "refresh_token",
   {
+    refresh_token: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    usr_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+  },
+  {
+    freezeTableName: true,
+    tableName: "refresh_token",
+    timestamps: false,
+  }
+);
+
+const role = sequelize.define(
+  "T_ROLE_ROL",
+  {
+    rol_id: {
+      type: Sequelize.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
+    },
     rol_name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
   },
   {
+    freezeTableName: true,
     tableName: "T_ROLE_ROL",
     timestamps: false,
   }
@@ -66,6 +91,10 @@ const role = sequelize.define(
 role.belongsTo(user, { targetKey: "rol_id", foreignKey: "rol_id" });
 user.hasOne(role, { foreignKey: "rol_id" });
 
+user.belongsTo(refreshToken, { targetKey: "usr_id", foreignKey: "usr_id" });
+user.hasMany(refreshToken, { sourceKey: "usr_id", foreignKey: "usr_id" });
+
+exports.refresh_token = refreshToken;
 exports.user = user;
 exports.sequelize = sequelize;
 exports.role = role;

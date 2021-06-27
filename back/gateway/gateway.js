@@ -1,8 +1,5 @@
-const express = require('express')
-const app = express()
-const helmet = require('helmet')
-const routes = require('./routes')
-const PORT = 8000
+const express = require("express");
+const bodyParser = require("body-parser");
 
 const app = express();
 const helmet = require("helmet");
