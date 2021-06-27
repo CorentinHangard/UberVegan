@@ -3,90 +3,105 @@
     "name": "inspire",
     "path": "/inspire",
     "component": "C:\\\\Users\\\\Gwendal\\\\OneDrive\\\\Bureau\\\\Travail\\\\A4\\\\3 - Logiciel\\\\Projet\\\\UberVegan\\\\front\\\\pages\\\\inspire.vue",
-    "chunkName": "pages/inspire"
+    "chunkName": "pages/inspire",
+    "_name": "_5322b6f5"
   },
   {
     "name": "authentification-connexion",
     "path": "/authentification/connexion",
     "component": "C:\\\\Users\\\\Gwendal\\\\OneDrive\\\\Bureau\\\\Travail\\\\A4\\\\3 - Logiciel\\\\Projet\\\\UberVegan\\\\front\\\\pages\\\\authentification\\\\connexion.vue",
-    "chunkName": "pages/authentification/connexion"
+    "chunkName": "pages/authentification/connexion",
+    "_name": "_348e6389"
   },
   {
     "name": "authentification-devenirLivreur",
     "path": "/authentification/devenirLivreur",
     "component": "C:\\\\Users\\\\Gwendal\\\\OneDrive\\\\Bureau\\\\Travail\\\\A4\\\\3 - Logiciel\\\\Projet\\\\UberVegan\\\\front\\\\pages\\\\authentification\\\\devenirLivreur.vue",
-    "chunkName": "pages/authentification/devenirLivreur"
+    "chunkName": "pages/authentification/devenirLivreur",
+    "_name": "_5b9b921c"
   },
   {
     "name": "authentification-devenirRestaurateur",
     "path": "/authentification/devenirRestaurateur",
     "component": "C:\\\\Users\\\\Gwendal\\\\OneDrive\\\\Bureau\\\\Travail\\\\A4\\\\3 - Logiciel\\\\Projet\\\\UberVegan\\\\front\\\\pages\\\\authentification\\\\devenirRestaurateur.vue",
-    "chunkName": "pages/authentification/devenirRestaurateur"
+    "chunkName": "pages/authentification/devenirRestaurateur",
+    "_name": "_077eb88c"
   },
   {
     "name": "authentification-inscription",
     "path": "/authentification/inscription",
     "component": "C:\\\\Users\\\\Gwendal\\\\OneDrive\\\\Bureau\\\\Travail\\\\A4\\\\3 - Logiciel\\\\Projet\\\\UberVegan\\\\front\\\\pages\\\\authentification\\\\inscription.vue",
-    "chunkName": "pages/authentification/inscription"
+    "chunkName": "pages/authentification/inscription",
+    "_name": "_dbb241d0"
   },
   {
     "name": "livreur-livraison",
     "path": "/livreur/livraison",
     "component": "C:\\\\Users\\\\Gwendal\\\\OneDrive\\\\Bureau\\\\Travail\\\\A4\\\\3 - Logiciel\\\\Projet\\\\UberVegan\\\\front\\\\pages\\\\livreur\\\\livraison.vue",
-    "chunkName": "pages/livreur/livraison"
+    "chunkName": "pages/livreur/livraison",
+    "_name": "_129559fd"
   },
   {
     "name": "livreur-parrainageLivreur",
     "path": "/livreur/parrainageLivreur",
     "component": "C:\\\\Users\\\\Gwendal\\\\OneDrive\\\\Bureau\\\\Travail\\\\A4\\\\3 - Logiciel\\\\Projet\\\\UberVegan\\\\front\\\\pages\\\\livreur\\\\parrainageLivreur.vue",
-    "chunkName": "pages/livreur/parrainageLivreur"
+    "chunkName": "pages/livreur/parrainageLivreur",
+    "_name": "_a94da4ea"
   },
   {
     "name": "restaurateur-article",
     "path": "/restaurateur/article",
     "component": "C:\\\\Users\\\\Gwendal\\\\OneDrive\\\\Bureau\\\\Travail\\\\A4\\\\3 - Logiciel\\\\Projet\\\\UberVegan\\\\front\\\\pages\\\\restaurateur\\\\article.vue",
-    "chunkName": "pages/restaurateur/article"
+    "chunkName": "pages/restaurateur/article",
+    "_name": "_206405ec"
   },
   {
     "name": "restaurateur-commande",
     "path": "/restaurateur/commande",
     "component": "C:\\\\Users\\\\Gwendal\\\\OneDrive\\\\Bureau\\\\Travail\\\\A4\\\\3 - Logiciel\\\\Projet\\\\UberVegan\\\\front\\\\pages\\\\restaurateur\\\\commande.vue",
-    "chunkName": "pages/restaurateur/commande"
+    "chunkName": "pages/restaurateur/commande",
+    "_name": "_7b1d2a74"
   },
   {
     "name": "restaurateur-compteRestaurateur",
     "path": "/restaurateur/compteRestaurateur",
     "component": "C:\\\\Users\\\\Gwendal\\\\OneDrive\\\\Bureau\\\\Travail\\\\A4\\\\3 - Logiciel\\\\Projet\\\\UberVegan\\\\front\\\\pages\\\\restaurateur\\\\compteRestaurateur.vue",
-    "chunkName": "pages/restaurateur/compteRestaurateur"
+    "chunkName": "pages/restaurateur/compteRestaurateur",
+    "_name": "_99cbeb42"
   },
   {
     "name": "restaurateur-historiqueCommande",
     "path": "/restaurateur/historiqueCommande",
     "component": "C:\\\\Users\\\\Gwendal\\\\OneDrive\\\\Bureau\\\\Travail\\\\A4\\\\3 - Logiciel\\\\Projet\\\\UberVegan\\\\front\\\\pages\\\\restaurateur\\\\historiqueCommande.vue",
-    "chunkName": "pages/restaurateur/historiqueCommande"
+    "chunkName": "pages/restaurateur/historiqueCommande",
+    "_name": "_050f0c51"
   },
   {
     "name": "restaurateur-menu",
     "path": "/restaurateur/menu",
     "component": "C:\\\\Users\\\\Gwendal\\\\OneDrive\\\\Bureau\\\\Travail\\\\A4\\\\3 - Logiciel\\\\Projet\\\\UberVegan\\\\front\\\\pages\\\\restaurateur\\\\menu.vue",
-    "chunkName": "pages/restaurateur/menu"
+    "chunkName": "pages/restaurateur/menu",
+    "_name": "_20b0bbd9"
   },
   {
     "name": "restaurateur-parrainageRestaurateur",
     "path": "/restaurateur/parrainageRestaurateur",
     "component": "C:\\\\Users\\\\Gwendal\\\\OneDrive\\\\Bureau\\\\Travail\\\\A4\\\\3 - Logiciel\\\\Projet\\\\UberVegan\\\\front\\\\pages\\\\restaurateur\\\\parrainageRestaurateur.vue",
-    "chunkName": "pages/restaurateur/parrainageRestaurateur"
+    "chunkName": "pages/restaurateur/parrainageRestaurateur",
+    "_name": "_d235c66e"
   },
   {
     "name": "restaurateur-suiviLivraison",
     "path": "/restaurateur/suiviLivraison",
     "component": "C:\\\\Users\\\\Gwendal\\\\OneDrive\\\\Bureau\\\\Travail\\\\A4\\\\3 - Logiciel\\\\Projet\\\\UberVegan\\\\front\\\\pages\\\\restaurateur\\\\suiviLivraison.vue",
-    "chunkName": "pages/restaurateur/suiviLivraison"
+    "chunkName": "pages/restaurateur/suiviLivraison",
+    "_name": "_6d9d74f1"
   },
   {
     "name": "index",
     "path": "/",
     "component": "C:\\\\Users\\\\Gwendal\\\\OneDrive\\\\Bureau\\\\Travail\\\\A4\\\\3 - Logiciel\\\\Projet\\\\UberVegan\\\\front\\\\pages\\\\index.vue",
-    "chunkName": "pages/index"
+    "chunkName": "pages/index",
+    "_name": "_070514a6"
   }
 ]
