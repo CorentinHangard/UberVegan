@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var Profiles = require("../models/profiles");
+var Restaurants = require("../models/restaurants");
 var model = require("../models/users");
 
 /* GET users listing. */
