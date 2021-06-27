@@ -42,6 +42,7 @@ export default {
     return {
       email: "",
       password: "",
+      user: {},
       rules: {
         email: [(v) => !!v || "Votre email est obligatoire"],
         password: [(v) => !!v || "Votre mot de passe est obligatoire"],
@@ -51,14 +52,18 @@ export default {
 
   methods: {
     validate(email, password) {
-      console.log("Bouton connexion");
-      console.log("Email: " + email + " - Mot de passe : " + password);
+      data = {
+        email: email,
+        password: password,
+      };
       axios
-        .get("https://localhost:3000")
-        .then((response) => (this.info = response));
-      console.log(this.info);
+        .post("http://localhost:8000/authenticate", data)
+        .then((response) => (this.user = response.data))
+        .catch((error) => {
+          this.errorMessage = error.message;
+          console.error("Cette erreur est survenue : ", error);
+        });
     },
-    //TODO : Authentification
   },
 };
 </script>
