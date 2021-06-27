@@ -32,6 +32,7 @@ router.post("/create", async function (req, res, next) {
     usr_email: req.body.email,
     usr_password: req.body.password,
     usr_status: req.body.status,
+    rol_id: req.body.rolId ? req.body.rolId : 1,
   });
   const profiles = new Profiles({
     fullName: req.body.fullName,

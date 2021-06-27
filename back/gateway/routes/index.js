@@ -10,7 +10,6 @@ var privateKey = fs.readFileSync(path.join(__dirname, "../config/private.key"));
 
 router.all("/:apiName/*", (req, res) => {
   res.header("Access-Control-Allow-Origin", "*");
-
   if (registry.services[req.params.apiName]) {
     var authNeeded = true;
     registry.services[req.params.apiName].nonAuth.forEach((route) => {
@@ -18,7 +17,6 @@ router.all("/:apiName/*", (req, res) => {
         authNeeded = false;
       }
     });
-
     if (!authNeeded) {
       axios({
         method: req.method,
@@ -53,6 +51,8 @@ router.all("/:apiName/*", (req, res) => {
               });
           }
         });
+      } else {
+        res.send("Token needed");
       }
     }
   } else {
