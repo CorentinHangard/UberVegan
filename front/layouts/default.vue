@@ -33,7 +33,7 @@
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <router-link :to="{ name: 'index' }"
         ><img
-          src="UberVeganTitle.png"
+          src="../assets/images/UberVeganTitle.png"
           style="height: 75px; width: auto; display: flex"
       /></router-link>
       <v-spacer />

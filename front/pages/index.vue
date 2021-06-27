@@ -72,7 +72,7 @@ export default {
         },
         {
           id: 3,
-          img: "sushi.jpg",
+          img: 'sushi.jpg',
           titre: "Fujiya Sushi",
           prix: "$$$",
           description: "Restaurant japonais avec buffet à volonté, sushi fait maison.",

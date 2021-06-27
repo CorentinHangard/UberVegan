@@ -42,6 +42,8 @@ export default {
     return {
       email: "",
       password: "",
+      user: {},
+      data: {},
       rules: {
         email: [v => !!v || "Votre email est obligatoire"],
         password: [v => !!v || "Votre mot de passe est obligatoire"]
@@ -51,22 +53,27 @@ export default {
 
   methods: {
     validate(email, password) {
-      console.log("Bouton connexion");
-      console.log("Email: " + email + " - Mot de passe : " + password);
-      const body = {
-        email: this.email,
-        password: this.password
+  
+      let data = {
+        "email": email,
+        "password": password,
       };
       axios
-        .post("http://localhost:8000/ms-users/users/login", body, {
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded"
+        .post("http://localhost:8000/authenticate", JSON.stringify(data), {
+          headers : {
+              "Content-Type": "application/json",
           }
         })
-        .then(response => (this.info = response));
-      console.log(this.info);
-    }
-    //TODO : Authentification
-  }
+        .then((response) => {
+          this.user = response.data;
+          console.log(this.user.isConnected)
+        })
+        .catch((error) => {
+          this.errorMessage = error.message;
+          console.error("Cette erreur est survenue : ", error);
+        });
+    },
+  },
 };
+
 </script>
