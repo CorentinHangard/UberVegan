@@ -6,7 +6,7 @@
         <v-text-field
           v-model="email"
           label="E-mail"
-          prepend-icon="mdi-account"
+          prepend-icon="mdi-email"
           :rules="rules.email"
           required
         ></v-text-field>
