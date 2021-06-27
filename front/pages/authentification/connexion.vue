@@ -38,6 +38,9 @@
 <script>
 import axios from "axios";
 export default {
+  created(){
+  },
+
   data() {
     return {
       email: "",
@@ -53,12 +56,15 @@ export default {
 
   methods: {
     validate(email, password) {
+      
+      localStorage.setItem('role', 2)
+      localStorage.setItem('isConnected', 'false')
   
       let data = {
         "email": email,
         "password": password,
       };
-      axios
+      /*axios
         .post("http://localhost:8000/authenticate", JSON.stringify(data), {
           headers : {
               "Content-Type": "application/json",
@@ -71,7 +77,15 @@ export default {
         .catch((error) => {
           this.errorMessage = error.message;
           console.error("Cette erreur est survenue : ", error);
-        });
+        });*/
+        if(localStorage.getItem('role') == 1){ // Utilisateur restaurateur
+          this.$router.push({name: 'index'})
+        } else if (localStorage.getItem('role') == 2) { // Utilisateur livreur
+          this.$router.push({name: 'livreur-livraison'})
+        } else if (localStorage.getItem('role') == 3) { // Utilisateur livreur
+          this.$router.push({name: 'restaurateur-article'})
+        }
+        
     },
   },
 };

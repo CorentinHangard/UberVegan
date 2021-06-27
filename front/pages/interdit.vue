@@ -2,26 +2,19 @@
   <v-row>
     <v-col class="text-center">
       <img
-        src="/v.png"
+        src="/forbidden.png"
         alt="Vuetify.js"
         class="mb-5"
+        style="height: 25%"
       >
       <blockquote class="blockquote">
-        &#8220;First, solve the problem. Then, write the code.&#8221;
+        Vous n'avez pas accès à cette page.
         <footer>
           <small>
-            <em>&mdash;John Johnson</em>
+            <em>&mdash;Cordialement, l'équipe d'UberVegan</em>
           </small>
         </footer>
       </blockquote>
     </v-col>
   </v-row>
 </template>
-<script>
-  export default {
-    middleware: [
-      'restaurateurMiddleware',
-      'auth'
-    ]
-  }
-</script>

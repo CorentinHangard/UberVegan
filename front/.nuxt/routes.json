@@ -7,6 +7,27 @@
     "_name": "_5322b6f5"
   },
   {
+    "name": "interdit",
+    "path": "/interdit",
+    "component": "C:\\\\Users\\\\Gwendal\\\\OneDrive\\\\Bureau\\\\Travail\\\\A4\\\\3 - Logiciel\\\\Projet\\\\UberVegan\\\\front\\\\pages\\\\interdit.vue",
+    "chunkName": "pages/interdit",
+    "_name": "_736d4528"
+  },
+  {
+    "name": "parrainerUtilisateur",
+    "path": "/parrainerUtilisateur",
+    "component": "C:\\\\Users\\\\Gwendal\\\\OneDrive\\\\Bureau\\\\Travail\\\\A4\\\\3 - Logiciel\\\\Projet\\\\UberVegan\\\\front\\\\pages\\\\parrainerUtilisateur.vue",
+    "chunkName": "pages/parrainerUtilisateur",
+    "_name": "_29dd3914"
+  },
+  {
+    "name": "secret",
+    "path": "/secret",
+    "component": "C:\\\\Users\\\\Gwendal\\\\OneDrive\\\\Bureau\\\\Travail\\\\A4\\\\3 - Logiciel\\\\Projet\\\\UberVegan\\\\front\\\\pages\\\\secret.vue",
+    "chunkName": "pages/secret",
+    "_name": "_12c53e65"
+  },
+  {
     "name": "authentification-connexion",
     "path": "/authentification/connexion",
     "component": "C:\\\\Users\\\\Gwendal\\\\OneDrive\\\\Bureau\\\\Travail\\\\A4\\\\3 - Logiciel\\\\Projet\\\\UberVegan\\\\front\\\\pages\\\\authentification\\\\connexion.vue",

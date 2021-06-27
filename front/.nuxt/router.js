@@ -5,6 +5,9 @@ import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
 const _5322b6f5 = () => interopDefault(import('..\\pages\\inspire.vue' /* webpackChunkName: "pages/inspire" */))
+const _736d4528 = () => interopDefault(import('..\\pages\\interdit.vue' /* webpackChunkName: "pages/interdit" */))
+const _29dd3914 = () => interopDefault(import('..\\pages\\parrainerUtilisateur.vue' /* webpackChunkName: "pages/parrainerUtilisateur" */))
+const _12c53e65 = () => interopDefault(import('..\\pages\\secret.vue' /* webpackChunkName: "pages/secret" */))
 const _348e6389 = () => interopDefault(import('..\\pages\\authentification\\connexion.vue' /* webpackChunkName: "pages/authentification/connexion" */))
 const _5b9b921c = () => interopDefault(import('..\\pages\\authentification\\devenirLivreur.vue' /* webpackChunkName: "pages/authentification/devenirLivreur" */))
 const _077eb88c = () => interopDefault(import('..\\pages\\authentification\\devenirRestaurateur.vue' /* webpackChunkName: "pages/authentification/devenirRestaurateur" */))
@@ -35,6 +38,18 @@ export const routerOptions = {
     path: "/inspire",
     component: _5322b6f5,
     name: "inspire"
+  }, {
+    path: "/interdit",
+    component: _736d4528,
+    name: "interdit"
+  }, {
+    path: "/parrainerUtilisateur",
+    component: _29dd3914,
+    name: "parrainerUtilisateur"
+  }, {
+    path: "/secret",
+    component: _12c53e65,
+    name: "secret"
   }, {
     path: "/authentification/connexion",
     component: _348e6389,

@@ -49,6 +49,7 @@ import Logo from "~/components/Logo.vue";
 import VuetifyLogo from "~/components/VuetifyLogo.vue";
 
 export default {
+  middleware: ["auth", "restaurateurMiddleware"],
   layout: "restaurateurLayout",
   components: {
     Logo,
