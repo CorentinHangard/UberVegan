@@ -43,6 +43,7 @@ export default {
       email: "",
       password: "",
       user: {},
+      data: {},
       rules: {
         email: [(v) => !!v || "Votre email est obligatoire"],
         password: [(v) => !!v || "Votre mot de passe est obligatoire"],
@@ -52,13 +53,21 @@ export default {
 
   methods: {
     validate(email, password) {
-      data = {
-        email: email,
-        password: password,
+  
+      let data = {
+        "email": email,
+        "password": password,
       };
       axios
-        .post("http://localhost:8000/authenticate", data)
-        .then((response) => (this.user = response.data))
+        .post("http://localhost:8000/authenticate", JSON.stringify(data), {
+          headers : {
+              "Content-Type": "application/json",
+          }
+        })
+        .then((response) => {
+          this.user = response.data;
+          console.log(this.user.isConnected)
+        })
         .catch((error) => {
           this.errorMessage = error.message;
           console.error("Cette erreur est survenue : ", error);
@@ -66,4 +75,5 @@ export default {
     },
   },
 };
+
 </script>

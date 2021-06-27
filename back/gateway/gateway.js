@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 const helmet = require('helmet')
 const routes = require('./routes')
-const PORT = 3000
+const PORT = 8000
 
 app.use(express.json())
 app.use(helmet())

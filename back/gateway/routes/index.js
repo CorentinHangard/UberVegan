@@ -8,6 +8,7 @@ const { createJWT, checkJWT, createRefreshToken } = require('../modules/jwt')
 
 
 router.all('/:apiName/*', (req, res) => {
+    res.header("Access-Control-Allow-Origin", "*");
     if (registry.services[req.params.apiName]) {
         axios({
             method: req.method,
@@ -26,8 +27,10 @@ router.all('/:apiName/*', (req, res) => {
 })
 
 router.post('/authenticate', (req, res) => {
+    res.header("Access-Control-Allow-Origin", "*");
     const mail = req.body.email
     const password = req.body.password
+    
     if(typeof(req.params.token) !== 'undefined'){
         let token = req.params.token
     } 
@@ -45,7 +48,7 @@ router.post('/authenticate', (req, res) => {
             return res.status(550).send('Utilisateur inconnu')
         }
       
-        if(token){
+        if(typeof(req.params.token) !== 'undefined'){
             let checkJwt = checkJWT(token)
             if (checkJwt == 'renew'){
                  token = createJWT({ id: user.id, role: user.id_role, nom : user.nom , prenom : user.prenom })
