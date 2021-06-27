@@ -1,6 +1,6 @@
 {
   "services": {
-    "commands": {
+    "ms-commands": {
       "apiName": "ms-commands",
       "protocol": "http",
       "host": "localhost",
@@ -8,7 +8,7 @@
       "url": "http://localhost:3001/",
       "nonAuth": []
     },
-    "deliveries": {
+    "ms-deliveries": {
       "apiName": "ms-deliveries",
       "protocol": "http",
       "host": "http://localhost",
@@ -16,7 +16,7 @@
       "url": "http://localhost:3002/",
       "nonAuth": []
     },
-    "irttrackings": {
+    "ms-irttrackings": {
       "apiName": "ms-irttrackings",
       "protocol": "http",
       "host": "http://localhost",
@@ -24,7 +24,7 @@
       "url": "http://localhost:3003/",
       "nonAuth": []
     },
-    "logs": {
+    "ms-logs": {
       "apiName": "ms-logs",
       "protocol": "http",
       "host": "http://localhost",
@@ -32,7 +32,7 @@
       "url": "http://localhost:3004/",
       "nonAuth": []
     },
-    "paiments": {
+    "ms-paiments": {
       "apiName": "ms-paiments",
       "protocol": "http",
       "host": "http://localhost",
@@ -40,7 +40,7 @@
       "url": "http://localhost:3005/",
       "nonAuth": []
     },
-    "product": {
+    "ms-product": {
       "apiName": "ms-product",
       "protocol": "http",
       "host": "http://localhost",
@@ -62,7 +62,7 @@
       "host": "http://localhost",
       "port": 3008,
       "url": "http://localhost:3008/",
-      "nonAuth": ["authenticate"]
+      "nonAuth": ["authenticate", "create"]
     }
   }
 }

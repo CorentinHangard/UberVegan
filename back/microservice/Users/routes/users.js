@@ -3,56 +3,110 @@ var router = express.Router();
 var Profiles = require("../models/profiles");
 var Restaurants = require("../models/restaurants");
 var model = require("../models/users");
-const { createJWT, checkJWT, createRefreshToken } = require("../modules/jwt");
+const {
+  createJWT,
+  checkJWT,
+  createRefreshToken,
+  JWTContent,
+} = require("../modules/jwt");
 
-/* GET users listing. */
-router.get("/", function (req, res, next) {
-  res.send("User api !");
-});
+router.get("/", async function (req, res, next) {
+  const token = req.headers.authorization.split("Bearer ")[1];
+  const tokenContent = JWTContent(token).user;
 
-router.get("/:id", function (req, res, next) {
-  const id = req.params.id;
-  Profiles.findById(id)
-    .exec()
-    .then(async (doc) => {
-      if (doc && doc.userId) {
-        const user = await model.user.findOne({
-          where: { usr_id: doc.userId },
-        });
-        res.status(200).json({ ...doc._doc, ...user.dataValues });
-      } else {
-        res.status(404).send("L'utilisateur n'existe pas");
-      }
-    })
-    .catch((err) => console.log(err));
+  const user = await model.user.findOne({
+    where: { usr_id: tokenContent.id },
+  });
+  const profile = await Profiles.findOne({ userId: tokenContent.id });
+
+  res.status(200).json({ ...profile._doc, ...user.dataValues });
 });
 
 router.post("/create", async function (req, res, next) {
-  const user = await model.user.create({
-    usr_email: req.body.email,
-    usr_password: req.body.password,
-    usr_status: req.body.status,
-    rol_id: req.body.rolId ? req.body.rolId : 1,
-  });
-  const profiles = new Profiles({
-    fullName: req.body.fullName,
-    phoneNumber: req.body.phoneNumber,
-    address: req.body.address,
-    sponsorCode: Math.random().toString(36).substring(7),
-    sponsor: req.body.sponsor ? req.body.sponsor : null,
-    userId: user.usr_id,
-  });
-  profiles
-    .save()
-    .then((profile) => {
-      res.status(201).json(profile);
-    })
-    .catch((err) => console.log(err));
+  if (
+    req.body.rolId === undefined ||
+    req.body.rolId === 1 ||
+    req.body.rolId === 2 ||
+    req.body.rolId === 4
+  ) {
+    const user = await model.user.create({
+      usr_email: req.body.email,
+      usr_password: req.body.password,
+      usr_status: req.body.status,
+      rol_id: req.body.rolId ? req.body.rolId : 1,
+    });
+    const profiles = new Profiles({
+      fullName: req.body.fullName,
+      phoneNumber: req.body.phoneNumber,
+      address: req.body.address,
+      sponsorCode: Math.random().toString(36).substring(7),
+      sponsor: req.body.sponsor ? req.body.sponsor : null,
+      userId: user.usr_id,
+    });
+
+    profiles
+      .save()
+      .then((profile) => {
+        res.status(201).json(profile);
+      })
+      .catch((err) => console.log(err));
+  } else if (
+    req.body.rolId &&
+    req.body.rolId === 3 &&
+    req.body.resName &&
+    req.body.resDesc &&
+    req.body.resImg &&
+    req.body.rescod &&
+    req.body.resPrep
+  ) {
+    const user = await model.user.create({
+      usr_email: req.body.email,
+      usr_password: req.body.password,
+      usr_status: req.body.status,
+      rol_id: req.body.rolId ? req.body.rolId : 1,
+    });
+    const profiles = new Profiles({
+      fullName: req.body.fullName,
+      phoneNumber: req.body.phoneNumber,
+      address: req.body.address,
+      sponsorCode: Math.random().toString(36).substring(7),
+      sponsor: req.body.sponsor ? req.body.sponsor : null,
+      userId: user.usr_id,
+    });
+    const restaurants = new Restaurants({
+      name: req.body.resName,
+      description: req.body.resDesc,
+      img: req.body.resImg,
+      rating: null,
+      costOfDelivery: req.body.rescod,
+      preparationTime: req.body.resPrep,
+    });
+
+    profiles
+      .save()
+      .then((profile) => {
+        restaurants
+          .save()
+          .then((restaurant) => {
+            res.status(201).json({ ...profile._doc, ...restaurant._doc });
+          })
+          .catch((err) => console.log(err));
+      })
+      .catch((err) => console.log(err));
+  } else {
+    res.send("Il manque des infos");
+  }
 });
 
-router.put("/edit/:id", async function (req, res, next) {
-  const id = req.params.id;
-  const profile = await Profiles.findOne({ _id: id });
+router.put("/edit", async function (req, res, next) {
+  const token = req.headers.authorization.split("Bearer ")[1];
+  const tokenContent = JWTContent(token).user;
+
+  const user = await model.user.findOne({
+    where: { usr_id: tokenContent.id },
+  });
+  const profile = await Profiles.findOne({ userId: tokenContent.id });
+
   const profileUpdate = {
     fullName: req.body.fullName ? req.body.fullName : profile.fullName,
     phoneNumber: req.body.phoneNumber
@@ -61,7 +115,6 @@ router.put("/edit/:id", async function (req, res, next) {
     address: req.body.address ? req.body.address : profile.address,
     sponsor: req.body.sponsor ? req.body.sponsor : profile.sponsor,
   };
-  const user = await model.user.findOne({ where: { usr_id: profile.userId } });
 
   model.user.update(
     {
@@ -80,13 +133,15 @@ router.put("/edit/:id", async function (req, res, next) {
     });
 });
 
-router.delete("/delete/:id", async function (req, res, next) {
-  const id = req.params.id;
-  const profile = await Profiles.findOne({ _id: id });
+router.delete("/delete", async function (req, res, next) {
+  const token = req.headers.authorization.split("Bearer ")[1];
+  const tokenContent = JWTContent(token).user;
+
+  const profile = await Profiles.findOne({ userId: tokenContent.id });
 
   model.user.destroy({
     where: {
-      usr_id: profile.userId,
+      usr_id: tokenContent.id,
     },
   });
 
