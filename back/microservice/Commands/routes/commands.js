@@ -4,7 +4,7 @@ const axios = require("axios");
 var Orders = require("../models/orders");
 const { JWTContent } = require("../modules/jwt");
 
-router.get("/order", async function (req, res, next) {
+router.get("/", async function (req, res, next) {
   await Orders.find({ _id: req.body.id })
     .then((ord) => {
       res.status(200).json(ord);
@@ -14,7 +14,7 @@ router.get("/order", async function (req, res, next) {
     });
 });
 
-router.get("/order/restaurant/history", async function (req, res, next) {
+router.get("/restaurant/history", async function (req, res, next) {
   await Orders.find({ restaurantId: req.body.id })
     .then((ord) => {
       res.status(200).json(ord);
@@ -24,7 +24,7 @@ router.get("/order/restaurant/history", async function (req, res, next) {
     });
 });
 
-router.get("/order/history", async function (req, res, next) {
+router.get("/history", async function (req, res, next) {
   await Orders.find({ profileId: req.body.id })
     .then((ord) => {
       res.status(200).json(ord);
@@ -34,7 +34,7 @@ router.get("/order/history", async function (req, res, next) {
     });
 });
 
-router.post("/order/create", async function (req, res, next) {
+router.post("/create", async function (req, res, next) {
   const token = req.headers.authorization.split("Bearer ")[1];
   const tokenContent = JWTContent(token).user;
 
@@ -74,7 +74,7 @@ router.post("/order/create", async function (req, res, next) {
   }
 });
 
-router.put("/order/pay", async function (req, res, next) {
+router.put("/pay", async function (req, res, next) {
   const token = req.headers.authorization.split("Bearer ")[1];
   const tokenContent = JWTContent(token).user;
 
@@ -89,14 +89,14 @@ router.put("/order/pay", async function (req, res, next) {
       .updateOne(orderUpdate)
       .exec()
       .then(() => {
-        res.status(201).send("Commade bien payé");
+        res.status(201).send("Commande bien payé");
       });
   } else {
     res.status(401).send("Non authorized");
   }
 });
 
-router.put("/order/valid", async function (req, res, next) {
+router.put("/valid", async function (req, res, next) {
   const token = req.headers.authorization.split("Bearer ")[1];
   const tokenContent = JWTContent(token).user;
 
@@ -129,7 +129,7 @@ router.put("/order/valid", async function (req, res, next) {
       .updateOne(orderUpdate)
       .exec()
       .then(() => {
-        res.status(201).send("Commade bien payé");
+        res.status(201).send("Commande validé");
       });
   } else {
     res.status(401).send("Non authorized");
