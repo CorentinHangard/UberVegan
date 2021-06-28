@@ -9,7 +9,6 @@ const _736d4528 = () => interopDefault(import('..\\pages\\interdit.vue' /* webpa
 const _2c2b2647 = () => interopDefault(import('..\\pages\\monCompte.vue' /* webpackChunkName: "pages/monCompte" */))
 const _29dd3914 = () => interopDefault(import('..\\pages\\parrainerUtilisateur.vue' /* webpackChunkName: "pages/parrainerUtilisateur" */))
 const _12c53e65 = () => interopDefault(import('..\\pages\\secret.vue' /* webpackChunkName: "pages/secret" */))
-const _d889d2f2 = () => interopDefault(import('..\\pages\\test.vue' /* webpackChunkName: "pages/test" */))
 const _348e6389 = () => interopDefault(import('..\\pages\\authentification\\connexion.vue' /* webpackChunkName: "pages/authentification/connexion" */))
 const _5b9b921c = () => interopDefault(import('..\\pages\\authentification\\devenirLivreur.vue' /* webpackChunkName: "pages/authentification/devenirLivreur" */))
 const _077eb88c = () => interopDefault(import('..\\pages\\authentification\\devenirRestaurateur.vue' /* webpackChunkName: "pages/authentification/devenirRestaurateur" */))
@@ -58,10 +57,6 @@ export const routerOptions = {
     path: "/secret",
     component: _12c53e65,
     name: "secret"
-  }, {
-    path: "/test",
-    component: _d889d2f2,
-    name: "test"
   }, {
     path: "/authentification/connexion",
     component: _348e6389,

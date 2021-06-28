@@ -1,144 +1,69 @@
 <template>
-  <v-container>
-    <h1 class="center">Bonjour {{ nom }} !</h1>
-    <div align="center" class="padding">
-      <v-data-table
-        :headers="headers"
-        :items="data"
-        class="elevation-1"
-        hide-default-footer
-        ><template>
-          <v-dialog v-model="dialog" max-width="500px">
-            <v-card>
-              <v-card-title>
-                <span class="text-h5">Bonjour</span>
-              </v-card-title>
-
-              <v-card-actions>
-                <v-spacer></v-spacer>
-                <v-btn color="blue darken-1" text @click="close">
-                  Cancel
-                </v-btn>
-                <v-btn color="blue darken-1" text @click="save"> Save </v-btn>
-              </v-card-actions>
-            </v-card>
-          </v-dialog>
-        </template>
-        <template v-slot:[`item.actions`]="{ item }">
-          <v-icon small class="mr-2" @click="handleClick(item)">
-            mdi-pencil
-          </v-icon>
-        </template>
-      </v-data-table>
-      <template>
-        <v-toolbar flat>
-          <v-dialog v-model="dialog" max-width="500px">
-            <v-card>
-              <v-card-title>
-                <span class="text-h5">Modifier son profil</span>
-              </v-card-title>
-
-              <v-card-text>
-                <v-container>
-                  <v-row>
-                    <v-col>
-                      <v-text-field
-                        v-model="editedItem"
-                        label="Nouvelle valeur"
-                      ></v-text-field>
-                    </v-col>
-                  </v-row>
-                </v-container>
-              </v-card-text>
-
-              <v-card-actions>
-                <v-spacer></v-spacer>
-                <v-btn color="blue darken-1" text @click="close">
-                  Annuler
-                </v-btn>
-                <v-btn color="blue darken-1" text @click="save">
-                  Sauvegarder
-                </v-btn>
-              </v-card-actions>
-            </v-card>
-          </v-dialog>
-        </v-toolbar>
-      </template>
-    </div>
-  </v-container>
+  <div id="app">
+    <h1 class="center">Mon profil</h1>
+    <br />
+    <v-app id="inspire">
+      <v-col align="center" justify="center">
+        <v-row cols="12" sm="3" style="display: block">
+          <v-text-field
+            :value="infoUtilisateur.donnees.nom"
+            v-model="infoUtilisateur.donnees.nom"
+            label="Nom complet"
+            outlined
+            :readonly='!readonly'
+          ></v-text-field>
+        </v-row>
+        <v-row cols="12" sm="3" style="display: block">
+          <v-text-field
+            :value="infoUtilisateur.donnees.telephone"
+            v-model="infoUtilisateur.donnees.telephone"
+            label="N° de téléphone"
+            outlined
+            :readonly='!readonly'
+          ></v-text-field>
+        </v-row>
+        <v-row cols="12" sm="3" style="display: block">
+          <v-text-field
+            :value="infoUtilisateur.donnees.email"
+            v-model="infoUtilisateur.donnees.email"
+            label="Adresse e-mail"
+            outlined
+            :readonly='!readonly'
+          ></v-text-field>
+        </v-row>
+        <v-row cols="12" sm="3" style="display: block">
+          <v-text-field
+            :value="infoUtilisateur.donnees.password"
+            v-model="infoUtilisateur.donnees.password"
+            label="Mot de passe"
+            outlined
+            :type="show1 ? 'text' : 'password'"
+            :readonly='!readonly'
+          ></v-text-field>
+        </v-row>
+        <v-btn color="red" @click="cancel()" v-if='readonly' class="px-6" >Annuler</v-btn>
+        <v-btn color="green" @click="save()" v-if='readonly' class="px-6">Modifier</v-btn>
+        <v-btn color="blue" @click="changerReadOnly()" v-if='!readonly'>Activer la modification</v-btn>
+      </v-col>
+    </v-app>
+  </div>
 </template>
 <script>
-
 export default {
   data() {
     return {
-      /* data : {
-        nom: "",
-        telephone: "3",
-        email: "marc.durand@gmail.com",
-        password: "azerty",
-        confirmationPassword: "azerty",
-        codeParrainage: "abababa",
-    }, */
-      donneesUtilisateur: this.initialize().donnees,
-      modalEdit: false,
-      dialog: false,
-      headers: [
-        {
-          text: "Données personnelles",
-          align: "start",
-          sortable: false,
-          value: "donneesUtilisateur",
-        },
-        {
-          text: "Modifier",
-          sortable: false,
-          value: "actions",
-        },
-      ],
-      editedItem: {
-        nom: this.nom,
-        telephone: this.telephone,
-        email: this.email,
-        password: this.password,
-      },
+      infoUtilisateur: this.initialize(),
       show1: false,
+      dialog: false,
+      readonly: false
     };
   },
 
   created() {
     this.initialize();
-    console.log(this.initialize().donnees.value);
   },
 
   methods: {
-    validate(nom, telephone, email, password, codeParrainage) {
-      console.log("bouton valider");
-      //TODO : Authentification
-    },
-    redirectToConnexion() {
-      router.push({ path: "/connexion" });
-    },
-    close() {
-      this.dialog = false;
-      this.$nextTick(() => {
-        this.editedItem = Object.assign({}, this.defaultItem);
-        this.editedIndex = -1;
-      });
-    },
-    save() {
-      if (this.editedIndex > -1) {
-        Object.assign(this.desserts[this.editedIndex], this.editedItem);
-      } else {
-        this.desserts.push(this.editedItem);
-      }
-      this.close();
-    },
-    handleClick(value) {
-      console.log(value);
-
-      this.dialog = true;
-    },
     editItem(item) {
       this.editedIndex = this.desserts.indexOf(item);
       this.editedItem = Object.assign({}, item);
@@ -184,9 +109,31 @@ export default {
       };
       return {
         donneesUtilisateur,
-        donnees
-      }
+        donnees,
+      };
     },
+    changerReadOnly(){
+      this.readonly=!this.readonly
+    },
+    cancel(){
+      this.infoUtilisateur.donnees.nom = this.initialize().donnees.nom
+      this.infoUtilisateur.donnees.telephone = this.initialize().donnees.telephone
+      this.infoUtilisateur.donnees.email = this.initialize().donnees.email
+      this.infoUtilisateur.donnees.password = this.initialize().donnees.password
+      this.readonly=!this.readonly
+
+    },
+    save(){
+      const payload = {
+        "usr_id": this.infoUtilisateur.donneesUtilisateur.user.usr_id,
+        "nom": this.infoUtilisateur.donnees.nom,
+        "telephone": this.infoUtilisateur.donnees.telephone,
+        "email": this.infoUtilisateur.donnees.email,
+        "password": this.infoUtilisateur.donnees.password,
+      }
+      console.log(payload)
+      this.readonly=!this.readonly
+    }
   },
 };
 </script>
