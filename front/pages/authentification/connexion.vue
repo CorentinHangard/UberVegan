@@ -39,11 +39,10 @@
 <script>
 import axios from "axios";
 export default {
-  created(){
-  },
 
   data() {
     return {
+      show1: false,
       email: "",
       password: "",
       user: {},
@@ -59,7 +58,7 @@ export default {
     validate(email, password) {
       
       localStorage.setItem('role', 2)
-      localStorage.setItem('isConnected', 'false')
+      localStorage.setItem('isConnected', 'true')
   
       let data = {
         "email": email,

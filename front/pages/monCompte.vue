@@ -1,87 +1,94 @@
 <template>
   <v-container>
-    <h1 class="center">Bonjour {{ prenom }} {{ nom }} !</h1>
-      <div align="center" class="padding">
-        
-          <v-data-table
-            :headers="headers"
-            :items="data"
-            class="elevation-1"
-            hide-default-footer
-          ><template>
-            <v-dialog v-model="dialog" max-width="500px">
-              <v-card>
-                <v-card-title>
-                  <span class="text-h5">{{ data.nomChamps }}</span>
-                </v-card-title>
+    <h1 class="center">Bonjour {{ nom }} !</h1>
+    <div align="center" class="padding">
+      <v-data-table
+        :headers="headers"
+        :items="data"
+        class="elevation-1"
+        hide-default-footer
+        ><template>
+          <v-dialog v-model="dialog" max-width="500px">
+            <v-card>
+              <v-card-title>
+                <span class="text-h5">{{ data.nomChamps }}</span>
+              </v-card-title>
 
-                <v-card-text>
-                  <v-container>
-                    <v-row>
-                      <v-col cols="12" sm="6" md="4">
-                        <v-text-field
-                          v-model="editedItem.name"
-                          label="Dessert name"
-                        ></v-text-field>
-                      </v-col>
-                      <v-col cols="12" sm="6" md="4">
-                        <v-text-field
-                          v-model="editedItem.calories"
-                          label="Calories"
-                        ></v-text-field>
-                      </v-col>
-                      <v-col cols="12" sm="6" md="4">
-                        <v-text-field
-                          v-model="editedItem.fat"
-                          label="Fat (g)"
-                        ></v-text-field>
-                      </v-col>
-                      <v-col cols="12" sm="6" md="4">
-                        <v-text-field
-                          v-model="editedItem.carbs"
-                          label="Carbs (g)"
-                        ></v-text-field>
-                      </v-col>
-                      <v-col cols="12" sm="6" md="4">
-                        <v-text-field
-                          v-model="editedItem.protein"
-                          label="Protein (g)"
-                        ></v-text-field>
-                      </v-col>
-                    </v-row>
-                  </v-container>
-                </v-card-text>
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn color="blue darken-1" text @click="close">
+                  Cancel
+                </v-btn>
+                <v-btn color="blue darken-1" text @click="save"> Save </v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-dialog>
+        </template>
+        <template v-slot:[`item.actions`]="{ item }">
+          <v-icon small class="mr-2" @click="handleClick(item)">
+            mdi-pencil
+          </v-icon>
+        </template>
+      </v-data-table>
+      <template>
+        <v-toolbar flat>
+          <v-dialog v-model="dialog" max-width="500px">
+            <v-card>
+              <v-card-title>
+                <span class="text-h5">Modifier son profil</span>
+              </v-card-title>
 
-                <v-card-actions>
-                  <v-spacer></v-spacer>
-                  <v-btn color="blue darken-1" text @click="close">
-                    Cancel
-                  </v-btn>
-                  <v-btn color="blue darken-1" text @click="save"> Save </v-btn>
-                </v-card-actions>
-              </v-card>
-            </v-dialog>
-            </template>
-            <template>
-              <v-icon small class="mr-2" @click="editItem(data)">
-                mdi-pencil
-              </v-icon>
-            </template>
-          </v-data-table>
-      </div>
-    </v-container  >
+              <v-card-text>
+                <v-container>
+                  <v-row>
+                    <v-col>
+                      <v-text-field
+                        v-model="editedItem.nomChamps"
+                        label="Nouvelle valeur"
+                      ></v-text-field>
+                    </v-col>
+                  </v-row>
+                </v-container>
+              </v-card-text>
+
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn color="blue darken-1" text @click="close">
+                  Annuler
+                </v-btn>
+                <v-btn color="blue darken-1" text @click="save">
+                  Sauvegarder
+                </v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-dialog>
+        </v-toolbar>
+      </template>
+    </div>
+  </v-container>
 </template>
 <script>
+/* var data = {
+  nom: "Durand Marc",
+  telephone: "0616020283",
+  email: "marc.durand@gmail.com",
+  password: "azerty",
+  confirmationPassword: "azerty",
+  codeParrainage: "abababa",
+}; */
+
 export default {
   data() {
     return {
-      editedItem: {
-        name: "",
-        calories: 0,
-        fat: 0,
-        carbs: 0,
-        protein: 0,
-      },
+    data : {
+        nom: "",
+        telephone: "3",
+        email: "marc.durand@gmail.com",
+        password: "azerty",
+        confirmationPassword: "azerty",
+        codeParrainage: "abababa",
+    },
+      modalEdit: false,
       dialog: false,
       headers: [
         {
@@ -93,59 +100,25 @@ export default {
         {
           text: "Modifier",
           sortable: false,
-          value: "image",
+          value: "actions",
         },
       ],
-      data: [
-        {
-          nomChamps: "Nom",
-          value: this.nom,
-          image: this.nom
-        },
-        {
-          nomChamps: "Prénom",
-          value: this.prenom,
-        },
-        {
-          nomChamps: "N° de téléphone",
-          value: this.telephone,
-        },
-        {
-          nomChamps: "E-mail",
-          value: this.email,
-        },
-        {
-          nomChamps: "Mot de passe",
-          value: this.password,
-        },
-        {
-          nomChamps: "Code de parrainage",
-          value: this.codeParrainage,
-        },
-      ],
-      show1: false,
-      nom: "Durand",
-      prenom: "Marc",
-      telephone: "0616020283",
-      email: "marc.durand@gmail.com",
-      password: "azerty",
-      confirmationPassword: "azerty",
-      codeParrainage: "abababa",
-      rules: {
-        nom: [(v) => !!v || "Votre nom est obligatoire"],
-        prenom: [(v) => !!v || "Votre prenom est obligatoire"],
-        telephone: [(v) => !!v || "Votre numéro de téléphone est obligatoire"],
-        email: [(v) => !!v || "Votre email est obligatoire"],
-        password: [(v) => !!v || "Votre mot de passe est obligatoire"],
-        confirmationPassword: [
-          (v) => !!v || "Votre mot de passe est obligatoire",
-        ],
+      editedItem: {
+        nom: this.nom,
+        telephone: this.telephone,
+        email: this.email,
+        password: this.password,
       },
+      show1: false,
     };
   },
 
+  created() {
+    this.initialize();
+  },
+
   methods: {
-    validate(nom, prenom, telephone, email, password, codeParrainage) {
+    validate(nom, telephone, email, password, codeParrainage) {
       console.log("bouton valider");
       //TODO : Authentification
     },
@@ -167,6 +140,53 @@ export default {
       }
       this.close();
     },
+    handleClick(value) {
+      console.log(value.nomChamps);
+      this.dialog = true;
+    },
+    editItem(item) {
+      this.editedIndex = this.desserts.indexOf(item);
+      this.editedItem = Object.assign({}, item);
+      this.dialog = true;
+    },
+    initialize() {
+        const donneesUtilisateur = {
+            profile: {
+                _id: "60d9c6339ff10b1134aa6646",
+                fullName: "Jonathan Cohen",
+                phoneNumber: 600000000,
+                address: "1 rue ff",
+                sponsorCode: "14ynsq",
+                sponsor: null,
+                userId: "10",
+                __v: 0,
+            },
+            user : {
+                usr_id: 10,
+                usr_email: "resto2@c.c",
+                usr_password: "123456",
+                usr_status: 1,
+                rol_id: 3
+            }, 
+            restaurant : {
+                _id: "60d9c6339ff10b1134aa6647",
+                profileId: "60d9c6339ff10b1134aa6646",
+                name: "Amazon",
+                description: "Coucou",
+                img: "http://img",
+                rating: null,
+                costOfDelivery: "3.00",
+                preparationTime: 15,
+                __v: 0
+            }
+        };
+        this.data.nom = donneesUtilisateur.profile.fullName;
+        this.data.telephone = donneesUtilisateur.profile.phoneNumber;
+        this.data.email = donneesUtilisateur.user.usr_email;
+        this.data.password = donneesUtilisateur.user.usr_password;
+        this.data.codeParrainage = donneesUtilisateur.profile.sponsorCode;
+        console.log(this.data)
+    }
   },
 };
 </script>

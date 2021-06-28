@@ -35,6 +35,13 @@
     "_name": "_12c53e65"
   },
   {
+    "name": "test",
+    "path": "/test",
+    "component": "C:\\\\Users\\\\Gwendal\\\\OneDrive\\\\Bureau\\\\Travail\\\\A4\\\\3 - Logiciel\\\\Projet\\\\UberVegan\\\\front\\\\pages\\\\test.vue",
+    "chunkName": "pages/test",
+    "_name": "_d889d2f2"
+  },
+  {
     "name": "authentification-connexion",
     "path": "/authentification/connexion",
     "component": "C:\\\\Users\\\\Gwendal\\\\OneDrive\\\\Bureau\\\\Travail\\\\A4\\\\3 - Logiciel\\\\Projet\\\\UberVegan\\\\front\\\\pages\\\\authentification\\\\connexion.vue",
