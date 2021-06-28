@@ -4,6 +4,7 @@ const restaurantsSchema = new mongoose.Schema({
   profileId: { type: mongoose.Schema.Types.ObjectId, ref: "Profiles" },
   name: String,
   description: String,
+  address: String,
   img: String,
   rating: Number,
   costOfDelivery: String,

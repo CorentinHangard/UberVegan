@@ -18,7 +18,7 @@ router.get("/", async function (req, res, next) {
     profile = await Profiles.findOne({
       _id: req.query.id.replace('"', "").replace('"', ""),
     });
-    console.log(profile);
+
     user = await model.user.findOne({
       where: {
         usr_id: profile.userId,
@@ -89,6 +89,7 @@ router.post("/create", async function (req, res, next) {
     req.body.rolId === 3 &&
     req.body.resName &&
     req.body.resDesc &&
+    req.body.resAdd &&
     req.body.resImg &&
     req.body.rescod &&
     req.body.resPrep
@@ -112,6 +113,7 @@ router.post("/create", async function (req, res, next) {
       profileId: profile.id,
       name: req.body.resName,
       description: req.body.resDesc,
+      address: req.body.resAdd,
       img: req.body.resImg,
       rating: null,
       costOfDelivery: req.body.rescod,
@@ -175,6 +177,7 @@ router.put("/edit", async function (req, res, next) {
     const restaurantUpdate = {
       name: req.body.resName ? req.body.resName : restaurant.name,
       description: req.body.resDesc ? req.body.resDesc : restaurant.description,
+      address: req.body.resAdd ? req.body.resAdd : restaurant.address,
       img: req.body.resImg ? req.body.resImg : restaurant.img,
       rating: req.body.resRating ? req.body.resRating : restaurant.rating,
       costOfDelivery: req.body.rescod
@@ -285,6 +288,19 @@ router.post("/authenticate", async (req, res) => {
     .catch((error) => {
       console.log(error);
       res.status(500).json({ isConnected: false });
+    });
+});
+
+router.get("/restaurant", async function (req, res, next) {
+  console.log(req.query.id);
+  await Restaurants.find({
+    _id: req.body.id || req.query.id,
+  })
+    .then((rest) => {
+      res.status(200).json(rest);
+    })
+    .catch((err) => {
+      res.json(err);
     });
 });
 

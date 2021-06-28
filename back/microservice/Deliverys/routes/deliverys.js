@@ -42,8 +42,24 @@ router.get("/all", async function (req, res, next) {
               Authorization: req.headers.authorization,
             },
           });
-          console.log(orderInfos.data);
           del[i]._doc = { ...del[i]._doc, order: orderInfos.data };
+        } catch (error) {
+          console.log(error);
+          res.send(error);
+        }
+        try {
+          var restaurantInfos = await axios.get(
+            "http://localhost:3008/restaurant",
+            {
+              params: {
+                id: del[i]._doc.order[0].restaurantId,
+              },
+              headers: {
+                Authorization: req.headers.authorization,
+              },
+            }
+          );
+          del[i]._doc = { ...del[i]._doc, restaurant: restaurantInfos.data };
         } catch (error) {
           console.log(error);
           res.send(error);
