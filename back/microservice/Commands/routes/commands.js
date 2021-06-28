@@ -107,6 +107,24 @@ router.put("/order/valid", async function (req, res, next) {
       status: "validated",
     };
 
+    try {
+      await axios.post(
+        "http://localhost:3002/create",
+        {
+          profileId: order.profileId,
+          orderId: order._id,
+        },
+        {
+          headers: {
+            Authorization: req.headers.authorization,
+          },
+        }
+      );
+    } catch (error) {
+      console.log(error);
+      res.send(error);
+    }
+
     await order
       .updateOne(orderUpdate)
       .exec()

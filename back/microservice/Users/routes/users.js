@@ -9,7 +9,12 @@ router.get("/", async function (req, res, next) {
   const token = req.headers.authorization.split("Bearer ")[1];
   const tokenContent = JWTContent(token).user;
 
-  const user = await model.user.findOne({ usr_id: tokenContent.id });
+  const user = await model.user.findOne({
+    where: {
+      usr_id: tokenContent.id,
+    },
+  });
+
   const profile = await Profiles.findOne({ userId: tokenContent.id });
   var restaurant = null;
 
@@ -73,6 +78,7 @@ router.post("/create", async function (req, res, next) {
       usr_status: req.body.status,
       rol_id: req.body.rolId ? req.body.rolId : 1,
     });
+    console.log(user);
     const profile = new Profiles({
       fullName: req.body.fullName,
       phoneNumber: req.body.phoneNumber,
@@ -111,7 +117,11 @@ router.put("/edit", async function (req, res, next) {
   const token = req.headers.authorization.split("Bearer ")[1];
   const tokenContent = JWTContent(token).user;
 
-  const user = await model.user.findOne({ usr_id: tokenContent.id });
+  const user = await model.user.findOne({
+    where: {
+      usr_id: tokenContent.id,
+    },
+  });
   const profile = await Profiles.findOne({ userId: tokenContent.id });
   var restaurant = null;
 
