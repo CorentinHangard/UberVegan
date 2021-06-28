@@ -12,6 +12,12 @@
     "chunkName": "pages/interdit"
   },
   {
+    "name": "monCompte",
+    "path": "/monCompte",
+    "component": "D:\\\\Cesi\\\\A4\\\\Logiciel\\\\Projet\\\\UberVegan\\\\UberVegan\\\\front\\\\pages\\\\monCompte.vue",
+    "chunkName": "pages/monCompte"
+  },
+  {
     "name": "parrainerUtilisateur",
     "path": "/parrainerUtilisateur",
     "component": "D:\\\\Cesi\\\\A4\\\\Logiciel\\\\Projet\\\\UberVegan\\\\UberVegan\\\\front\\\\pages\\\\parrainerUtilisateur.vue",
@@ -54,6 +60,12 @@
     "chunkName": "pages/livreur/livraison"
   },
   {
+    "name": "livreur-monCompteLivreur",
+    "path": "/livreur/monCompteLivreur",
+    "component": "D:\\\\Cesi\\\\A4\\\\Logiciel\\\\Projet\\\\UberVegan\\\\UberVegan\\\\front\\\\pages\\\\livreur\\\\monCompteLivreur.vue",
+    "chunkName": "pages/livreur/monCompteLivreur"
+  },
+  {
     "name": "livreur-parrainageLivreur",
     "path": "/livreur/parrainageLivreur",
     "component": "D:\\\\Cesi\\\\A4\\\\Logiciel\\\\Projet\\\\UberVegan\\\\UberVegan\\\\front\\\\pages\\\\livreur\\\\parrainageLivreur.vue",
@@ -88,6 +100,12 @@
     "path": "/restaurateur/menu",
     "component": "D:\\\\Cesi\\\\A4\\\\Logiciel\\\\Projet\\\\UberVegan\\\\UberVegan\\\\front\\\\pages\\\\restaurateur\\\\menu.vue",
     "chunkName": "pages/restaurateur/menu"
+  },
+  {
+    "name": "restaurateur-monCompteRestaurateur",
+    "path": "/restaurateur/monCompteRestaurateur",
+    "component": "D:\\\\Cesi\\\\A4\\\\Logiciel\\\\Projet\\\\UberVegan\\\\UberVegan\\\\front\\\\pages\\\\restaurateur\\\\monCompteRestaurateur.vue",
+    "chunkName": "pages/restaurateur/monCompteRestaurateur"
   },
   {
     "name": "restaurateur-parrainageRestaurateur",

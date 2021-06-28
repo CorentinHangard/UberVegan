@@ -43,6 +43,10 @@ export const routerOptions = {
     component: _cfee518a,
     name: "interdit"
   }, {
+    path: "/monCompte",
+    component: _2c2b2647,
+    name: "monCompte"
+  }, {
     path: "/parrainerUtilisateur",
     component: _6c9b7109,
     name: "parrainerUtilisateur"
@@ -71,6 +75,10 @@ export const routerOptions = {
     component: _27489f60,
     name: "livreur-livraison"
   }, {
+    path: "/livreur/monCompteLivreur",
+    component: _dce53d3e,
+    name: "livreur-monCompteLivreur"
+  }, {
     path: "/livreur/parrainageLivreur",
     component: _6e9980de,
     name: "livreur-parrainageLivreur"
@@ -94,6 +102,10 @@ export const routerOptions = {
     path: "/restaurateur/menu",
     component: _0b11dba8,
     name: "restaurateur-menu"
+  }, {
+    path: "/restaurateur/monCompteRestaurateur",
+    component: _631d5987,
+    name: "restaurateur-monCompteRestaurateur"
   }, {
     path: "/restaurateur/parrainageRestaurateur",
     component: _9380b748,
