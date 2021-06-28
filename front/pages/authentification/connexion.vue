@@ -37,6 +37,7 @@
 </template>
 <script>
 import axios from "axios";
+import vueJwtDecode from "vue-jwt-decode"
 export default {
   created(){
   },
@@ -73,7 +74,12 @@ export default {
         })
         .then((response) => {
           this.user = response.data;
-          console.log(this.user.isConnected)
+          let token = Object(vueJwtDecode.decode(this.user.token)) 
+         
+       
+          localStorage.setItem('isConnected', this.user.isConnected)
+          localStorage.setItem('token', this.user.token)
+          localStorage.setItem('role', token.user.role)
         })
         .catch((error) => {
           this.errorMessage = error.message;

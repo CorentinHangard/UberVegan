@@ -30,19 +30,34 @@
       </v-list>
     </v-navigation-drawer>
     <v-app-bar :clipped-left="clipped" fixed app>
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
+      <div v-if="isConnected === false">
+        <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
+      </div>
       <router-link :to="{ name: 'index' }"
         ><img
           src="../assets/images/UberVeganTitle.png"
           style="height: 75px; width: auto; display: flex"
       /></router-link>
       <v-spacer />
-      <v-btn>
+           <v-btn>
         <v-icon> mdi-cart </v-icon>
+        <span>panier</span>
       </v-btn>
-      <router-link :to="{name: 'authentification-connexion'}">
-        <v-btn class="blue"> Se connecter </v-btn>
-      </router-link>
+      <div v-if="role">
+             <router-link :to="{ name: 'authentification-connexion' }">
+          <v-btn>
+            <v-icon> mdi-account</v-icon>
+             <span>mon compte</span>
+             </v-btn>
+        </router-link>
+      </div>
+      <div v-else>
+   
+         <router-link :to="{ name: 'authentification-connexion' }">
+          <v-btn class="blue"> Se connecter </v-btn>
+        </router-link>
+       
+      </div>
     </v-app-bar>
     <v-main>
       <v-container>
@@ -121,6 +136,8 @@ export default {
       right: true,
       rightDrawer: false,
       title: "Vuetify.js",
+      role : localStorage.getItem('role'),
+      isConnected : localStorage.getItem('isConnected')
     };
   },
 
