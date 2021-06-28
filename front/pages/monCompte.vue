@@ -11,7 +11,7 @@
           <v-dialog v-model="dialog" max-width="500px">
             <v-card>
               <v-card-title>
-                <span class="text-h5">{{ data.nomChamps }}</span>
+                <span class="text-h5">Bonjour</span>
               </v-card-title>
 
               <v-card-actions>
@@ -43,7 +43,7 @@
                   <v-row>
                     <v-col>
                       <v-text-field
-                        v-model="editedItem.nomChamps"
+                        v-model="editedItem"
                         label="Nouvelle valeur"
                       ></v-text-field>
                     </v-col>
@@ -68,26 +68,19 @@
   </v-container>
 </template>
 <script>
-/* var data = {
-  nom: "Durand Marc",
-  telephone: "0616020283",
-  email: "marc.durand@gmail.com",
-  password: "azerty",
-  confirmationPassword: "azerty",
-  codeParrainage: "abababa",
-}; */
 
 export default {
   data() {
     return {
-    data : {
+      /* data : {
         nom: "",
         telephone: "3",
         email: "marc.durand@gmail.com",
         password: "azerty",
         confirmationPassword: "azerty",
         codeParrainage: "abababa",
-    },
+    }, */
+      donneesUtilisateur: this.initialize().donnees,
       modalEdit: false,
       dialog: false,
       headers: [
@@ -95,7 +88,7 @@ export default {
           text: "Données personnelles",
           align: "start",
           sortable: false,
-          value: "nomChamps",
+          value: "donneesUtilisateur",
         },
         {
           text: "Modifier",
@@ -115,6 +108,7 @@ export default {
 
   created() {
     this.initialize();
+    console.log(this.initialize().donnees.value);
   },
 
   methods: {
@@ -141,7 +135,8 @@ export default {
       this.close();
     },
     handleClick(value) {
-      console.log(value.nomChamps);
+      console.log(value);
+
       this.dialog = true;
     },
     editItem(item) {
@@ -150,43 +145,48 @@ export default {
       this.dialog = true;
     },
     initialize() {
-        const donneesUtilisateur = {
-            profile: {
-                _id: "60d9c6339ff10b1134aa6646",
-                fullName: "Jonathan Cohen",
-                phoneNumber: 600000000,
-                address: "1 rue ff",
-                sponsorCode: "14ynsq",
-                sponsor: null,
-                userId: "10",
-                __v: 0,
-            },
-            user : {
-                usr_id: 10,
-                usr_email: "resto2@c.c",
-                usr_password: "123456",
-                usr_status: 1,
-                rol_id: 3
-            }, 
-            restaurant : {
-                _id: "60d9c6339ff10b1134aa6647",
-                profileId: "60d9c6339ff10b1134aa6646",
-                name: "Amazon",
-                description: "Coucou",
-                img: "http://img",
-                rating: null,
-                costOfDelivery: "3.00",
-                preparationTime: 15,
-                __v: 0
-            }
-        };
-        this.data.nom = donneesUtilisateur.profile.fullName;
-        this.data.telephone = donneesUtilisateur.profile.phoneNumber;
-        this.data.email = donneesUtilisateur.user.usr_email;
-        this.data.password = donneesUtilisateur.user.usr_password;
-        this.data.codeParrainage = donneesUtilisateur.profile.sponsorCode;
-        console.log(this.data)
-    }
+      const donneesUtilisateur = {
+        profile: {
+          _id: "60d9c6339ff10b1134aa6646",
+          fullName: "Jonathan Cohen",
+          phoneNumber: 600000000,
+          address: "1 rue ff",
+          sponsorCode: "14ynsq",
+          sponsor: null,
+          userId: "10",
+          __v: 0,
+        },
+        user: {
+          usr_id: 10,
+          usr_email: "resto2@c.c",
+          usr_password: "123456",
+          usr_status: 1,
+          rol_id: 3,
+        },
+        restaurant: {
+          _id: "60d9c6339ff10b1134aa6647",
+          profileId: "60d9c6339ff10b1134aa6646",
+          name: "Amazon",
+          description: "Coucou",
+          img: "http://img",
+          rating: null,
+          costOfDelivery: "3.00",
+          preparationTime: 15,
+          __v: 0,
+        },
+      };
+      const donnees = {
+        nom: donneesUtilisateur.profile.fullName,
+        telephone: donneesUtilisateur.profile.phoneNumber,
+        email: donneesUtilisateur.user.usr_email,
+        password: donneesUtilisateur.user.usr_password,
+        codeParrainage: donneesUtilisateur.profile.sponsorCode,
+      };
+      return {
+        donneesUtilisateur,
+        donnees
+      }
+    },
   },
 };
 </script>
