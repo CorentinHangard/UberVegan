@@ -7,11 +7,20 @@
       fixed
       app
     >
+      <div v-if="isConnected === false">
       <div align="center" class="padding">
         <router-link :to="{ name: 'authentification-connexion'}">
           <v-btn class="blue"> Se connecter </v-btn>
         </router-link>
       </div>
+         </div>
+         <div v-else>
+            <div align="center" class="padding">
+        <router-link :to="{ name: 'monCompteRestaurateur'}">
+          <v-btn class="blue"> Mon Compte </v-btn>
+        </router-link>
+      </div>
+         </div>
       <v-list>
         <v-list-item
           v-for="(item, i) in items"
@@ -30,9 +39,9 @@
       </v-list>
     </v-navigation-drawer>
     <v-app-bar :clipped-left="clipped" fixed app>
-      <div v-if="isConnected === false">
+    
         <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      </div>
+    
       <router-link :to="{ name: 'index' }"
         ><img
           src="../assets/images/UberVeganTitle.png"
@@ -44,7 +53,7 @@
         <span>panier</span>
       </v-btn>
       <div v-if="role">
-             <router-link :to="{ name: 'authentification-connexion' }">
+             <router-link :to="{ name: 'monCompteRestaurateur' }">
           <v-btn>
             <v-icon> mdi-account</v-icon>
              <span>mon compte</span>
