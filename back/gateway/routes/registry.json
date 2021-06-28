@@ -46,7 +46,7 @@
       "host": "http://localhost",
       "port": 3006,
       "url": "http://localhost:3006/",
-      "nonAuth": ["menu", "article", "category"]
+      "nonAuth": ["menu", "menus", "article", "articles"]
     },
     "stats": {
       "apiName": "ms-stats",

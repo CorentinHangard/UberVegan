@@ -6,6 +6,16 @@ var Menues = require("../models/menues");
 const { JWTContent } = require("../modules/jwt");
 
 router.get("/menu", async function (req, res, next) {
+  await Menues.find({ _id: req.body.id })
+    .then((menu) => {
+      res.status(200).json(menu);
+    })
+    .catch((err) => {
+      res.json(err);
+    });
+});
+
+router.get("/menus", async function (req, res, next) {
   await Menues.find({ restaurantId: req.body.id })
     .then((menu) => {
       res.status(200).json(menu);
@@ -97,6 +107,16 @@ router.delete("/menu/delete", async function (req, res, next) {
 });
 
 router.get("/article", async function (req, res, next) {
+  await Articles.find({ _id: req.body.id })
+    .then((art) => {
+      res.status(200).json(art);
+    })
+    .catch((err) => {
+      res.json(err);
+    });
+});
+
+router.get("/articles", async function (req, res, next) {
   await Articles.find({ restaurantId: req.body.id })
     .then((art) => {
       res.status(200).json(art);
