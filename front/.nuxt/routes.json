@@ -14,6 +14,13 @@
     "_name": "_736d4528"
   },
   {
+    "name": "monCompte",
+    "path": "/monCompte",
+    "component": "C:\\\\Users\\\\Gwendal\\\\OneDrive\\\\Bureau\\\\Travail\\\\A4\\\\3 - Logiciel\\\\Projet\\\\UberVegan\\\\front\\\\pages\\\\monCompte.vue",
+    "chunkName": "pages/monCompte",
+    "_name": "_2c2b2647"
+  },
+  {
     "name": "parrainerUtilisateur",
     "path": "/parrainerUtilisateur",
     "component": "C:\\\\Users\\\\Gwendal\\\\OneDrive\\\\Bureau\\\\Travail\\\\A4\\\\3 - Logiciel\\\\Projet\\\\UberVegan\\\\front\\\\pages\\\\parrainerUtilisateur.vue",
@@ -63,6 +70,13 @@
     "_name": "_129559fd"
   },
   {
+    "name": "livreur-monCompteLivreur",
+    "path": "/livreur/monCompteLivreur",
+    "component": "C:\\\\Users\\\\Gwendal\\\\OneDrive\\\\Bureau\\\\Travail\\\\A4\\\\3 - Logiciel\\\\Projet\\\\UberVegan\\\\front\\\\pages\\\\livreur\\\\monCompteLivreur.vue",
+    "chunkName": "pages/livreur/monCompteLivreur",
+    "_name": "_dce53d3e"
+  },
+  {
     "name": "livreur-parrainageLivreur",
     "path": "/livreur/parrainageLivreur",
     "component": "C:\\\\Users\\\\Gwendal\\\\OneDrive\\\\Bureau\\\\Travail\\\\A4\\\\3 - Logiciel\\\\Projet\\\\UberVegan\\\\front\\\\pages\\\\livreur\\\\parrainageLivreur.vue",
@@ -103,6 +117,13 @@
     "component": "C:\\\\Users\\\\Gwendal\\\\OneDrive\\\\Bureau\\\\Travail\\\\A4\\\\3 - Logiciel\\\\Projet\\\\UberVegan\\\\front\\\\pages\\\\restaurateur\\\\menu.vue",
     "chunkName": "pages/restaurateur/menu",
     "_name": "_20b0bbd9"
+  },
+  {
+    "name": "restaurateur-monCompteRestaurateur",
+    "path": "/restaurateur/monCompteRestaurateur",
+    "component": "C:\\\\Users\\\\Gwendal\\\\OneDrive\\\\Bureau\\\\Travail\\\\A4\\\\3 - Logiciel\\\\Projet\\\\UberVegan\\\\front\\\\pages\\\\restaurateur\\\\monCompteRestaurateur.vue",
+    "chunkName": "pages/restaurateur/monCompteRestaurateur",
+    "_name": "_631d5987"
   },
   {
     "name": "restaurateur-parrainageRestaurateur",
