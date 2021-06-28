@@ -1,12 +1,12 @@
-var mongoose = require('mongoose');
+var mongoose = require("mongoose");
 
 const articlesSchema = new mongoose.Schema({
-  restaurantId: {type: Schema.Types.ObjectId, ref: 'Restaurants'},
+  restaurantId: { type: mongoose.Schema.Types.ObjectId, ref: "Restaurants" },
   name: String,
   description: String,
   price: Number,
   img: String,
-  category: {type: Schema.Types.ObjectId, ref: 'Categories'}
+  category: String,
 });
 
 module.exports = mongoose.model("Articles", articlesSchema);

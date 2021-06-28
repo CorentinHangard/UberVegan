@@ -2,127 +2,127 @@
   {
     "name": "inspire",
     "path": "/inspire",
-    "component": "C:\\\\Users\\\\Gwendal\\\\OneDrive\\\\Bureau\\\\Travail\\\\A4\\\\3 - Logiciel\\\\Projet\\\\UberVegan\\\\front\\\\pages\\\\inspire.vue",
-    "chunkName": "pages/inspire"
+    "component": "D:\\\\Cesi\\\\A4\\\\Logiciel\\\\Projet\\\\UberVegan\\\\UberVegan\\\\front\\\\pages\\\\inspire.vue",
+    "chunkName": "pages/inspire",
+    "_name": "_5c931682"
   },
   {
     "name": "interdit",
     "path": "/interdit",
-    "component": "C:\\\\Users\\\\Gwendal\\\\OneDrive\\\\Bureau\\\\Travail\\\\A4\\\\3 - Logiciel\\\\Projet\\\\UberVegan\\\\front\\\\pages\\\\interdit.vue",
-    "chunkName": "pages/interdit"
-  },
-  {
-    "name": "monCompte",
-    "path": "/monCompte",
-    "component": "C:\\\\Users\\\\Gwendal\\\\OneDrive\\\\Bureau\\\\Travail\\\\A4\\\\3 - Logiciel\\\\Projet\\\\UberVegan\\\\front\\\\pages\\\\monCompte.vue",
-    "chunkName": "pages/monCompte"
+    "component": "D:\\\\Cesi\\\\A4\\\\Logiciel\\\\Projet\\\\UberVegan\\\\UberVegan\\\\front\\\\pages\\\\interdit.vue",
+    "chunkName": "pages/interdit",
+    "_name": "_cfee518a"
   },
   {
     "name": "parrainerUtilisateur",
     "path": "/parrainerUtilisateur",
-    "component": "C:\\\\Users\\\\Gwendal\\\\OneDrive\\\\Bureau\\\\Travail\\\\A4\\\\3 - Logiciel\\\\Projet\\\\UberVegan\\\\front\\\\pages\\\\parrainerUtilisateur.vue",
-    "chunkName": "pages/parrainerUtilisateur"
+    "component": "D:\\\\Cesi\\\\A4\\\\Logiciel\\\\Projet\\\\UberVegan\\\\UberVegan\\\\front\\\\pages\\\\parrainerUtilisateur.vue",
+    "chunkName": "pages/parrainerUtilisateur",
+    "_name": "_6c9b7109"
   },
   {
     "name": "secret",
     "path": "/secret",
-    "component": "C:\\\\Users\\\\Gwendal\\\\OneDrive\\\\Bureau\\\\Travail\\\\A4\\\\3 - Logiciel\\\\Projet\\\\UberVegan\\\\front\\\\pages\\\\secret.vue",
-    "chunkName": "pages/secret"
+    "component": "D:\\\\Cesi\\\\A4\\\\Logiciel\\\\Projet\\\\UberVegan\\\\UberVegan\\\\front\\\\pages\\\\secret.vue",
+    "chunkName": "pages/secret",
+    "_name": "_d1978d90"
   },
   {
     "name": "authentification-connexion",
     "path": "/authentification/connexion",
-    "component": "C:\\\\Users\\\\Gwendal\\\\OneDrive\\\\Bureau\\\\Travail\\\\A4\\\\3 - Logiciel\\\\Projet\\\\UberVegan\\\\front\\\\pages\\\\authentification\\\\connexion.vue",
-    "chunkName": "pages/authentification/connexion"
+    "component": "D:\\\\Cesi\\\\A4\\\\Logiciel\\\\Projet\\\\UberVegan\\\\UberVegan\\\\front\\\\pages\\\\authentification\\\\connexion.vue",
+    "chunkName": "pages/authentification/connexion",
+    "_name": "_4d4f0ad4"
   },
   {
     "name": "authentification-devenirLivreur",
     "path": "/authentification/devenirLivreur",
-    "component": "C:\\\\Users\\\\Gwendal\\\\OneDrive\\\\Bureau\\\\Travail\\\\A4\\\\3 - Logiciel\\\\Projet\\\\UberVegan\\\\front\\\\pages\\\\authentification\\\\devenirLivreur.vue",
-    "chunkName": "pages/authentification/devenirLivreur"
+    "component": "D:\\\\Cesi\\\\A4\\\\Logiciel\\\\Projet\\\\UberVegan\\\\UberVegan\\\\front\\\\pages\\\\authentification\\\\devenirLivreur.vue",
+    "chunkName": "pages/authentification/devenirLivreur",
+    "_name": "_1d64fff6"
   },
   {
     "name": "authentification-devenirRestaurateur",
     "path": "/authentification/devenirRestaurateur",
-    "component": "C:\\\\Users\\\\Gwendal\\\\OneDrive\\\\Bureau\\\\Travail\\\\A4\\\\3 - Logiciel\\\\Projet\\\\UberVegan\\\\front\\\\pages\\\\authentification\\\\devenirRestaurateur.vue",
-    "chunkName": "pages/authentification/devenirRestaurateur"
+    "component": "D:\\\\Cesi\\\\A4\\\\Logiciel\\\\Projet\\\\UberVegan\\\\UberVegan\\\\front\\\\pages\\\\authentification\\\\devenirRestaurateur.vue",
+    "chunkName": "pages/authentification/devenirRestaurateur",
+    "_name": "_5915b94e"
   },
   {
     "name": "authentification-inscription",
     "path": "/authentification/inscription",
-    "component": "C:\\\\Users\\\\Gwendal\\\\OneDrive\\\\Bureau\\\\Travail\\\\A4\\\\3 - Logiciel\\\\Projet\\\\UberVegan\\\\front\\\\pages\\\\authentification\\\\inscription.vue",
-    "chunkName": "pages/authentification/inscription"
+    "component": "D:\\\\Cesi\\\\A4\\\\Logiciel\\\\Projet\\\\UberVegan\\\\UberVegan\\\\front\\\\pages\\\\authentification\\\\inscription.vue",
+    "chunkName": "pages/authentification/inscription",
+    "_name": "_2cc766e5"
   },
   {
     "name": "livreur-livraison",
     "path": "/livreur/livraison",
-    "component": "C:\\\\Users\\\\Gwendal\\\\OneDrive\\\\Bureau\\\\Travail\\\\A4\\\\3 - Logiciel\\\\Projet\\\\UberVegan\\\\front\\\\pages\\\\livreur\\\\livraison.vue",
-    "chunkName": "pages/livreur/livraison"
-  },
-  {
-    "name": "livreur-monCompteLivreur",
-    "path": "/livreur/monCompteLivreur",
-    "component": "C:\\\\Users\\\\Gwendal\\\\OneDrive\\\\Bureau\\\\Travail\\\\A4\\\\3 - Logiciel\\\\Projet\\\\UberVegan\\\\front\\\\pages\\\\livreur\\\\monCompteLivreur.vue",
-    "chunkName": "pages/livreur/monCompteLivreur"
+    "component": "D:\\\\Cesi\\\\A4\\\\Logiciel\\\\Projet\\\\UberVegan\\\\UberVegan\\\\front\\\\pages\\\\livreur\\\\livraison.vue",
+    "chunkName": "pages/livreur/livraison",
+    "_name": "_27489f60"
   },
   {
     "name": "livreur-parrainageLivreur",
     "path": "/livreur/parrainageLivreur",
-    "component": "C:\\\\Users\\\\Gwendal\\\\OneDrive\\\\Bureau\\\\Travail\\\\A4\\\\3 - Logiciel\\\\Projet\\\\UberVegan\\\\front\\\\pages\\\\livreur\\\\parrainageLivreur.vue",
-    "chunkName": "pages/livreur/parrainageLivreur"
+    "component": "D:\\\\Cesi\\\\A4\\\\Logiciel\\\\Projet\\\\UberVegan\\\\UberVegan\\\\front\\\\pages\\\\livreur\\\\parrainageLivreur.vue",
+    "chunkName": "pages/livreur/parrainageLivreur",
+    "_name": "_6e9980de"
   },
   {
     "name": "restaurateur-article",
     "path": "/restaurateur/article",
-    "component": "C:\\\\Users\\\\Gwendal\\\\OneDrive\\\\Bureau\\\\Travail\\\\A4\\\\3 - Logiciel\\\\Projet\\\\UberVegan\\\\front\\\\pages\\\\restaurateur\\\\article.vue",
-    "chunkName": "pages/restaurateur/article"
+    "component": "D:\\\\Cesi\\\\A4\\\\Logiciel\\\\Projet\\\\UberVegan\\\\UberVegan\\\\front\\\\pages\\\\restaurateur\\\\article.vue",
+    "chunkName": "pages/restaurateur/article",
+    "_name": "_5fc8aa8e"
   },
   {
     "name": "restaurateur-commande",
     "path": "/restaurateur/commande",
-    "component": "C:\\\\Users\\\\Gwendal\\\\OneDrive\\\\Bureau\\\\Travail\\\\A4\\\\3 - Logiciel\\\\Projet\\\\UberVegan\\\\front\\\\pages\\\\restaurateur\\\\commande.vue",
-    "chunkName": "pages/restaurateur/commande"
+    "component": "D:\\\\Cesi\\\\A4\\\\Logiciel\\\\Projet\\\\UberVegan\\\\UberVegan\\\\front\\\\pages\\\\restaurateur\\\\commande.vue",
+    "chunkName": "pages/restaurateur/commande",
+    "_name": "_7b4bc172"
   },
   {
     "name": "restaurateur-compteRestaurateur",
     "path": "/restaurateur/compteRestaurateur",
-    "component": "C:\\\\Users\\\\Gwendal\\\\OneDrive\\\\Bureau\\\\Travail\\\\A4\\\\3 - Logiciel\\\\Projet\\\\UberVegan\\\\front\\\\pages\\\\restaurateur\\\\compteRestaurateur.vue",
-    "chunkName": "pages/restaurateur/compteRestaurateur"
+    "component": "D:\\\\Cesi\\\\A4\\\\Logiciel\\\\Projet\\\\UberVegan\\\\UberVegan\\\\front\\\\pages\\\\restaurateur\\\\compteRestaurateur.vue",
+    "chunkName": "pages/restaurateur/compteRestaurateur",
+    "_name": "_5b95591c"
   },
   {
     "name": "restaurateur-historiqueCommande",
     "path": "/restaurateur/historiqueCommande",
-    "component": "C:\\\\Users\\\\Gwendal\\\\OneDrive\\\\Bureau\\\\Travail\\\\A4\\\\3 - Logiciel\\\\Projet\\\\UberVegan\\\\front\\\\pages\\\\restaurateur\\\\historiqueCommande.vue",
-    "chunkName": "pages/restaurateur/historiqueCommande"
+    "component": "D:\\\\Cesi\\\\A4\\\\Logiciel\\\\Projet\\\\UberVegan\\\\UberVegan\\\\front\\\\pages\\\\restaurateur\\\\historiqueCommande.vue",
+    "chunkName": "pages/restaurateur/historiqueCommande",
+    "_name": "_242a5564"
   },
   {
     "name": "restaurateur-menu",
     "path": "/restaurateur/menu",
-    "component": "C:\\\\Users\\\\Gwendal\\\\OneDrive\\\\Bureau\\\\Travail\\\\A4\\\\3 - Logiciel\\\\Projet\\\\UberVegan\\\\front\\\\pages\\\\restaurateur\\\\menu.vue",
-    "chunkName": "pages/restaurateur/menu"
-  },
-  {
-    "name": "restaurateur-monCompteRestaurateur",
-    "path": "/restaurateur/monCompteRestaurateur",
-    "component": "C:\\\\Users\\\\Gwendal\\\\OneDrive\\\\Bureau\\\\Travail\\\\A4\\\\3 - Logiciel\\\\Projet\\\\UberVegan\\\\front\\\\pages\\\\restaurateur\\\\monCompteRestaurateur.vue",
-    "chunkName": "pages/restaurateur/monCompteRestaurateur"
+    "component": "D:\\\\Cesi\\\\A4\\\\Logiciel\\\\Projet\\\\UberVegan\\\\UberVegan\\\\front\\\\pages\\\\restaurateur\\\\menu.vue",
+    "chunkName": "pages/restaurateur/menu",
+    "_name": "_0b11dba8"
   },
   {
     "name": "restaurateur-parrainageRestaurateur",
     "path": "/restaurateur/parrainageRestaurateur",
-    "component": "C:\\\\Users\\\\Gwendal\\\\OneDrive\\\\Bureau\\\\Travail\\\\A4\\\\3 - Logiciel\\\\Projet\\\\UberVegan\\\\front\\\\pages\\\\restaurateur\\\\parrainageRestaurateur.vue",
-    "chunkName": "pages/restaurateur/parrainageRestaurateur"
+    "component": "D:\\\\Cesi\\\\A4\\\\Logiciel\\\\Projet\\\\UberVegan\\\\UberVegan\\\\front\\\\pages\\\\restaurateur\\\\parrainageRestaurateur.vue",
+    "chunkName": "pages/restaurateur/parrainageRestaurateur",
+    "_name": "_9380b748"
   },
   {
     "name": "restaurateur-suiviLivraison",
     "path": "/restaurateur/suiviLivraison",
-    "component": "C:\\\\Users\\\\Gwendal\\\\OneDrive\\\\Bureau\\\\Travail\\\\A4\\\\3 - Logiciel\\\\Projet\\\\UberVegan\\\\front\\\\pages\\\\restaurateur\\\\suiviLivraison.vue",
-    "chunkName": "pages/restaurateur/suiviLivraison"
+    "component": "D:\\\\Cesi\\\\A4\\\\Logiciel\\\\Projet\\\\UberVegan\\\\UberVegan\\\\front\\\\pages\\\\restaurateur\\\\suiviLivraison.vue",
+    "chunkName": "pages/restaurateur/suiviLivraison",
+    "_name": "_62163f84"
   },
   {
     "name": "index",
     "path": "/",
-    "component": "C:\\\\Users\\\\Gwendal\\\\OneDrive\\\\Bureau\\\\Travail\\\\A4\\\\3 - Logiciel\\\\Projet\\\\UberVegan\\\\front\\\\pages\\\\index.vue",
-    "chunkName": "pages/index"
+    "component": "D:\\\\Cesi\\\\A4\\\\Logiciel\\\\Projet\\\\UberVegan\\\\UberVegan\\\\front\\\\pages\\\\index.vue",
+    "chunkName": "pages/index",
+    "_name": "_c4ab570c"
   }
 ]
