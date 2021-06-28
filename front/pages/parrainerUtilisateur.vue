@@ -6,7 +6,8 @@
         <v-text
           >Envoyez votre code promotionnel et bénéficiez d'une réduction sur vos
           courses. À chaque fois qu'un passager s'inscrit avec votre code
-          d'invitation, vous pourrez envoyer une commande sans frais de livraison (et donc d'être plus compétitif sur les prix 🙂), les frais de livraisons seront pour UberVegan !
+          d'invitation, il obtient une réduction sur sa course (le montant de la
+          réduction dépend du lieu).
         </v-text>
         <br />
         <img src="~/assets/images/parrainage.png" />
@@ -32,7 +33,7 @@ import Logo from "~/components/Logo.vue";
 import VuetifyLogo from "~/components/VuetifyLogo.vue";
 
 export default {
-  middleware: ["auth", "restaurateurMiddleware"],
+    middleware: 'auth',
   layout: "restaurateurLayout",
   components: {
     Logo,
