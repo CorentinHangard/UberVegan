@@ -50,7 +50,7 @@ router.post("/menu/create", async function (req, res, next) {
       description: req.body.description,
       price: req.body.price,
       img: req.body.img,
-      categories: articlesList,
+      articles: articlesList,
     });
 
     menu

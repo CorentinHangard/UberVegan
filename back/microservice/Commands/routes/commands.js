@@ -5,7 +5,9 @@ var Orders = require("../models/orders");
 const { JWTContent } = require("../modules/jwt");
 
 router.get("/", async function (req, res, next) {
-  await Orders.find({ _id: req.body.id })
+  await Orders.find({
+    _id: req.body.id || req.query.id.replace('"', "").replace('"', ""),
+  })
     .then((ord) => {
       res.status(200).json(ord);
     })
@@ -60,7 +62,7 @@ router.post("/create", async function (req, res, next) {
       profileId: rep.data.profile._id,
       content: articlesList,
       totalPrice: req.body.totalPrice,
-      status: req.body.status,
+      status: "created",
     });
 
     order

@@ -10,14 +10,34 @@ router.get("/", async function (req, res, next) {
   const token = req.headers.authorization.split("Bearer ")[1];
   const tokenContent = JWTContent(token).user;
 
-  const user = await model.user.findOne({
-    where: {
-      usr_id: tokenContent.id,
-    },
-  });
-
-  const profile = await Profiles.findOne({ userId: tokenContent.id });
+  var profile = null;
+  var user = null;
   var restaurant = null;
+
+  if (req.query.id) {
+    profile = await Profiles.findOne({
+      _id: req.query.id.replace('"', "").replace('"', ""),
+    });
+    console.log(profile);
+    user = await model.user.findOne({
+      where: {
+        usr_id: profile.userId,
+      },
+    });
+    var restaurant = null;
+
+    if (tokenContent.role === 3) {
+      restaurant = await Restaurants.findOne({ profileId: profile.id });
+    }
+  } else {
+    user = await model.user.findOne({
+      where: {
+        usr_id: tokenContent.id,
+      },
+    });
+
+    profile = await Profiles.findOne({ userId: tokenContent.id });
+  }
 
   if (tokenContent.role === 3) {
     restaurant = await Restaurants.findOne({ profileId: profile.id });
