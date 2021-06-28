@@ -5,7 +5,7 @@ const profilesSchema = new mongoose.Schema({
   phoneNumber: Number,
   address: String,
   sponsorCode: String,
-  sponsor: { type: mongoose.Schema.Types.ObjectId, ref: "Profiles" },
+  sponsor: String,
   userId: String,
 });
 

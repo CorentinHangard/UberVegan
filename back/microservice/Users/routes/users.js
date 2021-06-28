@@ -1,5 +1,6 @@
 var express = require("express");
 var router = express.Router();
+const axios = require("axios");
 var Profiles = require("../models/profiles");
 var Restaurants = require("../models/restaurants");
 var model = require("../models/users");
@@ -189,7 +190,7 @@ router.delete("/delete", async function (req, res, next) {
   res.status(201).send("Utilisateur bien supprimé");
 });
 
-router.post("/authenticate", (req, res) => {
+router.post("/authenticate", async (req, res) => {
   if (typeof req.params.token !== "undefined") {
     let token = req.params.token;
   }
@@ -202,7 +203,7 @@ router.post("/authenticate", (req, res) => {
       },
       include: [{ model: model.refresh_token }],
     })
-    .then((user) => {
+    .then(async (user) => {
       if (!user) {
         return res.status(550).send("Utilisateur inconnu");
       }
@@ -222,7 +223,44 @@ router.post("/authenticate", (req, res) => {
         });
       }
 
-      res.status(200).json({ isConnected: true, token: token });
+      try {
+        const date = new Date();
+        await axios
+          .post(
+            "http://localhost:3004/create",
+            {
+              type: "connexion",
+              content:
+                "l'utilisateur " +
+                user.usr_id +
+                " (" +
+                req.body.email +
+                ") c'est connecté le " +
+                date.getDate() +
+                "/" +
+                date.getMonth() +
+                "/" +
+                date.getFullYear() +
+                " à " +
+                date.getHours() +
+                ":" +
+                date.getMinutes() +
+                ":" +
+                date.getSeconds(),
+            },
+            {
+              headers: {
+                Authorization: "Bearer " + token,
+              },
+            }
+          )
+          .then(() => {
+            res.status(200).json({ isConnected: true, token: token });
+          });
+      } catch (error) {
+        console.log(error);
+        res.send(error);
+      }
     })
     .catch((error) => {
       console.log(error);
