@@ -27,29 +27,11 @@ router.all("/:apiName/*", (req, res) => {
 });
 
 
-router.all('/:apiName/*', (req, res) => {
-    res.header("Access-Control-Allow-Origin", "*");
-    if (registry.services[req.params.apiName]) {
-        axios({
-            method: req.method,
-            url: registry.services[req.params.apiName].url + req.params[0],
-            headers: req.headers,
-            data: req.body
-        }).then((response) => {
-            res.send(response.data)
-        }).catch((error) => {
-            res.send(error)
-        })
-    } else {
-        res.send("API name doesn't exist")
-    }
-
-})
-
 router.post('/authenticate', (req, res) => {
     res.header("Access-Control-Allow-Origin", "*");
     const mail = req.body.email
     const password = req.body.password
+
     
     if(typeof(req.params.token) !== 'undefined'){
         let token = req.params.token
