@@ -13,7 +13,7 @@ router.all("/:apiName/*", (req, res) => {
   if (registry.services[req.params.apiName]) {
     var authNeeded = true;
     registry.services[req.params.apiName].nonAuth.forEach((route) => {
-      if (req.params[0] == route) {
+      if (req.params[0] === route) {
         authNeeded = false;
       }
     });
@@ -37,6 +37,9 @@ router.all("/:apiName/*", (req, res) => {
           if (err) {
             res.send(err);
           } else {
+            console.log(
+              registry.services[req.params.apiName].url + req.params[0]
+            );
             axios({
               method: req.method,
               url: registry.services[req.params.apiName].url + req.params[0],

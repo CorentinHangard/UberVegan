@@ -40,13 +40,13 @@
       "url": "http://localhost:3005/",
       "nonAuth": []
     },
-    "ms-product": {
-      "apiName": "ms-product",
+    "ms-products": {
+      "apiName": "ms-products",
       "protocol": "http",
       "host": "http://localhost",
       "port": 3006,
       "url": "http://localhost:3006/",
-      "nonAuth": []
+      "nonAuth": ["menu", "article", "category"]
     },
     "stats": {
       "apiName": "ms-stats",
@@ -62,7 +62,7 @@
       "host": "http://localhost",
       "port": 3008,
       "url": "http://localhost:3008/",
-      "nonAuth": ["authenticate", "create"]
+      "nonAuth": ["authenticate", "create", "restaurants"]
     }
   }
 }
