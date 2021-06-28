@@ -48,19 +48,20 @@ export default {
       email: "",
       password: "",
       user: {},
-      data: {},
+      data: {
+      },
       rules: {
         email: [v => !!v || "Votre email est obligatoire"],
         password: [v => !!v || "Votre mot de passe est obligatoire"]
-      }
+      },
+      show1 : false
     };
   },
 
   methods: {
     validate(email, password) {
       
-      /* localStorage.setItem('role', 2)
-      localStorage.setItem('isConnected', 'false') */
+      
   
       let data = {
         "email": email,
