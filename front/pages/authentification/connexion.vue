@@ -57,8 +57,8 @@ export default {
   methods: {
     validate(email, password) {
       
-      /* localStorage.setItem('role', 2)
-      localStorage.setItem('isConnected', 'false') */
+      localStorage.setItem('isConnected', 'true') 
+      localStorage.setItem('role', 3)
   
       let data = {
         "email": email,

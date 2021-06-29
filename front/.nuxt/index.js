@@ -12,8 +12,8 @@ import { setContext, getLocation, getRouteData, normalizeError } from './utils'
 
 /* Plugins */
 
-import nuxt_plugin_plugin_37b313ce from 'nuxt_plugin_plugin_37b313ce' // Source: .\\components\\plugin.js (mode: 'all')
-import nuxt_plugin_plugin_1614b70a from 'nuxt_plugin_plugin_1614b70a' // Source: .\\vuetify\\plugin.js (mode: 'all')
+import nuxt_plugin_plugin_42422dde from 'nuxt_plugin_plugin_42422dde' // Source: .\\components\\plugin.js (mode: 'all')
+import nuxt_plugin_plugin_fc9cea54 from 'nuxt_plugin_plugin_fc9cea54' // Source: .\\vuetify\\plugin.js (mode: 'all')
 
 // Component: <ClientOnly>
 Vue.component(ClientOnly.name, ClientOnly)
@@ -177,12 +177,12 @@ async function createApp(ssrContext, config = {}) {
   }
   // Plugin execution
 
-  if (typeof nuxt_plugin_plugin_37b313ce === 'function') {
-    await nuxt_plugin_plugin_37b313ce(app.context, inject)
+  if (typeof nuxt_plugin_plugin_42422dde === 'function') {
+    await nuxt_plugin_plugin_42422dde(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_plugin_1614b70a === 'function') {
-    await nuxt_plugin_plugin_1614b70a(app.context, inject)
+  if (typeof nuxt_plugin_plugin_fc9cea54 === 'function') {
+    await nuxt_plugin_plugin_fc9cea54(app.context, inject)
   }
 
   // Lock enablePreview in context
