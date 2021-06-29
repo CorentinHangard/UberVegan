@@ -16,6 +16,7 @@
           label="Mot de passe"
           prepend-icon="mdi-lock"
           required
+          :type="show1 ? 'text' : 'password'"
           :rules="rules.password"
         ></v-text-field>
       </div>
@@ -38,11 +39,10 @@
 <script>
 import axios from "axios";
 export default {
-  created(){
-  },
 
   data() {
     return {
+      show1: false,
       email: "",
       password: "",
       user: {},
