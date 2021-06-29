@@ -13,4 +13,10 @@ export default {
   async profileCreate(infos: any) {
     return await axios.post("ms-users/create", infos);
   },
+  async delivery(infos: any) {
+    return await axios.get("ms-deliveries/?id=" + infos.id);
+  },
+  async deliveries(infos: any) {
+    return await axios.get("ms-deliveries/all?id="+ infos.id);
+  },
 };

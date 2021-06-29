@@ -6,8 +6,9 @@ import Inscription from "../views/authentification/Inscription.vue";
 import InscriptionLivreur from "../views/authentification/InscriptionLivreur.vue";
 import InscriptionRestaurateur from "../views/authentification/InscriptionRestaurateur.vue";
 import Connexion from "../views/authentification/Connexion.vue";
-import devenirLivreur from "../views/authentification/devenirLivreur.vue";
+import Livraison from "../views/livreur/livraison.vue";
 import devenirRestaurateur from "../views/authentification/devenirRestaurateur.vue";
+import mesLivraisons from "../views/livreur/mesLivraisons.vue";
 
 Vue.use(VueRouter);
 
@@ -41,6 +42,16 @@ const routes: Array<RouteConfig> = [
     path: "/profile",
     name: "profile",
     component: Profile,
+  },
+  {
+    path: "/livreur/livraison",
+    name: "livraison",
+    component: Livraison,
+  },
+  {
+    path: "/livreur/mesLivraisons",
+    name: "mesLivraisons",
+    component: mesLivraisons,
   },
 ];
 
