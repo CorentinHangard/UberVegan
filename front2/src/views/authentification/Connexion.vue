@@ -27,7 +27,7 @@
         </v-btn>
         <p class="padding">
           Vous découvrer UberVegan ?
-          <router-link :to="{ name: 'authentification-inscription' }"
+          <router-link :to="'/inscription'"
             >Créez un compte</router-link
           >
         </p>

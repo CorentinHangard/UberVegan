@@ -42,16 +42,12 @@ export default {
         {
           icon: "mdi-truck-delivery",
           title: "Devenir livreur",
-          to: {
-            name: "authentification-devenirLivreur",
-          },
+          to: '/devenirLivreur',
         },
         {
           icon: "mdi-silverware-fork-knife",
           title: "Devenir restaurateur",
-          to: {
-            name: "authentification-devenirRestaurateur",
-          },
+          to: '/devenirRestaurateur',
         },
       ],
       miniVariant: false,

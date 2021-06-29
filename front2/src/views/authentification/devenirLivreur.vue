@@ -72,7 +72,7 @@
           </v-btn>
           <p>
             Déjà un compte ?
-            <router-link :to="{ name: 'authentification-connexion' }">Se connecter</router-link>
+            <router-link :to="'/login'">Se connecter</router-link>
           </p>
         </div>
         <br />
