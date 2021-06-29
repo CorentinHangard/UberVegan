@@ -2,6 +2,8 @@ import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
 import Home from "../views/Home.vue";
 import Profile from "../views/Profile.vue";
+import Cart from "../views/Cart.vue";
+import Command from "../views/Command.vue";
 import Inscription from "../views/authentification/Inscription.vue";
 import InscriptionLivreur from "../views/authentification/InscriptionLivreur.vue";
 import InscriptionRestaurateur from "../views/authentification/InscriptionRestaurateur.vue";
@@ -43,6 +45,17 @@ const routes: Array<RouteConfig> = [
     path: "/profile",
     name: "profile",
     component: Profile,
+  },
+  {
+    path: "/cart",
+    name: "cart",
+    component: Cart,
+  },
+  {
+    path: "/command/:id",
+    name: "command",
+    component: Command,
+    props: true,
   },
   {
     path: "/restaurant/:id",

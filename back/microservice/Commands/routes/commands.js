@@ -5,9 +5,7 @@ var Orders = require("../models/orders");
 const { JWTContent } = require("../modules/jwt");
 
 router.get("/", async function (req, res, next) {
-  await Orders.find({
-    _id: req.body.id || req.query.id.replace('"', "").replace('"', ""),
-  })
+  await Orders.find({ _id: req.query.id })
     .then((ord) => {
       res.status(200).json(ord);
     })
@@ -113,6 +111,7 @@ router.put("/pay", async function (req, res, next) {
   const tokenContent = JWTContent(token).user;
 
   if (tokenContent.role === 1) {
+    console.log(req.body.id);
     const order = await Orders.findOne({ _id: req.body.id });
 
     const orderUpdate = {

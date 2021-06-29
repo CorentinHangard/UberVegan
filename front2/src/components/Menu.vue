@@ -1,21 +1,30 @@
 <template>
-  <router-link :to="{ name: 'menu', params: { id: id } }">
-    <v-card>
-      <v-img height="150" v-bind:src="img"></v-img>
-      <v-card-title>{{ name }}</v-card-title>
-      <v-card-text>
-        <div class="my-4 text-subtitle-1">€ • Cout de livraison</div>
-        <div>
-          {{ description }}
-        </div>
-      </v-card-text>
-    </v-card>
-  </router-link>
+  <v-card>
+    <v-img height="150" v-bind:src="img"></v-img>
+    <v-card-title>{{ name }}</v-card-title>
+    <v-card-text>
+      <div>{{ description }}</div>
+      <div>{{ price }}€</div>
+      <v-btn :to="{ name: 'menu', params: { id: id } }">
+        Voir
+      </v-btn>
+      <v-btn @click="ajoutCart">
+        Ajouter
+      </v-btn>
+    </v-card-text>
+  </v-card>
 </template>
 
 <script Lang="ts">
 export default {
   props: ["name", "description", "src", "price", "id"],
+  methods: {
+    ajoutCart() {
+      this.$store
+        .dispatch("cart", { infos: { id: this.id, count: 1 } })
+        .finally();
+    },
+  },
   computed: {
     img() {
       // return this.src != "img"

@@ -37,4 +37,19 @@ export default {
   async articleCreate(infos: any) {
     return await axios.post("ms-products/article/create", infos);
   },
+  async command(infos: any) {
+    return await axios.get("ms-commands/?id=" + infos.id);
+  },
+  async commands(infos: any) {
+    return await axios.get("ms-commands/?id=" + infos.id);
+  },
+  async commandCreate(infos: any) {
+    return await axios.post("ms-commands/create", infos);
+  },
+  async commandPay(infos: any) {
+    return await axios.put("ms-commands/pay", infos);
+  },
+  async commandValid(infos: any) {
+    return await axios.put("ms-commands/valid", infos);
+  },
 };

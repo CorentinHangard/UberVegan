@@ -9,7 +9,7 @@
           style="height: 75px; width: auto; display: flex"
       /></router-link>
       <v-spacer />
-      <v-btn icon>
+      <v-btn v-if="isConnectedVal" icon to="/cart">
         <v-icon> mdi-cart </v-icon>
       </v-btn>
       <v-btn v-if="!isConnectedVal" class="blue" to="/login">

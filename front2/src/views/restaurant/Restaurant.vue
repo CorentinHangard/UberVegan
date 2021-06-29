@@ -48,11 +48,16 @@ export default {
   computed: {
     getUserRole() {
       const infos = this.$store.getters.getInfos;
-      console.log(this.user.profile._id);
-
       if (infos.user) {
-        return this.$store.getters.getInfos.user.role === 3;
+        if (this.$store.getters.getInfos.user.role === 3) {
+          if (this.user.profile) {
+            if (this.restaurant.profileId === this.user.profile._id) {
+              return true;
+            }
+          }
+        }
       }
+
       return false;
     },
   },
