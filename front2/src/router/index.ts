@@ -6,7 +6,6 @@ import Inscription from "../views/authentification/Inscription.vue";
 import InscriptionLivreur from "../views/authentification/InscriptionLivreur.vue";
 import InscriptionRestaurateur from "../views/authentification/InscriptionRestaurateur.vue";
 import Connexion from "../views/authentification/Connexion.vue";
-import Inscription from "../views/authentification/inscription.vue";
 import devenirLivreur from "../views/authentification/devenirLivreur.vue";
 import devenirRestaurateur from "../views/authentification/devenirRestaurateur.vue";
 
