@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <appdrawer :clipped="clipped" :drawer="drawer" />
+    <appdrawer :clipped="clipped" :drawer="drawer" :isCon="isConnectedVal" />
     <v-app-bar :clipped-left="clipped" fixed app>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <router-link :to="{ name: 'Home' }"
@@ -9,16 +9,16 @@
           style="height: 75px; width: auto; display: flex"
       /></router-link>
       <v-spacer />
-      <v-btn>
+      <v-btn icon>
         <v-icon> mdi-cart </v-icon>
       </v-btn>
       <v-btn v-if="!isConnectedVal" class="blue" to="/login">
         Se connecter
       </v-btn>
-      <v-menu min-width="200" offset-y v-if="isConnectedVal">
+      <v-menu v-if="isConnectedVal">
         <template v-slot:activator="{ on }">
-          <v-btn icon x-large v-on="on" absolute right>
-            <v-avatar color="brown" size="40">
+          <v-btn icon x-large v-on="on">
+            <v-avatar color="green" size="40">
               <span class="white--text text-h5">CC</span>
             </v-avatar>
           </v-btn>

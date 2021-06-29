@@ -41,6 +41,15 @@ const authStore: Module<any, any> = {
       };
       commit("SET_TOKENS_INFOS", data);
     },
+    profileCreate: async ({ commit, dispatch }, { infos }) => {
+      const response = await AuthService.profileCreate(infos);
+      const token = response.data;
+      const data = {
+        token: token,
+        infos: jwt.decode(token),
+      };
+      commit("SET_TOKENS_INFOS", data);
+    },
     logout: ({ commit, dispatch }) => {
       commit("RESET", "");
     },

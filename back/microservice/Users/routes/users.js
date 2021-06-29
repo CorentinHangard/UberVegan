@@ -57,6 +57,7 @@ router.get("/", async function (req, res, next) {
 });
 
 router.post("/create", async function (req, res, next) {
+  console.log(req.body);
   if (
     req.body.rolId === undefined ||
     req.body.rolId === 1 ||
@@ -88,8 +89,12 @@ router.post("/create", async function (req, res, next) {
 
     profiles
       .save()
-      .then((profile) => {
-        res.status(201).json(profile);
+      .then(() => {
+        const token = createJWT({
+          id: user.usr_id,
+          role: user.rol_id,
+        });
+        res.status(201).json(token);
       })
       .catch((err) => console.log(err));
   } else if (
@@ -97,7 +102,6 @@ router.post("/create", async function (req, res, next) {
     req.body.rolId === 3 &&
     req.body.resName &&
     req.body.resDesc &&
-    req.body.resAdd &&
     req.body.resImg &&
     req.body.rescod &&
     req.body.resPrep
@@ -120,7 +124,7 @@ router.post("/create", async function (req, res, next) {
       profileId: profile._id,
       name: req.body.resName,
       description: req.body.resDesc,
-      address: req.body.resAdd,
+      address: req.body.address,
       img: req.body.resImg,
       rating: null,
       costOfDelivery: req.body.rescod,
@@ -129,11 +133,15 @@ router.post("/create", async function (req, res, next) {
 
     profile
       .save()
-      .then((prof) => {
+      .then(() => {
         restaurant
           .save()
-          .then((rest) => {
-            res.status(201).json({ ...prof._doc, ...rest._doc });
+          .then(() => {
+            const token = createJWT({
+              id: user.usr_id,
+              role: user.rol_id,
+            });
+            res.status(201).json(token);
           })
           .catch((err) => console.log(err));
       })
@@ -163,6 +171,8 @@ router.put("/edit", async function (req, res, next) {
     address: req.body.address ? req.body.address : profile.address,
     sponsor: req.body.sponsor ? req.body.sponsor : profile.sponsor,
   };
+
+  console.log(profileUpdate);
 
   model.user.update(
     {

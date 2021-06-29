@@ -6,6 +6,8 @@ const jwt = require("jsonwebtoken");
 const fs = require("fs");
 const path = require("path");
 
+var privateKey = fs.readFileSync(path.join(__dirname, "../config/private.key"));
+
 router.all("/:apiName/*", (req, res) => {
   res.header("Access-Control-Allow-Origin", "*");
   if (registry.services[req.params.apiName]) {

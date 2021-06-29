@@ -23,13 +23,11 @@
 
       <div class="center padding">
         <v-btn color="blue" @click="validate()" class="v-btn">
-          Se connecter
+          Connexion
         </v-btn>
         <p class="padding">
           Vous découvrer UberVegan ?
-          <router-link :to="{ name: 'authentification-inscription' }"
-            >Créez un compte</router-link
-          >
+          <router-link :to="{ name: 'signup' }">Créez un compte</router-link>
         </p>
       </div>
       <br />
