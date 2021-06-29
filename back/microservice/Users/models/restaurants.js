@@ -1,12 +1,14 @@
-var mongoose = require('mongoose');
+var mongoose = require("mongoose");
 
 const restaurantsSchema = new mongoose.Schema({
+  profileId: { type: mongoose.Schema.Types.ObjectId, ref: "Profiles" },
   name: String,
   description: String,
+  address: String,
   img: String,
   rating: Number,
   costOfDelivery: String,
-  preparationTime: Number
+  preparationTime: Number,
 });
 
 module.exports = mongoose.model("Restaurants", restaurantsSchema);

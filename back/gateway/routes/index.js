@@ -1,75 +1,65 @@
-const express = require('express')
-const router = express.Router()
-const axios = require('axios')
-const registry = require('./registry.json')
-let model = require('../user/user')
-const { createJWT, checkJWT, createRefreshToken } = require('../modules/jwt')
+const express = require("express");
+const router = express.Router();
+const axios = require("axios");
+const registry = require("./registry.json");
+const jwt = require("jsonwebtoken");
+const fs = require("fs");
+const path = require("path");
 
 router.all("/:apiName/*", (req, res) => {
   res.header("Access-Control-Allow-Origin", "*");
-  console.log(req.body);
   if (registry.services[req.params.apiName]) {
-    axios({
-      method: req.method,
-      url: registry.services[req.params.apiName].url + req.params[0],
-      headers: req.headers,
-      data: req.body,
-    })
-      .then((response) => {
-        res.send(response.data);
+    var authNeeded = true;
+    registry.services[req.params.apiName].nonAuth.forEach((route) => {
+      if (req.params[0] === route) {
+        authNeeded = false;
+      }
+    });
+    if (!authNeeded) {
+      console.log(registry.services[req.params.apiName].url + req.params[0]);
+      axios({
+        method: req.method,
+        url: registry.services[req.params.apiName].url + req.params[0],
+        headers: req.headers,
+        data: req.body,
       })
-      .catch((error) => {
-        res.send(error);
-      });
+        .then((response) => {
+          res.status(response.status).send(response.data);
+        })
+        .catch((error) => {
+          res.status(error.response.status).send(error);
+        });
+    } else {
+      if (req.headers.authorization) {
+        const token = req.headers.authorization.split("Bearer ")[1];
+        jwt.verify(token, privateKey, function (err, decoded) {
+          if (err) {
+            res.send(err);
+          } else {
+            console.log(
+              registry.services[req.params.apiName].url + req.params[0]
+            );
+            axios({
+              method: req.method,
+              url: registry.services[req.params.apiName].url + req.params[0],
+              headers: req.headers,
+              data: req.body,
+            })
+              .then((response) => {
+                res.send(response.data);
+              })
+              .catch((error) => {
+                res.send(error);
+              });
+          }
+        });
+      } else {
+        res.send("Token needed");
+      }
+    }
   } else {
     res.send("API name doesn't exist");
   }
 });
 
-
-router.post('/authenticate', (req, res) => {
-    res.header("Access-Control-Allow-Origin", "*");
-    const mail = req.body.email
-    const password = req.body.password
-
-    
-    if(typeof(req.params.token) !== 'undefined'){
-        let token = req.params.token
-    } 
-
-    model.user.findOne({
-        where:
-        {
-            email: mail,
-            password: password
-        },
-        include : [{model : model.refresh_token}]
-    }).then(user => {
-
-        if (!user) {
-            return res.status(550).send('Utilisateur inconnu')
-        }
-      
-        if(typeof(req.params.token) !== 'undefined'){
-            let checkJwt = checkJWT(token)
-            if (checkJwt == 'renew'){
-                 token = createJWT({ id: user.id, role: user.id_role, nom : user.nom , prenom : user.prenom })
-            }
-
-        }else{
-             token = createJWT({ id: user.id, role: user.id_role, nom : user.nom , prenom : user.prenom })
-         
-        }
-
-     
-
-        res.status(200).json({ isConnected: true, token: token })
-    }).catch((error) => {
-        console.log(error)
-        res.status(500).json({ isConnected: false })
-    })
-})
-
-
-
-module.exports = router
+module.exports = router;

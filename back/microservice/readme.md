@@ -37,3 +37,12 @@ Ctrl + C
 kubectl scale deploy ms-NAME-deployment --replicas=0
 kubectl delete svc ms-NAME-service
 ```
+
+
+## RoleID
+1 Utilisateur final
+2 Livreur
+3 Restaurateur
+4 Developpeur tier
+5 Commercial
+6 Technique

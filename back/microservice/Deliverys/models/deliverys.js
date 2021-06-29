@@ -1,9 +1,9 @@
-var mongoose = require('mongoose');
+var mongoose = require("mongoose");
 
 const deliverysSchema = new mongoose.Schema({
-  profileId: {type: Schema.Types.ObjectId, ref: 'Profiles'},
-  orderId: {type: Schema.Types.ObjectId, ref: 'Orders'},
-  delivererId: {type: Schema.Types.ObjectId, ref: 'Profiles'},
+  profileId: { type: mongoose.Schema.Types.ObjectId, ref: "Profiles" },
+  orderId: { type: mongoose.Schema.Types.ObjectId, ref: "Orders" },
+  delivererId: { type: mongoose.Schema.Types.ObjectId, ref: "Profiles" },
   status: String,
 });
 

@@ -44,6 +44,7 @@ export default {
 
   data() {
     return {
+      show1: false,
       email: "",
       password: "",
       user: {},
