@@ -3,126 +3,126 @@
     "name": "inspire",
     "path": "/inspire",
     "component": "D:\\\\Cesi\\\\A4\\\\Logiciel\\\\Projet\\\\UberVegan\\\\UberVegan\\\\front\\\\pages\\\\inspire.vue",
-    "chunkName": "pages/inspire",
-    "_name": "_5c931682"
+    "chunkName": "pages/inspire"
   },
   {
     "name": "interdit",
     "path": "/interdit",
     "component": "D:\\\\Cesi\\\\A4\\\\Logiciel\\\\Projet\\\\UberVegan\\\\UberVegan\\\\front\\\\pages\\\\interdit.vue",
-    "chunkName": "pages/interdit",
-    "_name": "_cfee518a"
+    "chunkName": "pages/interdit"
+  },
+  {
+    "name": "monCompte",
+    "path": "/monCompte",
+    "component": "D:\\\\Cesi\\\\A4\\\\Logiciel\\\\Projet\\\\UberVegan\\\\UberVegan\\\\front\\\\pages\\\\monCompte.vue",
+    "chunkName": "pages/monCompte"
   },
   {
     "name": "parrainerUtilisateur",
     "path": "/parrainerUtilisateur",
     "component": "D:\\\\Cesi\\\\A4\\\\Logiciel\\\\Projet\\\\UberVegan\\\\UberVegan\\\\front\\\\pages\\\\parrainerUtilisateur.vue",
-    "chunkName": "pages/parrainerUtilisateur",
-    "_name": "_6c9b7109"
+    "chunkName": "pages/parrainerUtilisateur"
   },
   {
     "name": "secret",
     "path": "/secret",
     "component": "D:\\\\Cesi\\\\A4\\\\Logiciel\\\\Projet\\\\UberVegan\\\\UberVegan\\\\front\\\\pages\\\\secret.vue",
-    "chunkName": "pages/secret",
-    "_name": "_d1978d90"
+    "chunkName": "pages/secret"
   },
   {
     "name": "authentification-connexion",
     "path": "/authentification/connexion",
     "component": "D:\\\\Cesi\\\\A4\\\\Logiciel\\\\Projet\\\\UberVegan\\\\UberVegan\\\\front\\\\pages\\\\authentification\\\\connexion.vue",
-    "chunkName": "pages/authentification/connexion",
-    "_name": "_4d4f0ad4"
+    "chunkName": "pages/authentification/connexion"
   },
   {
     "name": "authentification-devenirLivreur",
     "path": "/authentification/devenirLivreur",
     "component": "D:\\\\Cesi\\\\A4\\\\Logiciel\\\\Projet\\\\UberVegan\\\\UberVegan\\\\front\\\\pages\\\\authentification\\\\devenirLivreur.vue",
-    "chunkName": "pages/authentification/devenirLivreur",
-    "_name": "_1d64fff6"
+    "chunkName": "pages/authentification/devenirLivreur"
   },
   {
     "name": "authentification-devenirRestaurateur",
     "path": "/authentification/devenirRestaurateur",
     "component": "D:\\\\Cesi\\\\A4\\\\Logiciel\\\\Projet\\\\UberVegan\\\\UberVegan\\\\front\\\\pages\\\\authentification\\\\devenirRestaurateur.vue",
-    "chunkName": "pages/authentification/devenirRestaurateur",
-    "_name": "_5915b94e"
+    "chunkName": "pages/authentification/devenirRestaurateur"
   },
   {
     "name": "authentification-inscription",
     "path": "/authentification/inscription",
     "component": "D:\\\\Cesi\\\\A4\\\\Logiciel\\\\Projet\\\\UberVegan\\\\UberVegan\\\\front\\\\pages\\\\authentification\\\\inscription.vue",
-    "chunkName": "pages/authentification/inscription",
-    "_name": "_2cc766e5"
+    "chunkName": "pages/authentification/inscription"
   },
   {
     "name": "livreur-livraison",
     "path": "/livreur/livraison",
     "component": "D:\\\\Cesi\\\\A4\\\\Logiciel\\\\Projet\\\\UberVegan\\\\UberVegan\\\\front\\\\pages\\\\livreur\\\\livraison.vue",
-    "chunkName": "pages/livreur/livraison",
-    "_name": "_27489f60"
+    "chunkName": "pages/livreur/livraison"
+  },
+  {
+    "name": "livreur-monCompteLivreur",
+    "path": "/livreur/monCompteLivreur",
+    "component": "D:\\\\Cesi\\\\A4\\\\Logiciel\\\\Projet\\\\UberVegan\\\\UberVegan\\\\front\\\\pages\\\\livreur\\\\monCompteLivreur.vue",
+    "chunkName": "pages/livreur/monCompteLivreur"
   },
   {
     "name": "livreur-parrainageLivreur",
     "path": "/livreur/parrainageLivreur",
     "component": "D:\\\\Cesi\\\\A4\\\\Logiciel\\\\Projet\\\\UberVegan\\\\UberVegan\\\\front\\\\pages\\\\livreur\\\\parrainageLivreur.vue",
-    "chunkName": "pages/livreur/parrainageLivreur",
-    "_name": "_6e9980de"
+    "chunkName": "pages/livreur/parrainageLivreur"
   },
   {
     "name": "restaurateur-article",
     "path": "/restaurateur/article",
     "component": "D:\\\\Cesi\\\\A4\\\\Logiciel\\\\Projet\\\\UberVegan\\\\UberVegan\\\\front\\\\pages\\\\restaurateur\\\\article.vue",
-    "chunkName": "pages/restaurateur/article",
-    "_name": "_5fc8aa8e"
+    "chunkName": "pages/restaurateur/article"
   },
   {
     "name": "restaurateur-commande",
     "path": "/restaurateur/commande",
     "component": "D:\\\\Cesi\\\\A4\\\\Logiciel\\\\Projet\\\\UberVegan\\\\UberVegan\\\\front\\\\pages\\\\restaurateur\\\\commande.vue",
-    "chunkName": "pages/restaurateur/commande",
-    "_name": "_7b4bc172"
+    "chunkName": "pages/restaurateur/commande"
   },
   {
     "name": "restaurateur-compteRestaurateur",
     "path": "/restaurateur/compteRestaurateur",
     "component": "D:\\\\Cesi\\\\A4\\\\Logiciel\\\\Projet\\\\UberVegan\\\\UberVegan\\\\front\\\\pages\\\\restaurateur\\\\compteRestaurateur.vue",
-    "chunkName": "pages/restaurateur/compteRestaurateur",
-    "_name": "_5b95591c"
+    "chunkName": "pages/restaurateur/compteRestaurateur"
   },
   {
     "name": "restaurateur-historiqueCommande",
     "path": "/restaurateur/historiqueCommande",
     "component": "D:\\\\Cesi\\\\A4\\\\Logiciel\\\\Projet\\\\UberVegan\\\\UberVegan\\\\front\\\\pages\\\\restaurateur\\\\historiqueCommande.vue",
-    "chunkName": "pages/restaurateur/historiqueCommande",
-    "_name": "_242a5564"
+    "chunkName": "pages/restaurateur/historiqueCommande"
   },
   {
     "name": "restaurateur-menu",
     "path": "/restaurateur/menu",
     "component": "D:\\\\Cesi\\\\A4\\\\Logiciel\\\\Projet\\\\UberVegan\\\\UberVegan\\\\front\\\\pages\\\\restaurateur\\\\menu.vue",
-    "chunkName": "pages/restaurateur/menu",
-    "_name": "_0b11dba8"
+    "chunkName": "pages/restaurateur/menu"
+  },
+  {
+    "name": "restaurateur-monCompteRestaurateur",
+    "path": "/restaurateur/monCompteRestaurateur",
+    "component": "D:\\\\Cesi\\\\A4\\\\Logiciel\\\\Projet\\\\UberVegan\\\\UberVegan\\\\front\\\\pages\\\\restaurateur\\\\monCompteRestaurateur.vue",
+    "chunkName": "pages/restaurateur/monCompteRestaurateur"
   },
   {
     "name": "restaurateur-parrainageRestaurateur",
     "path": "/restaurateur/parrainageRestaurateur",
     "component": "D:\\\\Cesi\\\\A4\\\\Logiciel\\\\Projet\\\\UberVegan\\\\UberVegan\\\\front\\\\pages\\\\restaurateur\\\\parrainageRestaurateur.vue",
-    "chunkName": "pages/restaurateur/parrainageRestaurateur",
-    "_name": "_9380b748"
+    "chunkName": "pages/restaurateur/parrainageRestaurateur"
   },
   {
     "name": "restaurateur-suiviLivraison",
     "path": "/restaurateur/suiviLivraison",
     "component": "D:\\\\Cesi\\\\A4\\\\Logiciel\\\\Projet\\\\UberVegan\\\\UberVegan\\\\front\\\\pages\\\\restaurateur\\\\suiviLivraison.vue",
-    "chunkName": "pages/restaurateur/suiviLivraison",
-    "_name": "_62163f84"
+    "chunkName": "pages/restaurateur/suiviLivraison"
   },
   {
     "name": "index",
     "path": "/",
     "component": "D:\\\\Cesi\\\\A4\\\\Logiciel\\\\Projet\\\\UberVegan\\\\UberVegan\\\\front\\\\pages\\\\index.vue",
-    "chunkName": "pages/index",
-    "_name": "_c4ab570c"
+    "chunkName": "pages/index"
   }
 ]

@@ -38,8 +38,9 @@
 </template>
 <script>
 import axios from "axios";
-
+import vueJwtDecode from "vue-jwt-decode";
 export default {
+  created() {},
 
   data() {
     return {
@@ -49,47 +50,50 @@ export default {
       user: {},
       data: {},
       rules: {
-        email: [v => !!v || "Votre email est obligatoire"],
-        password: [v => !!v || "Votre mot de passe est obligatoire"]
-      }
+        email: [(v) => !!v || "Votre email est obligatoire"],
+        password: [(v) => !!v || "Votre mot de passe est obligatoire"],
+      },
+      show1: false,
     };
   },
 
   methods: {
     validate(email, password) {
-      
-      /* localStorage.setItem('role', 2)
-      localStorage.setItem('isConnected', 'false') */
-  
       let data = {
-        "email": email,
-        "password": password,
+        email: email,
+        password: password,
       };
 
       axios
         .post("http://localhost:8000/authenticate", JSON.stringify(data), {
-          headers : {
-              "Content-Type": "application/json",
-          }
+          headers: {
+            "Content-Type": "application/json",
+          },
         })
         .then((response) => {
           this.user = response.data;
-          console.log(this.user.isConnected)
+          let token = Object(vueJwtDecode.decode(this.user.token));
+
+          localStorage.setItem("isConnected", this.user.isConnected);
+          localStorage.setItem("token", this.user.token);
+          localStorage.setItem("role", token.user.role);
+
+          if (localStorage.getItem("role") == 1) {
+            // Utilisateur restaurateur
+            this.$router.push({ name: "index" });
+          } else if (localStorage.getItem("role") == 2) {
+            // Utilisateur livreur
+            this.$router.push({ name: "livreur-livraison" });
+          } else if (localStorage.getItem("role") == 3) {
+            // Utilisateur livreur
+            this.$router.push({ name: "restaurateur-article" });
+          }
         })
         .catch((error) => {
           this.errorMessage = error.message;
           console.error("Cette erreur est survenue : ", error);
         });
-        if(localStorage.getItem('role') == 1){ // Utilisateur restaurateur
-          this.$router.push({name: 'index'})
-        } else if (localStorage.getItem('role') == 2) { // Utilisateur livreur
-          this.$router.push({name: 'livreur-livraison'})
-        } else if (localStorage.getItem('role') == 3) { // Utilisateur livreur
-          this.$router.push({name: 'restaurateur-article'})
-        }
-        
     },
   },
 };
-
 </script>
