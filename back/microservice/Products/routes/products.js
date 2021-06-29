@@ -16,7 +16,7 @@ router.get("/menu", async function (req, res, next) {
 });
 
 router.get("/menus", async function (req, res, next) {
-  await Menues.find({ restaurantId: req.body.id })
+  await Menues.find({ restaurantId: req.query.id })
     .then((menu) => {
       res.status(200).json(menu);
     })
