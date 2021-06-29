@@ -69,12 +69,20 @@ router.post("/create", async function (req, res, next) {
       usr_status: req.body.status,
       rol_id: req.body.rolId ? req.body.rolId : 1,
     });
+
+    var sponsor = null;
+    if (req.body.sponsor) {
+      const profile = await Profiles.findOne({ sponsorCode: req.body.sponsor });
+      console.log(profile.fullName);
+      sponsor = profile.fullName;
+    }
+
     const profiles = new Profiles({
       fullName: req.body.fullName,
       phoneNumber: req.body.phoneNumber,
       address: req.body.address,
       sponsorCode: Math.random().toString(36).substring(7),
-      sponsor: req.body.sponsor ? req.body.sponsor : null,
+      sponsor: sponsor,
       userId: user.usr_id,
     });
 
@@ -100,7 +108,6 @@ router.post("/create", async function (req, res, next) {
       usr_status: req.body.status,
       rol_id: req.body.rolId ? req.body.rolId : 1,
     });
-    console.log(user);
     const profile = new Profiles({
       fullName: req.body.fullName,
       phoneNumber: req.body.phoneNumber,
@@ -110,7 +117,7 @@ router.post("/create", async function (req, res, next) {
       userId: user.usr_id,
     });
     const restaurant = new Restaurants({
-      profileId: profile.id,
+      profileId: profile._id,
       name: req.body.resName,
       description: req.body.resDesc,
       address: req.body.resAdd,
@@ -279,15 +286,16 @@ router.post("/authenticate", async (req, res) => {
           )
           .then(() => {
             res.status(200).json({ isConnected: true, token: token });
+          })
+          .catch((error) => {
+            res.status(500).json(error);
           });
       } catch (error) {
-        console.log(error);
         res.send(error);
       }
     })
     .catch((error) => {
-      console.log(error);
-      res.status(500).json({ isConnected: false });
+      res.status(500).json({ error: error, isConnected: false });
     });
 });
 

@@ -162,7 +162,7 @@ router.put("/take", async function (req, res, next) {
     const delivery = await Deliverys.findOne({ _id: req.body.id });
 
     const deliveryUpdate = {
-      status: "taked",
+      status: "took",
     };
 
     await delivery

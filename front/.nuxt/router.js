@@ -4,27 +4,27 @@ import { normalizeURL, decode } from 'ufo'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
-const _5322b6f5 = () => interopDefault(import('..\\pages\\inspire.vue' /* webpackChunkName: "pages/inspire" */))
-const _736d4528 = () => interopDefault(import('..\\pages\\interdit.vue' /* webpackChunkName: "pages/interdit" */))
-const _2c2b2647 = () => interopDefault(import('..\\pages\\monCompte.vue' /* webpackChunkName: "pages/monCompte" */))
-const _29dd3914 = () => interopDefault(import('..\\pages\\parrainerUtilisateur.vue' /* webpackChunkName: "pages/parrainerUtilisateur" */))
-const _12c53e65 = () => interopDefault(import('..\\pages\\secret.vue' /* webpackChunkName: "pages/secret" */))
-const _348e6389 = () => interopDefault(import('..\\pages\\authentification\\connexion.vue' /* webpackChunkName: "pages/authentification/connexion" */))
-const _5b9b921c = () => interopDefault(import('..\\pages\\authentification\\devenirLivreur.vue' /* webpackChunkName: "pages/authentification/devenirLivreur" */))
-const _077eb88c = () => interopDefault(import('..\\pages\\authentification\\devenirRestaurateur.vue' /* webpackChunkName: "pages/authentification/devenirRestaurateur" */))
-const _dbb241d0 = () => interopDefault(import('..\\pages\\authentification\\inscription.vue' /* webpackChunkName: "pages/authentification/inscription" */))
-const _129559fd = () => interopDefault(import('..\\pages\\livreur\\livraison.vue' /* webpackChunkName: "pages/livreur/livraison" */))
-const _dce53d3e = () => interopDefault(import('..\\pages\\livreur\\monCompteLivreur.vue' /* webpackChunkName: "pages/livreur/monCompteLivreur" */))
-const _a94da4ea = () => interopDefault(import('..\\pages\\livreur\\parrainageLivreur.vue' /* webpackChunkName: "pages/livreur/parrainageLivreur" */))
-const _206405ec = () => interopDefault(import('..\\pages\\restaurateur\\article.vue' /* webpackChunkName: "pages/restaurateur/article" */))
-const _7b1d2a74 = () => interopDefault(import('..\\pages\\restaurateur\\commande.vue' /* webpackChunkName: "pages/restaurateur/commande" */))
-const _99cbeb42 = () => interopDefault(import('..\\pages\\restaurateur\\compteRestaurateur.vue' /* webpackChunkName: "pages/restaurateur/compteRestaurateur" */))
-const _050f0c51 = () => interopDefault(import('..\\pages\\restaurateur\\historiqueCommande.vue' /* webpackChunkName: "pages/restaurateur/historiqueCommande" */))
-const _20b0bbd9 = () => interopDefault(import('..\\pages\\restaurateur\\menu.vue' /* webpackChunkName: "pages/restaurateur/menu" */))
-const _631d5987 = () => interopDefault(import('..\\pages\\restaurateur\\monCompteRestaurateur.vue' /* webpackChunkName: "pages/restaurateur/monCompteRestaurateur" */))
-const _d235c66e = () => interopDefault(import('..\\pages\\restaurateur\\parrainageRestaurateur.vue' /* webpackChunkName: "pages/restaurateur/parrainageRestaurateur" */))
-const _6d9d74f1 = () => interopDefault(import('..\\pages\\restaurateur\\suiviLivraison.vue' /* webpackChunkName: "pages/restaurateur/suiviLivraison" */))
-const _070514a6 = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages/index" */))
+const _5c931682 = () => interopDefault(import('..\\pages\\inspire.vue' /* webpackChunkName: "pages/inspire" */))
+const _cfee518a = () => interopDefault(import('..\\pages\\interdit.vue' /* webpackChunkName: "pages/interdit" */))
+const _c9fc52d8 = () => interopDefault(import('..\\pages\\monCompte.vue' /* webpackChunkName: "pages/monCompte" */))
+const _6c9b7109 = () => interopDefault(import('..\\pages\\parrainerUtilisateur.vue' /* webpackChunkName: "pages/parrainerUtilisateur" */))
+const _d1978d90 = () => interopDefault(import('..\\pages\\secret.vue' /* webpackChunkName: "pages/secret" */))
+const _4d4f0ad4 = () => interopDefault(import('..\\pages\\authentification\\connexion.vue' /* webpackChunkName: "pages/authentification/connexion" */))
+const _1d64fff6 = () => interopDefault(import('..\\pages\\authentification\\devenirLivreur.vue' /* webpackChunkName: "pages/authentification/devenirLivreur" */))
+const _5915b94e = () => interopDefault(import('..\\pages\\authentification\\devenirRestaurateur.vue' /* webpackChunkName: "pages/authentification/devenirRestaurateur" */))
+const _2cc766e5 = () => interopDefault(import('..\\pages\\authentification\\inscription.vue' /* webpackChunkName: "pages/authentification/inscription" */))
+const _27489f60 = () => interopDefault(import('..\\pages\\livreur\\livraison.vue' /* webpackChunkName: "pages/livreur/livraison" */))
+const _bfc850a4 = () => interopDefault(import('..\\pages\\livreur\\monCompteLivreur.vue' /* webpackChunkName: "pages/livreur/monCompteLivreur" */))
+const _6e9980de = () => interopDefault(import('..\\pages\\livreur\\parrainageLivreur.vue' /* webpackChunkName: "pages/livreur/parrainageLivreur" */))
+const _5fc8aa8e = () => interopDefault(import('..\\pages\\restaurateur\\article.vue' /* webpackChunkName: "pages/restaurateur/article" */))
+const _7b4bc172 = () => interopDefault(import('..\\pages\\restaurateur\\commande.vue' /* webpackChunkName: "pages/restaurateur/commande" */))
+const _5b95591c = () => interopDefault(import('..\\pages\\restaurateur\\compteRestaurateur.vue' /* webpackChunkName: "pages/restaurateur/compteRestaurateur" */))
+const _242a5564 = () => interopDefault(import('..\\pages\\restaurateur\\historiqueCommande.vue' /* webpackChunkName: "pages/restaurateur/historiqueCommande" */))
+const _0b11dba8 = () => interopDefault(import('..\\pages\\restaurateur\\menu.vue' /* webpackChunkName: "pages/restaurateur/menu" */))
+const _4b5a1394 = () => interopDefault(import('..\\pages\\restaurateur\\monCompteRestaurateur.vue' /* webpackChunkName: "pages/restaurateur/monCompteRestaurateur" */))
+const _9380b748 = () => interopDefault(import('..\\pages\\restaurateur\\parrainageRestaurateur.vue' /* webpackChunkName: "pages/restaurateur/parrainageRestaurateur" */))
+const _62163f84 = () => interopDefault(import('..\\pages\\restaurateur\\suiviLivraison.vue' /* webpackChunkName: "pages/restaurateur/suiviLivraison" */))
+const _c4ab570c = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages/index" */))
 
 const emptyFn = () => {}
 
@@ -47,7 +47,7 @@ export const routerOptions = {
     name: "interdit"
   }, {
     path: "/monCompte",
-    component: _2c2b2647,
+    component: _c9fc52d8,
     name: "monCompte"
   }, {
     path: "/parrainerUtilisateur",
@@ -79,7 +79,7 @@ export const routerOptions = {
     name: "livreur-livraison"
   }, {
     path: "/livreur/monCompteLivreur",
-    component: _dce53d3e,
+    component: _bfc850a4,
     name: "livreur-monCompteLivreur"
   }, {
     path: "/livreur/parrainageLivreur",
@@ -107,7 +107,7 @@ export const routerOptions = {
     name: "restaurateur-menu"
   }, {
     path: "/restaurateur/monCompteRestaurateur",
-    component: _631d5987,
+    component: _4b5a1394,
     name: "restaurateur-monCompteRestaurateur"
   }, {
     path: "/restaurateur/parrainageRestaurateur",
