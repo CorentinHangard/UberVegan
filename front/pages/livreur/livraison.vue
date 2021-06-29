@@ -14,7 +14,7 @@
         ></v-progress-linear>
       </template>
 
-      <v-img height="250" v-bind:src="deliverie.restaurant[0].img"></v-img>
+      
 
       <v-card-title>{{ deliverie.restaurant[0].name }}</v-card-title>
 
@@ -135,13 +135,13 @@ export default {
   },
   /* mounted () {
     axios.
-      post("http://localhost:8000/ms-deliveries/all")
+      post("/ms-deliveries/all")
       .then(response => (this.deliveries = response))
 
   }, */
-  methods: {
+/*   methods: {
     accecptDelivery() {
-      axios.put("http://localhost:8000/ms-deliveries/accept", "", {
+      axios.put("/ms-deliveries/accept", "", {
         headers: {
           authorization: localStorage.getItem("token"),
         },
@@ -149,12 +149,15 @@ export default {
     },
 
     refuseDelivery() {
-      axios.put("http://localhost:8000/ms-deliveries/refuse", "", {
+      axios.put("/ms-deliveries/refuse", "", {
         headers: {
           authorization: localStorage.getItem("token"),
         },
-      });
+      }.then((response) => {
+        
+      })
+      );
     },
-  },
+  }, */
 };
 </script>

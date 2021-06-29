@@ -7,7 +7,7 @@
       fixed
       app
     >
-     <div v-if="isConnected === false">
+     <div v-if="!isConnected || isConnected == 'false'">
       <div align="center" class="padding">
         <router-link :to="{ name: 'authentification-connexion'}">
           <v-btn class="blue"> Se connecter </v-btn>
@@ -52,7 +52,7 @@
         <v-icon> mdi-cart </v-icon>
         <span>panier</span>
       </v-btn>
-      <div v-if="role">
+      <div v-if="isConnected && isConnected == 'true'">
              <router-link :to="{ name: 'monCompteLivreur' }">
           <v-btn>
             <v-icon> mdi-account</v-icon>
