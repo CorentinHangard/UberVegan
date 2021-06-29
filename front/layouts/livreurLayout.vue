@@ -17,7 +17,10 @@
          <div v-else>
             <div align="center" class="padding">
         <router-link :to="{ name: 'monCompteLivreur'}">
-          <v-btn class="blue"> Mon Compte </v-btn>
+           <v-btn>
+        <v-icon> mdi-account</v-icon>
+             <span>mon compte</span>
+      </v-btn>
         </router-link>
       </div>
          </div>

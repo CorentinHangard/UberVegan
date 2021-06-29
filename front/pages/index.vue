@@ -1,6 +1,6 @@
 <template>
 <div>
-    <v-alert
+    <v-alert v-if="sponsor == true"
      type="info"
      icon="mdi-account-cowboy-hat"
      dismissible
@@ -93,7 +93,8 @@ export default {
           description: "Restaurant japonais avec buffet à volonté, sushi fait maison.",
           categorie: "Buffet à volonté"
         },
-      ]
+      ],
+      sponsor : true
     }
   }
 };
