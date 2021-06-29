@@ -50,6 +50,7 @@
         </v-row>
       </v-card-text>
       <v-card-title>Information de la commande :</v-card-title>
+      <v-card-text>{{ deliverie.status }}</v-card-text>
       <v-card-actions>
         <v-btn @click="takeDelivery(deliverie)" color="blue">
           Récupérée
@@ -73,195 +74,37 @@ export default {
   data() {
     return {
       loading: false,
-      deliveries: [
-        {
-          _id: "60d9c8e38e73234f2cf75cd9",
-          profileId: "60d9c89881099f5388b4ca0e",
-          orderId: "60d9c8a61104692e4c4e1285",
-          delivererId: null,
-          status: "created",
-          __v: 0,
-          user: {
-            profile: {
-              _id: "60d9c89881099f5388b4ca0e",
-              fullName: "livreur",
-              phoneNumber: 600000000,
-              address: "1 rue ff",
-              sponsorCode: "31nxlwl",
-              sponsor: null,
-              userId: "11",
-              __v: 0,
-            },
-            user: {
-              usr_id: 11,
-              usr_email: "user@c.c",
-              usr_password: "123456",
-              usr_status: 1,
-              rol_id: 1,
-            },
-          },
-          order: [
-            {
-              content: ["60d99f7a95ea9f46c0405a13", "60d9a05484bc294488a97cfe"],
-              _id: "60d9c8a61104692e4c4e1285",
-              restaurantId: "60d9852d02aa4a0948123b54",
-              profileId: "60d9c89881099f5388b4ca0e",
-              totalPrice: 45,
-              status: "created",
-              date: "2021-06-28T13:03:34.279Z",
-              __v: 0,
-            },
-          ],
-          restaurant: [
-            {
-              _id: "60d9852d02aa4a0948123b54",
-              profileId: "60d9852d02aa4a0948123b53",
-              name: "Burger King",
-              description: "Coucou",
-              img: "http://img",
-              rating: null,
-              costOfDelivery: "3.00",
-              preparationTime: 15,
-              __v: 0,
-            },
-          ],
-        },
-        {
-          _id: "60d9c8e38e73234f2cf75cd9",
-          profileId: "60d9c89881099f5388b4ca0e",
-          orderId: "60d9c8a61104692e4c4e1285",
-          delivererId: null,
-          status: "created",
-          __v: 0,
-          user: {
-            profile: {
-              _id: "60d9c89881099f5388b4ca0e",
-              fullName: "livreur",
-              phoneNumber: 600000000,
-              address: "1 rue ff",
-              sponsorCode: "31nxlwl",
-              sponsor: null,
-              userId: "11",
-              __v: 0,
-            },
-            user: {
-              usr_id: 11,
-              usr_email: "user@c.c",
-              usr_password: "123456",
-              usr_status: 1,
-              rol_id: 1,
-            },
-          },
-          order: [
-            {
-              content: ["60d99f7a95ea9f46c0405a13", "60d9a05484bc294488a97cfe"],
-              _id: "60d9c8a61104692e4c4e1285",
-              restaurantId: "60d9852d02aa4a0948123b54",
-              profileId: "60d9c89881099f5388b4ca0e",
-              totalPrice: 45,
-              status: "created",
-              date: "2021-06-28T13:03:34.279Z",
-              __v: 0,
-            },
-          ],
-          restaurant: [
-            {
-              _id: "60d9852d02aa4a0948123b54",
-              profileId: "60d9852d02aa4a0948123b53",
-              name: "La pizzeta",
-              description: "Coucou",
-              img: "http://img",
-              rating: null,
-              costOfDelivery: "3.00",
-              preparationTime: 15,
-              __v: 0,
-            },
-          ],
-        },
-        {
-          _id: "60d9c8e38e73234f2cf75cd9",
-          profileId: "60d9c89881099f5388b4ca0e",
-          orderId: "60d9c8a61104692e4c4e1285",
-          delivererId: null,
-          status: "created",
-          __v: 0,
-          user: {
-            profile: {
-              _id: "60d9c89881099f5388b4ca0e",
-              fullName: "livreur",
-              phoneNumber: 600000000,
-              address: "1 rue ff",
-              sponsorCode: "31nxlwl",
-              sponsor: null,
-              userId: "11",
-              __v: 0,
-            },
-            user: {
-              usr_id: 11,
-              usr_email: "user@c.c",
-              usr_password: "123456",
-              usr_status: 1,
-              rol_id: 1,
-            },
-          },
-          order: [
-            {
-              content: ["60d99f7a95ea9f46c0405a13", "60d9a05484bc294488a97cfe"],
-              _id: "60d9c8a61104692e4c4e1285",
-              restaurantId: "60d9852d02aa4a0948123b54",
-              profileId: "60d9c89881099f5388b4ca0e",
-              totalPrice: 45,
-              status: "created",
-              date: "2021-06-28T13:03:34.279Z",
-              __v: 0,
-            },
-          ],
-          restaurant: [
-            {
-              _id: "60d9852d02aa4a0948123b54",
-              profileId: "60d9852d02aa4a0948123b53",
-              name: "Fujiya Sushi",
-              description: "Coucou",
-              img: "http://img",
-              rating: null,
-              costOfDelivery: "3.00",
-              preparationTime: 15,
-              __v: 0,
-            },
-          ],
-        },
-      ],
+      deliveries: [],
     };
-  },
-  mounted() {
-    /*axios.
-      post("/ms-deliveries/all")
-      .then(response => (this.deliveries = response))*/
   },
   methods: {
     takeDelivery(deliverie) {
-      axios.put("/ms-deliveries/take", "", {
-        headers: {
-          authorization: localStorage.getItem("token"),
-        },
+      this.$store.dispatch("deliveryTake", {
+        infos: { id: deliverie._id },
       });
-
-      /* console.log(deliverie._id);
-      deliverie.order[0].status = "take";
-      console.log(deliverie.order[0].status);  */
     },
 
     deliverDelivery(deliverie) {
-      /* console.log(deliverie.order[0].status);
-      deliverie.order[0].status = "delivred";
-      console.log(deliverie.order[0].status); */
-
-      axios.put("/ms-deliveries/delivered", "", {
-        headers: {
-          authorization: localStorage.getItem("token"),
-        },
+      this.$store.dispatch("deliveryDelivered", {
+        infos: { id: deliverie._id },
       });
     },
+  },
+  async created() {
+    await this.$store.dispatch("deliveries");
+    const del = this.$store.getters.getDeliveries;
+    const user = this.$store.getters.getDeliveries;
+
+    for (let index = 0; index < del.length; index++) {
+      if (
+        del[index].status &&
+        (del[index].status === "accepted" || del[index].status === "took")
+      ) {
+        this.deliveries.push(del[index]);
+      }
+    }
+
+    console.log(this.deliveries);
   },
 };
 </script>

@@ -16,8 +16,20 @@ export default {
   async delivery(infos: any) {
     return await axios.get("ms-deliveries/?id=" + infos.id);
   },
-  async deliveries(infos: any) {
-    return await axios.get("ms-deliveries/all?id="+ infos.id);
+  async deliveries() {
+    return await axios.get("ms-deliveries/all");
+  },
+  async deliveryAccept(infos: any) {
+    return await axios.put("ms-deliveries/accept?id=" + infos.id);
+  },
+  async deliveryRefuse(infos: any) {
+    return await axios.put("ms-deliveries/refuse?id=" + infos.id);
+  },
+  async deliveryTake(infos: any) {
+    return await axios.put("ms-deliveries/take?id=" + infos.id);
+  },
+  async deliveryDelivered(infos: any) {
+    return await axios.put("ms-deliveries/delivered?id=" + infos.id);
   },
   async restaurant(infos: any) {
     return await axios.get("ms-users/restaurant?id=" + infos.id);
@@ -50,6 +62,7 @@ export default {
     return await axios.get("ms-commands/?id=" + infos.id);
   },
   async commandCreate(infos: any) {
+    console.log(infos);
     return await axios.post("ms-commands/create", infos);
   },
   async commandPay(infos: any) {

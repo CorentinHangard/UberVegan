@@ -43,7 +43,7 @@ const userStore: Module<any, any> = {
     },
     profile: async ({ commit, dispatch }) => {
       const response = await AuthService.profile();
-      commit("SET_USER");
+      commit("SET_USER", response.data);
     },
     profileEdit: async ({ commit, dispatch }, { infos }) => {
       const response = await AuthService.profileEdit(infos);

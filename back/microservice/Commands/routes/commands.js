@@ -86,6 +86,7 @@ router.post("/create", async function (req, res, next) {
 
   if (tokenContent.role === 1 && rep) {
     var articlesList = req.body.articlesListId;
+    console.log(req.body.restaurantId);
 
     const order = new Orders({
       restaurantId: req.body.restaurantId,

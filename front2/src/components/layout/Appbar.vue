@@ -30,7 +30,11 @@
                 Mon Compte
               </v-btn>
               <v-divider class="my-3"></v-divider>
-              <v-btn depressed rounded text to="/orders">
+              <v-btn depressed rounded text to="/livreur/livraison">
+                Commandes
+              </v-btn>
+              <v-divider class="my-3"></v-divider>
+              <v-btn depressed rounded text to="/livreur/mesLivraisons">
                 Mes commandes
               </v-btn>
               <v-divider class="my-3"></v-divider>

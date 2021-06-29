@@ -20,28 +20,29 @@ router.get("/all", async function (req, res, next) {
       var rep = [];
       for (var i = 0, len = del.length; i < len; i++) {
         try {
-          var userInfos = await axios.get("http://localhost:3008/", {
-            params: {
-              id: del[i].profileId,
-            },
-            headers: {
-              Authorization: req.headers.authorization,
-            },
-          });
+          console.log(del[i].profileId);
+          var userInfos = await axios.get(
+            "http://localhost:3008/?id=" + del[i].profileId,
+            {
+              headers: {
+                Authorization: req.headers.authorization,
+              },
+            }
+          );
           del[i]._doc = { ...del[i]._doc, user: userInfos.data };
         } catch (error) {
           console.log(error);
           res.send(error);
         }
         try {
-          var orderInfos = await axios.get("http://localhost:3001/", {
-            params: {
-              id: del[i].orderId,
-            },
-            headers: {
-              Authorization: req.headers.authorization,
-            },
-          });
+          var orderInfos = await axios.get(
+            "http://localhost:3001/?id=" + del[i].orderId,
+            {
+              headers: {
+                Authorization: req.headers.authorization,
+              },
+            }
+          );
           del[i]._doc = { ...del[i]._doc, order: orderInfos.data };
         } catch (error) {
           console.log(error);
@@ -49,11 +50,9 @@ router.get("/all", async function (req, res, next) {
         }
         try {
           var restaurantInfos = await axios.get(
-            "http://localhost:3008/restaurant",
+            "http://localhost:3008/restaurant?id=" +
+              del[i]._doc.order[0].restaurantId,
             {
-              params: {
-                id: del[i]._doc.order[0].restaurantId,
-              },
               headers: {
                 Authorization: req.headers.authorization,
               },
@@ -113,7 +112,7 @@ router.put("/accept", async function (req, res, next) {
   }
 
   if (tokenContent.role === 2) {
-    const delivery = await Deliverys.findOne({ _id: req.body.id });
+    const delivery = await Deliverys.findOne({ _id: req.query.id });
 
     const deliveryUpdate = {
       delivererId: rep.data.profile._id,
@@ -136,7 +135,7 @@ router.put("/refuse", async function (req, res, next) {
   const tokenContent = JWTContent(token).user;
 
   if (tokenContent.role === 2) {
-    const delivery = await Deliverys.findOne({ _id: req.body.id });
+    const delivery = await Deliverys.findOne({ _id: req.query.id });
 
     const deliveryUpdate = {
       delivererId: null,
@@ -159,7 +158,7 @@ router.put("/take", async function (req, res, next) {
   const tokenContent = JWTContent(token).user;
 
   if (tokenContent.role === 2) {
-    const delivery = await Deliverys.findOne({ _id: req.body.id });
+    const delivery = await Deliverys.findOne({ _id: req.query.id });
 
     const deliveryUpdate = {
       status: "took",
@@ -181,7 +180,7 @@ router.put("/delivered", async function (req, res, next) {
   const tokenContent = JWTContent(token).user;
 
   if (tokenContent.role === 2) {
-    const delivery = await Deliverys.findOne({ _id: req.body.id });
+    const delivery = await Deliverys.findOne({ _id: req.query.id });
 
     const deliveryUpdate = {
       status: "delivered",

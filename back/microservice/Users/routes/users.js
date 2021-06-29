@@ -16,7 +16,7 @@ router.get("/", async function (req, res, next) {
 
   if (req.query.id) {
     profile = await Profiles.findOne({
-      _id: req.query.id.replace('"', "").replace('"', ""),
+      _id: req.query.id,
     });
 
     user = await model.user.findOne({
@@ -24,10 +24,9 @@ router.get("/", async function (req, res, next) {
         usr_id: profile.userId,
       },
     });
-    var restaurant = null;
 
-    if (tokenContent.role === 3) {
-      restaurant = await Restaurants.findOne({ profileId: profile.id });
+    if (user.role === 3) {
+      restaurant = await Restaurants.findOne({ profileId: profile._id });
     }
   } else {
     user = await model.user.findOne({
@@ -35,23 +34,21 @@ router.get("/", async function (req, res, next) {
         usr_id: tokenContent.id,
       },
     });
-
     profile = await Profiles.findOne({ userId: tokenContent.id });
+    if (tokenContent.role === 3) {
+      restaurant = await Restaurants.findOne({ profileId: profile._id });
+    }
   }
 
-  if (tokenContent.role === 3) {
-    restaurant = await Restaurants.findOne({ profileId: profile.id });
-  }
-
-  if (tokenContent.role !== 3 && user && profile) {
+  if (user.role !== 3 && user && profile) {
     res.status(200).json({ profile: profile, user: user.dataValues });
-  } else if (tokenContent.role === 3 && user && profile && restaurant) {
+  } else if (user.role === 3 && user && profile && restaurant) {
     res.status(200).json({
       profile: profile,
       user: user.dataValues,
       restaurant: restaurant,
     });
-  } else if (tokenContent.role === 5 || tokenContent.role === 6) {
+  } else if (user.role === 5 || user.role === 6) {
     const user = await model.user.findAll();
     res.status(200).json(user);
   } else {
@@ -312,7 +309,6 @@ router.post("/authenticate", async (req, res) => {
 });
 
 router.get("/restaurant", async function (req, res, next) {
-  console.log(req.query.id);
   await Restaurants.find({
     _id: req.body.id || req.query.id,
   })

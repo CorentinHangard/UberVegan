@@ -27,13 +27,25 @@ const deliveryStore: Module<any, any> = {
     },
   },
   actions: {
-    delivery: async ({ commit, dispatch }, { infos })  => {
+    delivery: async ({ commit, dispatch }, { infos }) => {
       const response = await AuthService.delivery(infos);
       commit("SET_DELIVERY", response.data);
     },
-    deliveries: async ({ commit, dispatch }, { infos }) => {
-      const response = await AuthService.deliveries(infos);
+    deliveries: async ({ commit, dispatch }) => {
+      const response = await AuthService.deliveries();
       commit("SET_DELIVERIES", response.data);
+    },
+    deliveryAccept: async ({ commit, dispatch }, { infos }) => {
+      await AuthService.deliveryAccept(infos);
+    },
+    deliveryRefuse: async ({ commit, dispatch }, { infos }) => {
+      await AuthService.deliveryRefuse(infos);
+    },
+    deliveryTake: async ({ commit, dispatch }, { infos }) => {
+      await AuthService.deliveryTake(infos);
+    },
+    deliveryDelivered: async ({ commit, dispatch }, { infos }) => {
+      await AuthService.deliveryDelivered(infos);
     },
   },
 };

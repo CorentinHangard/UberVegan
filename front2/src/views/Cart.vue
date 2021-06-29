@@ -48,15 +48,15 @@ export default {
           articlesListId.push(this.menus[index].articles[index2]);
         }
       }
+      console.log(this.menus[0].restaurantId);
       const payload = {
         restaurantId: this.menus[0].restaurantId,
         articlesListId: articlesListId,
         totalPrice: totalPrice,
       };
-      // console.log(payload);
       this.$store
         .dispatch("commandCreate", {
-          infos: { payload },
+          infos: payload,
         })
         .finally(() => {
           this.$router.push({
