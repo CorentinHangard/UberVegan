@@ -14,7 +14,7 @@ router.get("/", async function(req, res, next) {
             res.status(200).json(logs);
         } else {
 
-            await Logs.find({ type: req.body.type })
+            await Logs.find({ type: req.query.type })
                 .then((log) => {
                     res.status(200).json(log);
 
