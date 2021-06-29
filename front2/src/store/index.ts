@@ -5,6 +5,7 @@ import createPersitedState from "vuex-persistedstate";
 
 import authStore from "./auth";
 import userStore from "./user";
+import deliveryStore from "./delivery";
 import restaurantStore from "./restaurant";
 import commandStore from "./command";
 
@@ -14,6 +15,7 @@ export default new Vuex.Store({
   modules: {
     authStore,
     userStore,
+    deliveryStore,
     restaurantStore,
     commandStore,
   },

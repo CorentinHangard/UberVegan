@@ -8,6 +8,8 @@ import Inscription from "../views/authentification/Inscription.vue";
 import InscriptionLivreur from "../views/authentification/InscriptionLivreur.vue";
 import InscriptionRestaurateur from "../views/authentification/InscriptionRestaurateur.vue";
 import Connexion from "../views/authentification/Connexion.vue";
+import Livraison from "../views/livreur/livraison.vue";
+import mesLivraisons from "../views/livreur/mesLivraisons.vue";
 import Restaurant from "../views/restaurant/Restaurant.vue";
 import Menu from "../views/restaurant/Menu.vue";
 import MenuCreate from "../views/restaurant/MenuCreate.vue";
@@ -56,6 +58,16 @@ const routes: Array<RouteConfig> = [
     name: "command",
     component: Command,
     props: true,
+  },
+  {
+    path: "/livreur/livraison",
+    name: "livraison",
+    component: Livraison,
+  },
+  {
+    path: "/livreur/mesLivraisons",
+    name: "mesLivraisons",
+    component: mesLivraisons,
   },
   {
     path: "/restaurant/:id",
