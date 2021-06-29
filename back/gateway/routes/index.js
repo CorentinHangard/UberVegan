@@ -8,8 +8,7 @@ const path = require("path");
 
 var privateKey = fs.readFileSync(path.join(__dirname, "../config/private.key"));
 
-router.all("/:apiName/*", (req, res) => {
-  res.header("Access-Control-Allow-Origin", "*");
+router.all("/api/:apiName/*", (req, res) => {
   if (registry.services[req.params.apiName]) {
     var authNeeded = true;
     registry.services[req.params.apiName].nonAuth.forEach((route) => {
@@ -18,6 +17,7 @@ router.all("/:apiName/*", (req, res) => {
       }
     });
     if (!authNeeded) {
+      console.log(registry.services[req.params.apiName].url + req.params[0]);
       axios({
         method: req.method,
         url: registry.services[req.params.apiName].url + req.params[0],

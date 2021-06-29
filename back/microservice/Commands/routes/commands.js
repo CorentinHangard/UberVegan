@@ -17,17 +17,50 @@ router.get("/", async function (req, res, next) {
 });
 
 router.get("/restaurant/history", async function (req, res, next) {
-  await Orders.find({ restaurantId: req.body.id })
-    .then((ord) => {
-      res.status(200).json(ord);
-    })
-    .catch((err) => {
-      res.json(err);
+  const token = req.headers.authorization.split("Bearer ")[1];
+  const tokenContent = JWTContent(token).user;
+
+  var rep = null;
+  try {
+    rep = await axios.get("http://localhost:3008/", {
+      headers: {
+        Authorization: req.headers.authorization,
+      },
     });
+    console.log(rep);
+  } catch (error) {
+    console.log(error);
+    res.send(error);
+  }
+
+  if (tokenContent.role == 3) {
+    await Orders.find({ restaurantId: rep.data.restaurant._id })
+      .then((ord) => {
+        res.status(200).json(ord);
+      })
+      .catch((err) => {
+        res.json(err);
+      });
+  } else {
+    res.status(401).send("Non authorized");
+  }
 });
 
 router.get("/history", async function (req, res, next) {
-  await Orders.find({ profileId: req.body.id })
+  var rep = null;
+  try {
+    rep = await axios.get("http://localhost:3008/", {
+      headers: {
+        Authorization: req.headers.authorization,
+      },
+    });
+    console.log(rep);
+  } catch (error) {
+    console.log(error);
+    res.send(error);
+  }
+
+  await Orders.find({ profileId: rep.data.profile._id })
     .then((ord) => {
       res.status(200).json(ord);
     })
@@ -41,7 +74,6 @@ router.post("/create", async function (req, res, next) {
   const tokenContent = JWTContent(token).user;
 
   var rep = null;
-  console.log(tokenContent);
   try {
     rep = await axios.get("http://localhost:3008/", {
       headers: {
