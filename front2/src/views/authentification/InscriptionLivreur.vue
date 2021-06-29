@@ -74,7 +74,7 @@ export default {
         usr_password: "",
         address: "",
         sponsor: null,
-        rolId: 1,
+        rolId: 2,
       },
       show1: false,
       rules: {
@@ -100,7 +100,9 @@ export default {
         email: this.user.usr_email,
         password: this.user.usr_password,
         sponsor: this.user.sponsor,
+        rolId: this.user.rolId,
       };
+      console.log(payload);
       this.$store.dispatch("profileCreate", { infos: payload }).finally();
       this.$router.push({ path: "/" });
     },

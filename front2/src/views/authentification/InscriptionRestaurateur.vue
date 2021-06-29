@@ -49,6 +49,46 @@
           label="Code de parrainage (facultatif)"
           prepend-icon="mdi-account-cowboy-hat"
         ></v-text-field>
+
+        <v-text-field
+          v-model="user.resName"
+          label="Entreprise"
+          prepend-icon="mdi-lock"
+          :rules="rules.resName"
+          required
+        ></v-text-field>
+
+        <v-text-field
+          v-model="user.resDesc"
+          label="Description entreprise"
+          prepend-icon="mdi-lock"
+          :rules="rules.resDesc"
+          required
+        ></v-text-field>
+
+        <v-text-field
+          v-model="user.resImg"
+          label="Image de l'entreprise"
+          prepend-icon="mdi-lock"
+          :rules="rules.resImg"
+          required
+        ></v-text-field>
+
+        <v-text-field
+          v-model="user.rescod"
+          label="Cout de livraison"
+          prepend-icon="mdi-lock"
+          :rules="rules.rescod"
+          required
+        ></v-text-field>
+
+        <v-text-field
+          v-model="user.resPrep"
+          label="Temps de préparation"
+          prepend-icon="mdi-lock"
+          :rules="rules.resPrep"
+          required
+        ></v-text-field>
       </div>
       <div class="center">
         <v-btn color="blue" @click="validate()">
@@ -74,16 +114,31 @@ export default {
         usr_password: "",
         address: "",
         sponsor: null,
-        rolId: 1,
+        resName: "",
+        resDesc: "",
+        resImg: "",
+        rescod: "",
+        resPrep: "",
+        rolId: 3,
       },
       show1: false,
       rules: {
         nom: [(v) => !!v || "Votre nom est obligatoire"],
         prenom: [(v) => !!v || "Votre prenom est obligatoire"],
         telephone: [(v) => !!v || "Votre numéro de téléphone est obligatoire"],
-        address: [(v) => !!v || "Votre adresse est obligatoire"],
+        adress: [(v) => !!v || "Votre adresse est obligatoire"],
         email: [(v) => !!v || "Votre email est obligatoire"],
         password: [(v) => !!v || "Votre mot de passe est obligatoire"],
+        resName: [(v) => !!v || "Votre nom d'entreprise est obligatoire"],
+        resDesc: [
+          (v) => !!v || "Votre description d'entreprise est obligatoire",
+        ],
+        rescod: [
+          (v) => !!v || "Votre cout de livrison d'entreprise est obligatoire",
+        ],
+        resPrep: [
+          (v) => !!v || "Votre preparation time d'entreprise est obligatoire",
+        ],
         confirmationPassword: [
           (v) => !!v || "Votre mot de passe est obligatoire",
         ],
@@ -100,8 +155,15 @@ export default {
         email: this.user.usr_email,
         password: this.user.usr_password,
         sponsor: this.user.sponsor,
+        resName: this.user.resName,
+        resDesc: this.user.resDesc,
+        resImg: this.user.resImg,
+        rescod: this.user.rescod,
+        resPrep: this.user.resPrep,
+        rolId: this.user.rolId,
       };
-      this.$store.dispatch("profileCreate", { infos: payload }).finally();
+      console.log(payload);
+      this.$store.dispatch("profileCreate", { infos: payload });
       this.$router.push({ path: "/" });
     },
   },

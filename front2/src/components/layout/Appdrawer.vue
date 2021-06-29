@@ -7,9 +7,7 @@
     app
   >
     <div align="center" class="padding">
-      <router-link :to="{ name: 'authentification-connexion' }">
-        <v-btn class="blue"> Se connecter </v-btn>
-      </router-link>
+      <v-btn v-if="!isCon" class="blue" to="/login"> Se connecter </v-btn>
     </div>
     <v-list>
       <v-list-item
@@ -33,7 +31,7 @@
 <script lang="ts">
 import Vue from "vue";
 export default {
-  props: ["clipped", "drawer"],
+  props: ["clipped", "drawer", "isCon"],
   data: () => {
     return {
       fixed: false,
@@ -42,12 +40,16 @@ export default {
         {
           icon: "mdi-truck-delivery",
           title: "Devenir livreur",
-          to: '/devenirLivreur',
+          to: {
+            name: "signupLivreur",
+          },
         },
         {
           icon: "mdi-silverware-fork-knife",
           title: "Devenir restaurateur",
-          to: '/devenirRestaurateur',
+          to: {
+            name: "signupRestaurateur",
+          },
         },
       ],
       miniVariant: false,
