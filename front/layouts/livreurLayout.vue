@@ -7,11 +7,23 @@
       fixed
       app
     >
+     <div v-if="!isConnected || isConnected == 'false'">
       <div align="center" class="padding">
         <router-link :to="{ name: 'authentification-connexion'}">
           <v-btn class="blue"> Se connecter </v-btn>
         </router-link>
       </div>
+         </div>
+         <div v-else>
+            <div align="center" class="padding">
+        <router-link :to="{ name: 'monCompteLivreur'}">
+           <v-btn>
+        <v-icon> mdi-account</v-icon>
+             <span>mon compte</span>
+      </v-btn>
+        </router-link>
+      </div>
+         </div>
       <v-list>
         <v-list-item
           v-for="(item, i) in items"
@@ -30,19 +42,34 @@
       </v-list>
     </v-navigation-drawer>
     <v-app-bar :clipped-left="clipped" fixed app>
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
+         
+        <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
+   
       <router-link :to="{ name: 'livreur-livraison' }"
         ><img
           src="../assets/images/UberVeganTitle.png"
           style="height: 75px; width: auto; display: flex"
       /></router-link>
       <v-spacer />
-      <v-btn>
+ <v-btn>
         <v-icon> mdi-cart </v-icon>
+        <span>panier</span>
       </v-btn>
-      <router-link :to="{name: 'authentification-connexion'}">
-        <v-btn class="blue"> Se connecter </v-btn>
-      </router-link>
+      <div v-if="isConnected && isConnected == 'true'">
+             <router-link :to="{ name: 'monCompteLivreur' }">
+          <v-btn>
+            <v-icon> mdi-account</v-icon>
+             <span>mon compte</span>
+             </v-btn>
+        </router-link>
+      </div>
+      <div v-else>
+   
+         <router-link :to="{ name: 'authentification-connexion' }">
+          <v-btn class="blue"> Se connecter </v-btn>
+        </router-link>
+       
+      </div>
     </v-app-bar>
     <v-main>
       <v-container>
@@ -93,6 +120,8 @@ export default {
       right: true,
       rightDrawer: false,
       title: "Vuetify.js",
+       role : localStorage.getItem('role'),
+      isConnected : localStorage.getItem('isConnected')
     };
   },
 

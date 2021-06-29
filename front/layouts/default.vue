@@ -7,10 +7,22 @@
       fixed
       app
     >
-      <div align="center" class="padding">
-        <router-link :to="{ name: 'authentification-connexion' }">
-          <v-btn class="blue"> Se connecter </v-btn>
-        </router-link>
+      <div v-if="!isConnected || isConnected == 'false' ">
+        <div align="center" class="padding">
+          <router-link :to="{ name: 'authentification-connexion' }">
+            <v-btn class="blue"> Se connecter </v-btn>
+          </router-link>
+        </div>
+      </div>
+      <div v-else>
+        <div align="center" class="padding">
+          <router-link :to="{ name: 'monCompte' }">
+             <v-btn>
+       <v-icon> mdi-account</v-icon>
+             <span>mon compte</span>
+      </v-btn>
+          </router-link>
+        </div>
       </div>
       <v-list>
         <v-list-item
@@ -31,6 +43,7 @@
     </v-navigation-drawer>
     <v-app-bar :clipped-left="clipped" fixed app>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
+
       <router-link :to="{ name: 'index' }"
         ><img
           src="../assets/images/UberVeganTitle.png"
@@ -39,10 +52,21 @@
       <v-spacer />
       <v-btn>
         <v-icon> mdi-cart </v-icon>
+        <span>panier</span>
       </v-btn>
-      <router-link :to="{ name: 'authentification-connexion' }">
-        <v-btn class="blue"> Se connecter </v-btn>
-      </router-link>
+      <div v-if="isConnected && isConnected == 'true'">
+        <router-link :to="{ name: 'monCompte' }">
+          <v-btn>
+            <v-icon> mdi-account</v-icon>
+            <span>mon compte</span>
+          </v-btn>
+        </router-link>
+      </div>
+      <div v-else>
+        <router-link :to="{ name: 'authentification-connexion' }">
+          <v-btn class="blue"> Se connecter </v-btn>
+        </router-link>
+      </div>
     </v-app-bar>
     <v-main>
       <v-container>
@@ -78,21 +102,23 @@ export default {
           icon: "mdi-truck-delivery",
           title: "Devenir livreur",
           to: {
-            name: "authentification-devenirLivreur"
-          }
+            name: "authentification-devenirLivreur",
+          },
         },
         {
           icon: "mdi-silverware-fork-knife",
           title: "Devenir restaurateur",
           to: {
-            name: "authentification-devenirRestaurateur"
-          }
-        }
+            name: "authentification-devenirRestaurateur",
+          },
+        },
       ],
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: "Vuetify.js"
+      title: "Vuetify.js",
+      role: localStorage.getItem("role"),
+      isConnected: localStorage.getItem("isConnected"),
     };
   },
 
@@ -101,15 +127,15 @@ export default {
     selectAll(cible) {
       axios
         .get("https://localhost:8000/" + cible + "/")
-        .then(response => (this.info = response));
+        .then((response) => (this.info = response));
     },
     // Fonction retournant un élément précis d'une table en fonction de son ID
     selectOne(cible, idElement) {
       axios
         .get("https://localhost:8000/" + cible + "/" + idElement + "/")
-        .then(response => (this.info = response));
-    }
-  }
+        .then((response) => (this.info = response));
+    },
+  },
 };
 </script>
 <style>

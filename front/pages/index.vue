@@ -1,5 +1,18 @@
 <template>
-  <v-row justify="center" align="center">
+<div>
+    <v-alert v-if="sponsor == true"
+     type="info"
+     icon="mdi-account-cowboy-hat"
+     dismissible
+     max-width="600"
+     justify="center"
+     align="center"
+     class="mx-auto my-4"
+     >
+     Bonus parrainage actif, 10% sur votre prochaine commande
+    </v-alert>
+
+   <v-row justify="center" align="center">
       <v-card class="mx-auto my-4" max-width="374" v-for="item in items" :key="item.id">
         <template slot="progress">
           <v-progress-linear
@@ -38,6 +51,8 @@
         </v-card-text>
       </v-card>
   </v-row>
+</div>
+ 
 </template>
 
 <script>
@@ -78,7 +93,8 @@ export default {
           description: "Restaurant japonais avec buffet à volonté, sushi fait maison.",
           categorie: "Buffet à volonté"
         },
-      ]
+      ],
+      sponsor : true
     }
   }
 };
