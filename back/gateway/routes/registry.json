@@ -62,7 +62,7 @@
       "host": "http://localhost",
       "port": 3008,
       "url": "http://localhost:3008/",
-      "nonAuth": ["authenticate", "create", "restaurants"]
+      "nonAuth": ["authenticate", "create", "restaurants", "restaurant"]
     }
   }
 }

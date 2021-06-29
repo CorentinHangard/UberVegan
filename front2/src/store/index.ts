@@ -6,6 +6,7 @@ import createPersitedState from "vuex-persistedstate";
 import authStore from "./auth";
 import userStore from "./user";
 import deliveryStore from "./delivery";
+import restaurantStore from "./restaurant";
 
 Vue.use(Vuex);
 
@@ -14,6 +15,7 @@ export default new Vuex.Store({
     authStore,
     userStore,
     deliveryStore,
+    restaurantStore,
   },
   plugins: [
     createPersitedState({
