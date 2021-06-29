@@ -6,7 +6,7 @@ var Menues = require("../models/menues");
 const { JWTContent } = require("../modules/jwt");
 
 router.get("/menu", async function (req, res, next) {
-  await Menues.find({ _id: req.body.id })
+  await Menues.find({ _id: req.query.id })
     .then((menu) => {
       res.status(200).json(menu);
     })
@@ -107,7 +107,7 @@ router.delete("/menu/delete", async function (req, res, next) {
 });
 
 router.get("/article", async function (req, res, next) {
-  await Articles.find({ _id: req.body.id })
+  await Articles.find({ _id: req.query.id })
     .then((art) => {
       res.status(200).json(art);
     })
@@ -117,8 +117,10 @@ router.get("/article", async function (req, res, next) {
 });
 
 router.get("/articles", async function (req, res, next) {
-  await Articles.find({ restaurantId: req.body.id })
+  console.log(req.query.id);
+  await Articles.find({ restaurantId: req.query.id })
     .then((art) => {
+      console.log(art);
       res.status(200).json(art);
     })
     .catch((err) => {
@@ -141,6 +143,8 @@ router.post("/article/create", async function (req, res, next) {
     console.log(error);
     res.send(error);
   }
+
+  console.log(req.body.name);
 
   if (tokenContent.role === 3 && rep) {
     const articles = new Articles({
