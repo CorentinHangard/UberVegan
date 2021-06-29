@@ -11,7 +11,7 @@
     <Grid>
         <Image Margin="0,4,612,370">
             <Image.Source>
-                <BitmapImage DecodePixelWidth="1000" UriSource="M:\Ordinateur_pro\code\C#\ProjetWeb\ServiceApplication\assets\UberVeganTitle.png"/>
+                <BitmapImage DecodePixelWidth="1000" UriSource="/assets/UberVeganTitle.png"/>
             </Image.Source>
         </Image>
 
