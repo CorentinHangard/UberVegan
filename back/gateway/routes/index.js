@@ -6,9 +6,8 @@ const jwt = require("jsonwebtoken");
 const fs = require("fs");
 const path = require("path");
 
-var privateKey = fs.readFileSync(path.join(__dirname, "../config/private.key"));
-
-router.all("/api/:apiName/*", (req, res) => {
+router.all("/:apiName/*", (req, res) => {
+  res.header("Access-Control-Allow-Origin", "*");
   if (registry.services[req.params.apiName]) {
     var authNeeded = true;
     registry.services[req.params.apiName].nonAuth.forEach((route) => {
@@ -25,10 +24,10 @@ router.all("/api/:apiName/*", (req, res) => {
         data: req.body,
       })
         .then((response) => {
-          res.send(response.data);
+          res.status(response.status).send(response.data);
         })
         .catch((error) => {
-          res.send(error);
+          res.status(error.response.status).send(error);
         });
     } else {
       if (req.headers.authorization) {
