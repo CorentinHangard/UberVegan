@@ -1,16 +1,5 @@
 <template>
 <div>
-      <v-alert v-if="sponsor == true && getUserConnected"
-     type="info"
-     icon="mdi-account-cowboy-hat"
-     dismissible
-     max-width="600"
-     justify="center"
-     align="center"
-     class="mx-auto my-4"
-     >
-     Bonus parrainage actif, 10% sur votre prochaine commande
-    </v-alert>
   <v-container width="75vw">
     <v-row>
       <v-alert
@@ -60,10 +49,8 @@ export default {
     this.restaurants = this.$store.getters.getRestaurants;
     console.log(this.restaurants);
   },
-  computed: {
-    getUserConnected() {
-      const infos = this.$store.getters.getInfos;
-      if (infos.user) {
+
+ 
 
   mounted() {
     this.socket.on("MESSAGE", (data) => {

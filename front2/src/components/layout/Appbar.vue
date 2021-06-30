@@ -6,7 +6,7 @@
       <router-link :to="route"
         ><img
           src="@/assets/UberVeganTitle.png"
-          style="height: 65px; width: 100%; display: flex"
+          style="height: 50%; width: 50%; display: flex"
       /></router-link>
       <v-spacer />
       <v-btn v-if="isConnectedVal" icon to="/cart">

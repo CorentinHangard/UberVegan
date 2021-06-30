@@ -18,6 +18,7 @@ import Interdit from "../views/Interdit.vue";
 import CommandHistory from "../views/client/CommandHistory.vue"
 import roleMiddleware from '@/middleware/roleMiddleware';
 import authMiddleware from '@/middleware/auth';
+import clientParraine from '../views/client/Parrainage.vue'
 
 
 Vue.use(VueRouter);
@@ -53,7 +54,8 @@ const routes: Array<RouteConfig> = [
     name: "profile",
     component: Profile,
     meta : {
-      requireAuth : true
+      requireAuth : true,
+
     }
   },
   {
@@ -64,6 +66,17 @@ const routes: Array<RouteConfig> = [
       requireAuth : true
     }
   },
+  {
+    path: "/parrainage",
+    name: "ParrainageClient",
+    component: clientParraine,
+    meta : {
+      requireAuth : true,
+      requireRole : true,
+      role : 1
+    }
+  },
+  
 
   {
     path: "/cart",

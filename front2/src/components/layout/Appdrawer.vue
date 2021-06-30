@@ -195,7 +195,7 @@ export default {
           icon: "mdi-account-cowboy-hat",
           title: "Je parraîne",
           to: {
-            name: "/",
+            name: "ParrainageClient",
           },
         },
       
