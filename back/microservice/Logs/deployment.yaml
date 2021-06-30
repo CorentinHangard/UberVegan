@@ -31,7 +31,7 @@ metadata:
   name: ms-logs-service
 spec:
   # Décommenter la ligne suivante pour fonctionner en local
-  type: LoadBalancer
+  # type: LoadBalancer
   selector:
     app: ms-logs
   ports:
@@ -39,4 +39,4 @@ spec:
       port: 3004
       targetPort: 3004
       # Décommenter la ligne suivante pour fonctionner en local
-      nodePort: 30004
+      # nodePort: 30004

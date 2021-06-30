@@ -31,7 +31,7 @@ router.get("/all", async function (req, res, next) {
       for (var i = 0, len = del.length; i < len; i++) {
         try {
           var userInfos = await axios.get(
-            "http://localhost:3008/?id=" + del[i].profileId,
+            "http://ms-users-service:3008/?id=" + del[i].profileId,
             {
               headers: {
                 Authorization: req.headers.authorization,
@@ -45,7 +45,7 @@ router.get("/all", async function (req, res, next) {
         }
         try {
           var orderInfos = await axios.get(
-            "http://localhost:3001/?id=" + del[i].orderId,
+            "http://ms-commands-service:3001/?id=" + del[i].orderId,
             {
               headers: {
                 Authorization: req.headers.authorization,
@@ -59,7 +59,7 @@ router.get("/all", async function (req, res, next) {
         }
         try {
           var restaurantInfos = await axios.get(
-            "http://localhost:3008/restaurant?id=" +
+            "http://ms-users-service:3008/restaurant?id=" +
               del[i]._doc.order[0].restaurantId,
             {
               headers: {
@@ -110,7 +110,7 @@ router.put("/accept", async function (req, res, next) {
 
   var rep = null;
   try {
-    rep = await axios.get("http://localhost:3008/", {
+    rep = await axios.get("http://ms-users-service:3008/", {
       headers: {
         Authorization: req.headers.authorization,
       },
@@ -180,7 +180,7 @@ router.put("/take", async function (req, res, next) {
         res.status(201).send("Livraison prise en charge");
         try {
           await axios.post(
-            "http://localhost:3005/send",
+            "http://notification-service:3005/send",
             {
               message: "Commande prise en charge",
             },

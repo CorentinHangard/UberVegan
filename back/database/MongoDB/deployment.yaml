@@ -59,7 +59,7 @@ metadata:
   name: mongo-service
 spec:
   # Décommenter la ligne suivante pour fonctionner en local
-  type: LoadBalancer
+  # type: LoadBalancer
   selector:
     app: mongodb
   ports:
@@ -67,4 +67,4 @@ spec:
       port: 27017
       targetPort: 27017
       # Décommenter la ligne suivante pour fonctionner en local
-      nodePort: 30010
+      # nodePort: 30010

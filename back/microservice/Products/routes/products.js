@@ -31,7 +31,7 @@ router.post("/menu/create", async function (req, res, next) {
 
   var rep = null;
   try {
-    rep = await axios.get("http://localhost:3008/", {
+    rep = await axios.get("http://ms-users-service:3008/", {
       headers: {
         Authorization: req.headers.authorization,
       },
@@ -133,7 +133,7 @@ router.post("/article/create", async function (req, res, next) {
 
   var rep = null;
   try {
-    rep = await axios.get("http://localhost:3008/", {
+    rep = await axios.get("http://ms-users-service:3008/", {
       headers: {
         Authorization: req.headers.authorization,
       },

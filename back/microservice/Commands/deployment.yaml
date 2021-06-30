@@ -31,7 +31,7 @@ metadata:
   name: ms-commands-service
 spec:
   # Décommenter la ligne suivante pour fonctionner en local
-  type: LoadBalancer
+  # type: LoadBalancer
   selector:
     app: ms-commands
   ports:
@@ -39,4 +39,4 @@ spec:
       port: 3001
       targetPort: 3001
       # Décommenter la ligne suivante pour fonctionner en local
-      nodePort: 30001
+      # nodePort: 30001

@@ -59,7 +59,7 @@ metadata:
   name: mssql-service
 spec:
   # Décommenter la ligne suivante pour fonctionner en local
-  type: LoadBalancer
+  # type: LoadBalancer
   selector:
     app: mssqldb
   ports:
@@ -67,4 +67,4 @@ spec:
       port: 1433
       targetPort: 1433
       # Décommenter la ligne suivante pour fonctionner en local
-      nodePort: 30011
+      # nodePort: 30011

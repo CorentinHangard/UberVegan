@@ -23,7 +23,9 @@ router.all("/:apiName/*", (req, res) => {
       Object.keys(req.query).forEach((key) => {
         query += key + "=" + req.query[key];
       });
-
+      console.log(
+        registry.services[req.params.apiName].url + req.params[0] + query
+      );
       axios({
         method: req.method,
         url: registry.services[req.params.apiName].url + req.params[0] + query,
@@ -64,6 +66,7 @@ router.all("/:apiName/*", (req, res) => {
                 res.status(response.status).send(response.data);
               })
               .catch((error) => {
+                console.log(error);
                 res.status(error.response.status).send(error);
               });
           }
