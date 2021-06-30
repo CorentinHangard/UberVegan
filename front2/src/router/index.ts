@@ -18,12 +18,14 @@ import MenuCreate from "../views/restaurant/MenuCreate.vue";
 import ArticleCreate from "../views/restaurant/ArticleCreate.vue";
 import ArticleEdit from "../views/restaurant/ArticleEdit.vue";
 import Interdit from "../views/Interdit.vue";
-import CommandHistory from "../views/client/CommandHistory.vue"
-import roleMiddleware from '@/middleware/roleMiddleware';
-import authMiddleware from '@/middleware/auth';
-import clientParraine from '../views/client/Parrainage.vue'
-import SuiviCommand from '../views/client/SuiviCommand.vue';
-import Developpeur from '../views/developpeur/Developpeur.vue'
+import Status from "../views/Status.vue";
+import CommandHistory from "../views/client/CommandHistory.vue";
+import roleMiddleware from "@/middleware/roleMiddleware";
+import statusMiddleware from "@/middleware/statusMiddleware";
+import authMiddleware from "@/middleware/auth";
+import clientParraine from "../views/client/Parrainage.vue";
+import SuiviCommand from "../views/client/SuiviCommand.vue";
+import Developpeur from "../views/developpeur/Developpeur.vue";
 
 Vue.use(VueRouter);
 
@@ -59,6 +61,7 @@ const routes: Array<RouteConfig> = [
     component: Profile,
     meta: {
       requireAuth: true,
+      requireStatus: true,
     },
   },
   {
@@ -183,6 +186,11 @@ const routes: Array<RouteConfig> = [
     name: "interdit",
     component: Interdit,
   },
+  {
+    path: "/status",
+    name: "status",
+    component: Status,
+  },
 ];
 
 
@@ -241,18 +249,20 @@ router.beforeEach((to, from, next) => {
     } else {
       next();
     }
-  }else if (to.matched.some((record) => record.meta.requireAuth)) {
-    if (authMiddleware() == false) {
+  } else {
+    console.log("test middleware");
+    next();
+  }
+  if (to.matched.some((record) => record.meta.requireStatus)) {
+    console.log(statusMiddleware());
+    if (statusMiddleware() != 0) {
       next({
-        path: "/login",
+        path: "/status",
         query: { redirect: to.fullPath },
       });
     } else {
       next();
     }
-  }
-  else {
-    next();
   }
 });
 

@@ -13,7 +13,7 @@
 
         <Image Margin="70,29,70,207">
             <Image.Source>
-                <BitmapImage DecodePixelWidth="1000" UriSource="/assets/UberVeganTitle.png"/>
+                <BitmapImage DecodePixelWidth="1000" UriSource="E:/CESI/A4/Projets/UberVegan/Git/UberVegan/back/Csharp/ServiceApplication/assets/UberVeganTitle.png"/>
             </Image.Source>
         </Image>
 

@@ -68,7 +68,7 @@ router.post("/create", async function (req, res, next) {
     const user = await model.user.create({
       usr_email: req.body.email,
       usr_password: req.body.password,
-      usr_status: req.body.status ? req.body.status : 1,
+      usr_status: req.body.status ? req.body.status : 0,
       rol_id: req.body.rolId ? req.body.rolId : 1,
     });
 
@@ -110,7 +110,7 @@ router.post("/create", async function (req, res, next) {
     const user = await model.user.create({
       usr_email: req.body.email,
       usr_password: req.body.password,
-      usr_status: req.body.status ? req.body.status : 1,
+      usr_status: req.body.status ? req.body.status : 0,
       rol_id: req.body.rolId ? req.body.rolId : 1,
     });
     const profile = new Profiles({
@@ -255,12 +255,14 @@ router.post("/authenticate", async (req, res) => {
           token = createJWT({
             id: user.usr_id,
             role: user.rol_id,
+            status: user.usr_status,
           });
         }
       } else {
         token = createJWT({
           id: user.usr_id,
           role: user.rol_id,
+          status: user.usr_status,
         });
       }
 
