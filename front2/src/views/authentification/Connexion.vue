@@ -85,6 +85,9 @@ export default {
                   name: "restaurant",
                   params: { id: this.$store.getters.getUser.restaurant._id },
                 });
+              }else if (this.$store.getters.getInfos.user.role == 4) {
+                this.$router.push({ name: "developpeur" });
+
               }
             }
           });

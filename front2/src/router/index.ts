@@ -20,7 +20,8 @@ import CommandHistory from "../views/client/CommandHistory.vue"
 import roleMiddleware from '@/middleware/roleMiddleware';
 import authMiddleware from '@/middleware/auth';
 import clientParraine from '../views/client/Parrainage.vue'
-import SuiviCommand from '../views/client/SuiviCommand.vue'
+import SuiviCommand from '../views/client/SuiviCommand.vue';
+import Developpeur from '../views/developpeur/Developpeur.vue'
 
 Vue.use(VueRouter);
 
@@ -160,6 +161,17 @@ const routes: Array<RouteConfig> = [
     },
   },
   {
+    path: "/developpeur",
+    name: "developpeur",
+    component: Developpeur,
+    props: true,
+    meta: {
+      requireRole: true,
+      role: 4,
+    },
+  },
+
+  {
     path: "/interdit",
     name: "interdit",
     component: Interdit,
@@ -221,7 +233,17 @@ router.beforeEach((to, from, next) => {
     } else {
       next();
     }
-  } else {
+  }else if (to.matched.some((record) => record.meta.requireAuth)) {
+    if (authMiddleware() == false) {
+      next({
+        path: "/login",
+        query: { redirect: to.fullPath },
+      });
+    } else {
+      next();
+    }
+  }
+  else {
     next();
   }
 });
