@@ -47,13 +47,10 @@ export default {
   async created() {
     await this.$store.dispatch("restaurants");
     this.restaurants = this.$store.getters.getRestaurants;
-    console.log(this.restaurants);
   },
-
- 
-
   mounted() {
     this.socket.on("MESSAGE", (data) => {
+      this.isMessage = true;
       this.message = data.message;
     });
   },
@@ -61,12 +58,11 @@ export default {
   data() {
     return {
       loading: false,
+      isMessage: false,
       restaurants: [],
       message: "",
       socket: io("localhost:3005"),
     };
   },
-
-
 };
 </script>

@@ -30,12 +30,18 @@ const userStore: Module<any, any> = {
         state.cart.push(cart);
       }
     },
+    // REMOVE_CART_ITEM: (state, cart) => {
+    //   state.cart.filter((item) => item !== nbr);
+    // },
     RESET_CART: (state) => {
       state.cart = [];
     },
   },
   actions: {
     cart: async ({ commit, dispatch }, { infos }) => {
+      commit("SET_CART", infos);
+    },
+    removeCartItem: async ({ commit, dispatch }, { infos }) => {
       commit("SET_CART", infos);
     },
     resetCart: async ({ commit, dispatch }) => {

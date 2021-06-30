@@ -1,56 +1,55 @@
 <template>
-  <div id="app">
+  <v-card max-width="500" class="mx-auto pa-5" align="center" flat>
     <h1 class="center">Mon profil</h1>
     <br />
-    <v-app id="inspire">
-      <v-col align="center" justify="center">
-        <v-row cols="12" sm="3" style="display: block">
-          <v-text-field
-            v-model="user.profile.fullName"
-            label="Nom complet"
-            outlined
-            :readonly="!readonly"
-          ></v-text-field>
-        </v-row>
-        <v-row cols="12" sm="3" style="display: block">
-          <v-text-field
-            v-model="user.profile.phoneNumber"
-            label="N° de téléphone"
-            outlined
-            :readonly="!readonly"
-          ></v-text-field>
-        </v-row>
-        <v-row cols="12" sm="3" style="display: block">
-          <v-text-field
-            v-model="user.user.usr_email"
-            label="Adresse e-mail"
-            outlined
-            :readonly="!readonly"
-          ></v-text-field>
-        </v-row>
-        <v-row cols="12" sm="3" style="display: block">
-          <v-text-field
-            v-model="user.user.usr_password"
-            label="Mot de passe"
-            outlined
-            :type="show1 ? 'text' : 'password'"
-            :readonly="!readonly"
-          ></v-text-field>
-        </v-row>
-        <v-btn color="red" @click="cancel()" v-if="readonly" class="px-6">
-          Annuler
-        </v-btn>
-        <v-btn color="green" @click="save()" v-if="readonly" class="px-6">
-          Modifier
-        </v-btn>
-        <v-btn color="blue" @click="changerReadOnly()" v-if="!readonly">
-          Activer la modification
-        </v-btn>
-      </v-col>
-    </v-app>
-  </div>
+    <v-col align="center" justify="center">
+      <v-row cols="12" sm="3" style="display: block">
+        <v-text-field
+          v-model="user.profile.fullName"
+          label="Nom complet"
+          outlined
+          :readonly="!readonly"
+        ></v-text-field>
+      </v-row>
+      <v-row cols="12" sm="3" style="display: block">
+        <v-text-field
+          v-model="user.profile.phoneNumber"
+          label="N° de téléphone"
+          outlined
+          :readonly="!readonly"
+        ></v-text-field>
+      </v-row>
+      <v-row cols="12" sm="3" style="display: block">
+        <v-text-field
+          v-model="user.user.usr_email"
+          label="Adresse e-mail"
+          outlined
+          :readonly="!readonly"
+        ></v-text-field>
+      </v-row>
+      <v-row cols="12" sm="3" style="display: block">
+        <v-text-field
+          v-model="user.user.usr_password"
+          label="Mot de passe"
+          outlined
+          :type="show1 ? 'text' : 'password'"
+          :readonly="!readonly"
+        ></v-text-field>
+      </v-row>
+      <v-btn color="red" @click="cancel()" v-if="readonly" class="px-6">
+        Annuler
+      </v-btn>
+      <v-btn color="green" @click="save()" v-if="readonly" class="px-6">
+        Modifier
+      </v-btn>
+      <v-btn color="blue" @click="changerReadOnly()" v-if="!readonly">
+        Activer la modification
+      </v-btn>
+    </v-col>
+  </v-card>
 </template>
 <script>
+import Vuetify from "vuetify";
 export default {
   data() {
     return {

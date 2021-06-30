@@ -20,7 +20,6 @@ import roleMiddleware from '@/middleware/roleMiddleware';
 import authMiddleware from '@/middleware/auth';
 import clientParraine from '../views/client/Parrainage.vue'
 
-
 Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
@@ -53,18 +52,17 @@ const routes: Array<RouteConfig> = [
     path: "/profile",
     name: "profile",
     component: Profile,
-    meta : {
-      requireAuth : true,
-
-    }
+    meta: {
+      requireAuth: true,
+    },
   },
   {
     path: "/command/history",
     name: "commandHistory",
     component: CommandHistory,
-    meta : {
-      requireAuth : true
-    }
+    meta: {
+      requireAuth: true,
+    },
   },
   {
     path: "/parrainage",
@@ -93,68 +91,58 @@ const routes: Array<RouteConfig> = [
     path: "/livreur/livraison",
     name: "livraison",
     component: Livraison,
-    meta : {
-      requireRole : true,
-      role : 2
-    }
+    meta: {
+      requireRole: true,
+      role: 2,
+    },
   },
   {
     path: "/livreur/mesLivraisons",
     name: "mesLivraisons",
     component: mesLivraisons,
-    meta : {
-      requireRole : true,
-      role : 2
-    }
+    meta: {
+      requireRole: true,
+      role: 2,
+    },
   },
   {
     path: "/restaurant/:id",
     name: "restaurant",
     component: Restaurant,
     props: true,
-    meta : {
-      requireRole : true,
-      role : 3
-    }
   },
   {
     path: "/menu/:id",
     name: "menu",
     component: Menu,
     props: true,
-    meta : {
-      requireRole : true,
-      role : 3
-    }
   },
   {
     path: "/restaurant/menu/create/:id",
     name: "menuCreate",
     component: MenuCreate,
     props: true,
-    meta : {
-      requireRole : true,
-      role : 3
-    }
+    meta: {
+      requireRole: true,
+      role: 3,
+    },
   },
   {
     path: "/restaurant/article/create",
     name: "articleCreate",
     component: ArticleCreate,
     props: true,
-        meta : {
-      requireRole : true,
-      role : 3
-    }
+    meta: {
+      requireRole: true,
+      role: 3,
+    },
   },
   {
     path: "/interdit",
-    name : "interdit",
-    component : Interdit,
+    name: "interdit",
+    component: Interdit,
   },
 ];
-
-
 
 const router = new VueRouter({
   mode: "history",
@@ -162,50 +150,58 @@ const router = new VueRouter({
   routes,
 });
 
-router.beforeEach((to,from, next) => {
-  if(to.matched.some(record => record.meta.requireRole && record.meta.role == 3)){
-    if (roleMiddleware() != 3  ){
+router.beforeEach((to, from, next) => {
+  if (
+    to.matched.some(
+      (record) => record.meta.requireRole && record.meta.role == 3
+    )
+  ) {
+    if (roleMiddleware() != 3) {
       next({
-        path : '/interdit',
-        query : { redirect : to.fullPath}
-      })
+        path: "/interdit",
+        query: { redirect: to.fullPath },
+      });
     } else {
-      next()
+      next();
     }
-  }else if (to.matched.some(record => record.meta.requireRole && record.meta.role == 2)){
-    if (roleMiddleware() != 2  ){
+  } else if (
+    to.matched.some(
+      (record) => record.meta.requireRole && record.meta.role == 2
+    )
+  ) {
+    if (roleMiddleware() != 2) {
       next({
-        path : '/interdit',
-        query : { redirect : to.fullPath}
-      })
+        path: "/interdit",
+        query: { redirect: to.fullPath },
+      });
     } else {
-      next()
+      next();
     }
-
-  }else if (to.matched.some(record => record.meta.requireRole && record.meta.role == 1)){
-    if (roleMiddleware() != 1  ){
+  } else if (
+    to.matched.some(
+      (record) => record.meta.requireRole && record.meta.role == 1
+    )
+  ) {
+    if (roleMiddleware() != 1) {
       next({
-        path : '/interdit',
-        query : { redirect : to.fullPath}
-      })
+        path: "/interdit",
+        query: { redirect: to.fullPath },
+      });
     } else {
-      next()
+      next();
     }
-
-  }else if (to.matched.some(record => record.meta.requireAuth)){
-    if (authMiddleware() == false ){
+  } else if (to.matched.some((record) => record.meta.requireAuth)) {
+    if (authMiddleware() == false) {
       next({
-        path : '/login',
-        query : { redirect : to.fullPath}
-      })
+        path: "/login",
+        query: { redirect: to.fullPath },
+      });
     } else {
-      next()
+      next();
     }
-
+  } else {
+    next();
   }
-  else{
-    next()
-  }
-})
+});
 
 export default router;

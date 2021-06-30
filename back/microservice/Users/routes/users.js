@@ -244,7 +244,7 @@ router.post("/authenticate", async (req, res) => {
     })
     .then(async (user) => {
       if (!user) {
-        return res.status(550).send("Utilisateur inconnu");
+        return res.status(550).json({ error: "Utilisateur inconnu" });
       }
 
       if (typeof req.params.token !== "undefined") {

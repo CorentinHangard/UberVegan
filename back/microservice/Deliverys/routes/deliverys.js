@@ -20,7 +20,6 @@ router.get("/all", async function (req, res, next) {
       var rep = [];
       for (var i = 0, len = del.length; i < len; i++) {
         try {
-          console.log(del[i].profileId);
           var userInfos = await axios.get(
             "http://localhost:3008/?id=" + del[i].profileId,
             {
