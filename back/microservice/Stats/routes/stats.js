@@ -16,7 +16,7 @@ router.get("/menu", async function (req, res, next) {
     var reResp = null;
     var menuOrdered = null;
     try {
-      reResp = await axios.get("http://localhost:3008/", {
+      reResp = await axios.get("http://ms-users-service:3008/", {
         headers: {
           Authorization: req.headers.authorization,
         },
@@ -27,7 +27,8 @@ router.get("/menu", async function (req, res, next) {
     }
     try {
       menuOrdered = await axios.get(
-        "http://localhost:3001/bymenus?id=" + reResp.data.restaurant._id,
+        "http://ms-commands-service:3001/bymenus?id=" +
+          reResp.data.restaurant._id,
         {
           header: {
             Authorization: req.headers.authorization,

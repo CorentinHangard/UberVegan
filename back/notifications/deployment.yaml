@@ -3,40 +3,40 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ms-deliverys-deployment
+  name: notification-deployment
   labels:
-    app: ms-deliverys
+    app: notification
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ms-deliverys
+      app: notification
   template:
     metadata:
       labels:
-        app: ms-deliverys
+        app: notification
     spec:
       containers:
-        - name: ms-deliverys
-          image: ms_deliverys_image
+        - name: notification
+          image: notification_image
           imagePullPolicy: Never
           ports:
-            - containerPort: 3002
+            - containerPort: 3005
 ---
 # Service file
 
 apiVersion: v1
 kind: Service
 metadata:
-  name: ms-deliverys-service
+  name: notification-service
 spec:
   # Décommenter la ligne suivante pour fonctionner en local
   type: LoadBalancer
   selector:
-    app: ms-deliverys
+    app: notification
   ports:
     - protocol: TCP
-      port: 3002
-      targetPort: 3002
+      port: 3005
+      targetPort: 3005
       # Décommenter la ligne suivante pour fonctionner en local
-      nodePort: 30002
+      nodePort: 30005

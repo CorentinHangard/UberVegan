@@ -31,7 +31,7 @@ metadata:
   name: ms-users-service
 spec:
   # Décommenter la ligne suivante pour fonctionner en local
-  type: LoadBalancer
+  # type: LoadBalancer
   selector:
     app: ms-users
   ports:
@@ -39,4 +39,4 @@ spec:
       port: 3008
       targetPort: 3008
       # Décommenter la ligne suivante pour fonctionner en local
-      nodePort: 30008
+      # nodePort: 30008

@@ -30,7 +30,7 @@ router.get("/restaurant/history", async function (req, res, next) {
 
   var rep = null;
   try {
-    rep = await axios.get("http://localhost:3008/", {
+    rep = await axios.get("http://ms-users-service:3008/", {
       headers: {
         Authorization: req.headers.authorization,
       },
@@ -57,7 +57,7 @@ router.get("/restaurant/history", async function (req, res, next) {
 router.get("/history", async function (req, res, next) {
   var rep = null;
   try {
-    rep = await axios.get("http://localhost:3008/", {
+    rep = await axios.get("http://ms-users-service:3008/", {
       headers: {
         Authorization: req.headers.authorization,
       },
@@ -82,7 +82,7 @@ router.post("/create", async function (req, res, next) {
 
   var rep = null;
   try {
-    rep = await axios.get("http://localhost:3008/", {
+    rep = await axios.get("http://ms-users-service:3008/", {
       headers: {
         Authorization: req.headers.authorization,
       },
@@ -152,7 +152,7 @@ router.put("/valid", async function (req, res, next) {
 
     try {
       await axios.post(
-        "http://localhost:3002/create",
+        "http://ms-deliverys-service:3002/create",
         {
           profileId: order.profileId,
           orderId: order._id,

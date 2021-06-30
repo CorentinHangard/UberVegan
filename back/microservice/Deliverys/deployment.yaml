@@ -31,7 +31,7 @@ metadata:
   name: ms-deliverys-service
 spec:
   # Décommenter la ligne suivante pour fonctionner en local
-  type: LoadBalancer
+  # type: LoadBalancer
   selector:
     app: ms-deliverys
   ports:
@@ -39,4 +39,4 @@ spec:
       port: 3002
       targetPort: 3002
       # Décommenter la ligne suivante pour fonctionner en local
-      nodePort: 30002
+      # nodePort: 30002

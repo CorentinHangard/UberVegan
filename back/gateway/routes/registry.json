@@ -3,17 +3,17 @@
     "ms-commands": {
       "apiName": "ms-commands",
       "protocol": "http",
-      "host": "localhost",
+      "host": "ms-commands-service",
       "port": 3001,
-      "url": "http://localhost:3001/",
+      "url": "http://ms-commands-service:3001/",
       "nonAuth": []
     },
     "ms-deliveries": {
       "apiName": "ms-deliveries",
       "protocol": "http",
-      "host": "http://localhost",
+      "host": "ms-deliverys-service",
       "port": 3002,
-      "url": "http://localhost:3002/",
+      "url": "http://ms-deliverys-service:3002/",
       "nonAuth": []
     },
     "ms-irttrackings": {
@@ -27,41 +27,33 @@
     "ms-logs": {
       "apiName": "ms-logs",
       "protocol": "http",
-      "host": "http://localhost",
+      "host": "ms-logs-service",
       "port": 3004,
-      "url": "http://localhost:3004/",
-      "nonAuth": []
-    },
-    "ms-notifications": {
-      "apiName": "ms-notifications",
-      "protocol": "http",
-      "host": "http://localhost",
-      "port": 3005,
-      "url": "http://localhost:3005/",
+      "url": "http://ms-logs-service:3004/",
       "nonAuth": []
     },
     "ms-products": {
       "apiName": "ms-products",
       "protocol": "http",
-      "host": "http://localhost",
+      "host": "ms-products-service",
       "port": 3006,
-      "url": "http://localhost:3006/",
+      "url": "http://ms-products-service:3006/",
       "nonAuth": ["menu", "menus", "article", "articles"]
     },
-    "stats": {
+    "ms-stats": {
       "apiName": "ms-stats",
       "protocol": "http",
-      "host": "http://localhost",
+      "host": "ms-stats-service",
       "port": 3007,
-      "url": "http://localhost:3007/",
+      "url": "http://ms-stats-service:3007/",
       "nonAuth": []
     },
     "ms-users": {
       "apiName": "ms-users",
       "protocol": "http",
-      "host": "http://localhost",
+      "host": "ms-users-service",
       "port": 3008,
-      "url": "http://localhost:3008/",
+      "url": "http://ms-users-service:3008/",
       "nonAuth": ["authenticate", "create", "restaurants", "restaurant"]
     }
   }
