@@ -3,10 +3,10 @@
     <appdrawer :clipped="clipped" :drawer="drawer" :isCon="isConnectedVal" />
     <v-app-bar :clipped-left="clipped" fixed app>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <router-link :to="{ name: 'Home' }"
+      <router-link :to="route"
         ><img
           src="@/assets/UberVeganTitle.png"
-          style="height: 75px; width: auto; display: flex"
+          style="height: 65px; width: 100%; display: flex"
       /></router-link>
       <v-spacer />
       <v-btn v-if="isConnectedVal" icon to="/cart">
@@ -65,11 +65,39 @@ export default {
       });
     },
   },
+
   data: () => {
     return {
       clipped: false,
       drawer: false,
+      route : {
+        name : '',
+        param : {
+          id : ''
+        }
+      }
     };
+  },
+  
+  mounted ()  {
+    
+      const infos = this.$store.getters.getInfos;
+      if (infos.user) {
+        const role = this.$store.getters.getInfos.user.role;
+        if(role == 1){
+          this.route.name = 'Home'
+        }else if ( role == 2){
+          this.route.name = 'livraison'
+        }else if (role == 3 ) {
+          this.route.name = 'restaurant'
+          this.route.param.id = this.$store.getters.getInfos.user.id 
+        }
+        return true
+      }else{
+          this.route.name = 'Home'
+        }
+      return false;
+  
   },
 };
 </script>

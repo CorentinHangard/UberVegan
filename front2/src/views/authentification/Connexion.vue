@@ -56,8 +56,18 @@ export default {
             console.log(err);
           })
           .finally(() => {
+            
             if (this.$store.getters.isConnected) {
-              this.$router.push("/");
+              if (this.$store.getters.getInfos.user.role == 1) {
+                this.$router.push({  name: "Home"})
+              }
+              else if (this.$store.getters.getInfos.user.role == 2) {
+                this.$router.push({  name: "livraison"})
+              }
+               else if (this.$store.getters.getInfos.user.role == 3) {
+                this.$router.push({ name: "restaurant",  params: { id: this.$store.getters.getInfos.user.id } })
+              }
+         
             }
           });
       }
