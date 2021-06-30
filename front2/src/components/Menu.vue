@@ -1,20 +1,34 @@
 <template>
   <v-card max-width="400" class="mx-auto pa-5" align="center">
-    <v-img height="150" v-bind:src="img"></v-img>
-    <v-card-title>{{ name }}</v-card-title>
-    <v-card-text>
-      <div>{{ description }}</div>
-      <div>{{ price }}€</div>
-      <v-btn :to="{ name: 'menu', params: { id: id } }">
-        Voir
-      </v-btn>
-      <v-btn @click="ajoutCart">
-        Ajouter
-      </v-btn>
-      <v-btn v-if="getUserRole" @click="supprimer">
-        Supprimer
-      </v-btn>
-    </v-card-text>
+    <router-link
+      :to="{ name: 'menu', params: { id: id } }"
+      style="text-decoration: none; color: inherit;"
+    >
+      <v-img height="150" v-bind:src="img"></v-img>
+      <v-card-title>{{ name }}</v-card-title>
+      <v-card-text>
+        <v-row>
+          <v-col align="left">{{ description }}</v-col>
+          <v-col align="right">{{ price }} €</v-col>
+        </v-row>
+      </v-card-text>
+    </router-link>
+    <v-divider />
+    <br />
+    <v-row>
+      <v-col>
+        <v-btn color="green" @click="ajoutCart">
+          Ajouter au panier
+        </v-btn>
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col>
+        <v-btn color="red" v-if="getUserRole" @click="supprimer">
+          Supprimer
+        </v-btn>
+      </v-col>
+    </v-row>
   </v-card>
 </template>
 
@@ -36,7 +50,7 @@ export default {
       // return this.src != "img"
       //   ? require("@/assets/restaurants/" + this.src)
       //   : "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.timeout.fr%2Fparis%2Frestaurants%2Ftrouver-un-restaurant-romantique&psig=AOvVaw07LZ0BQppe9IHAOkFC5tY5&ust=1625048270208000&source=images&cd=vfe&ved=0CAoQjRxqFwoTCKDP47rOvPECFQAAAAAdAAAAABAD";
-      return "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.timeout.fr%2Fparis%2Frestaurants%2Ftrouver-un-restaurant-romantique&psig=AOvVaw07LZ0BQppe9IHAOkFC5tY5&ust=1625048270208000&source=images&cd=vfe&ved=0CAoQjRxqFwoTCKDP47rOvPECFQAAAAAdAAAAABAD";
+      return require("@/assets/restaurants/sushi.jpg");
     },
     getUserRole() {
       const infos = this.$store.getters.getInfos;

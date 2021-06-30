@@ -1,5 +1,8 @@
 <template>
-  <router-link :to="{ name: 'restaurant', params: { id: id } }">
+  <router-link
+    :to="{ name: 'restaurant', params: { id: id } }"
+    style="text-decoration: none; color: inherit;"
+  >
     <v-card>
       <v-img height="150" v-bind:src="img"></v-img>
       <v-card-title>{{ name }}</v-card-title>
@@ -21,7 +24,7 @@ export default {
       // return this.src != "img"
       //   ? require("@/assets/restaurants/" + this.src)
       //   : "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.timeout.fr%2Fparis%2Frestaurants%2Ftrouver-un-restaurant-romantique&psig=AOvVaw07LZ0BQppe9IHAOkFC5tY5&ust=1625048270208000&source=images&cd=vfe&ved=0CAoQjRxqFwoTCKDP47rOvPECFQAAAAAdAAAAABAD";
-      return "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.timeout.fr%2Fparis%2Frestaurants%2Ftrouver-un-restaurant-romantique&psig=AOvVaw07LZ0BQppe9IHAOkFC5tY5&ust=1625048270208000&source=images&cd=vfe&ved=0CAoQjRxqFwoTCKDP47rOvPECFQAAAAAdAAAAABAD";
+      return require("@/assets/restaurants/viande.jpg");
     },
   },
 };

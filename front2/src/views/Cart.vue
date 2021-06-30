@@ -1,28 +1,4 @@
 <template>
-  <!-- <v-card class="mx-auto" max-width="400" tile v-if="menus.length">
-    <v-list-item-group>
-      <template>
-        <v-list-item v-for="item in menus" :key="item.id">
-          <v-list-item-content>
-            <v-list-item-title>{{ item.name }}</v-list-item-title>
-            <v-list-item-subtitle>
-              {{ item.price }}
-            </v-list-item-subtitle>
-          </v-list-item-content>
-          <v-divider></v-divider>
-        </v-list-item>
-      </template>
-    </v-list-item-group>
-    <v-btn @click="commander()">
-      Commander
-    </v-btn>
-    <v-btn>
-      payer
-    </v-btn>
-    <v-btn @click="reset()">
-      Reset
-    </v-btn>
-  </v-card> -->
   <div class="checkout-box">
     <ul class="checkout-list" v-if="menus.length">
       <transition-group name="fade">
@@ -30,9 +6,6 @@
           <h3 class="product-name">{{ item.menu.name }}</h3>
           <span class="product-count">Q: {{ item.count }}</span>
           <span class="product-price">{{ item.menu.price }} €</span>
-          <button class="product-remove" @click="remove(item.menu._id)">
-            X
-          </button>
         </li>
       </transition-group>
     </ul>
@@ -87,15 +60,17 @@ export default {
           infos: payload,
         })
         .finally(() => {
-          this.$router.push({
-            name: "command",
-            params: { id: this.$store.getters.getCommand.order._id },
-          });
+          this.$store
+            .dispatch("commandPay", {
+              infos: { id: this.$store.getters.getCommand.order._id },
+            })
+            .finally(() => {
+              this.$router.push({
+                name: "command",
+                params: { id: this.$store.getters.getCommand.order._id },
+              });
+            });
         });
-    },
-    remove(item) {
-      // this.$store.dispatch("resetCart");
-      // this.menus = this.$store.getters.getMenu;
     },
     reset() {
       this.$store.dispatch("resetCart");
@@ -134,7 +109,7 @@ export default {
 }
 .checkout-product {
   display: grid;
-  grid-template-columns: 3fr 1fr 1fr 0.5fr;
+  grid-template-columns: 3fr 1fr 1fr;
   background-color: #fff;
   box-shadow: 0px 0px 10px rgba(73, 74, 78, 0.1);
   border-radius: 5px;

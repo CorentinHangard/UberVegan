@@ -26,21 +26,24 @@
         <br />
       </v-col>
     </v-card>
-    <v-row>
-      <h2 class="center">Articles</h2>
-    </v-row>
-    <v-row>
-      <v-col
-        xs="12"
-        sm="6"
-        md="3"
-        lg="3"
-        v-for="item in this.menu.articles"
-        :key="item"
-      >
-        <Article :id="item" :restoId="menu.restaurantId" />
-      </v-col>
-    </v-row>
+    <br />
+    <v-card class="mx-5" flat>
+      <v-row>
+        <v-col><h2 class="center">Articles</h2></v-col>
+      </v-row>
+      <v-row>
+        <v-col
+          xs="12"
+          sm="6"
+          md="3"
+          lg="3"
+          v-for="item in this.menu.articles"
+          :key="item"
+        >
+          <Article :id="item" :restoId="menu.restaurantId" />
+        </v-col>
+      </v-row>
+    </v-card>
   </v-container>
 </template>
 <script>

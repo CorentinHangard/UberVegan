@@ -14,6 +14,16 @@ router.get("/", async function (req, res, next) {
     });
 });
 
+router.get("/bymenus", async function (req, res, next) {
+  await Orders.find({ restaurantId: req.query.id })
+    .then((ord) => {
+      res.status(200).json(ord);
+    })
+    .catch((err) => {
+      res.json(err);
+    });
+});
+
 router.get("/restaurant/history", async function (req, res, next) {
   const token = req.headers.authorization.split("Bearer ")[1];
   const tokenContent = JWTContent(token).user;

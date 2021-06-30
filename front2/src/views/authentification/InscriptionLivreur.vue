@@ -1,6 +1,6 @@
 <template>
   <v-card max-width="400" class="mx-auto pa-5" align="center" flat>
-    <h1 class="center">Inscription Livereur</h1>
+    <h1 class="center">Inscription livreur</h1>
     <v-form ref="form" lazy-validation>
       <div align="center" class="padding">
         <v-text-field

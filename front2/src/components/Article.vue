@@ -1,14 +1,18 @@
 <template>
-  <v-card>
+  <v-card align="center" class="pb-5">
     <v-img height="150" v-bind:src="img"></v-img>
     <v-card-title>{{ article.name }}</v-card-title>
     <v-card-text>
-      <div>
-        {{ article.description }}
-        {{ article.price }}
-      </div>
+      <v-row>
+        <v-col align="left">{{ article.description }}</v-col>
+        <v-col align="right">{{ article.price }} €</v-col>
+      </v-row>
     </v-card-text>
-    <v-btn v-if="getUserRole" :to="{ name: 'articleEdit', params: { id: id } }">
+    <v-btn
+      color="light-blue"
+      v-if="getUserRole"
+      :to="{ name: 'articleEdit', params: { id: id } }"
+    >
       Modifier
     </v-btn>
   </v-card>
@@ -27,7 +31,7 @@ export default {
       // return this.src != "img"
       //   ? require("@/assets/restaurants/" + this.src)
       //   : "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.timeout.fr%2Fparis%2Frestaurants%2Ftrouver-un-restaurant-romantique&psig=AOvVaw07LZ0BQppe9IHAOkFC5tY5&ust=1625048270208000&source=images&cd=vfe&ved=0CAoQjRxqFwoTCKDP47rOvPECFQAAAAAdAAAAABAD";
-      return "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.timeout.fr%2Fparis%2Frestaurants%2Ftrouver-un-restaurant-romantique&psig=AOvVaw07LZ0BQppe9IHAOkFC5tY5&ust=1625048270208000&source=images&cd=vfe&ved=0CAoQjRxqFwoTCKDP47rOvPECFQAAAAAdAAAAABAD";
+      return require("@/assets/restaurants/cafe.jpg");
     },
     getUserRole() {
       const infos = this.$store.getters.getInfos;

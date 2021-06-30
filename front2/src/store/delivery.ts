@@ -25,11 +25,21 @@ const deliveryStore: Module<any, any> = {
     SET_DELIVERIES: (state, deliveries) => {
       state.deliveries = deliveries;
     },
+    RESET_DELIVERY: (state) => {
+      state.delivery = {};
+    },
   },
   actions: {
     delivery: async ({ commit, dispatch }, { infos }) => {
       const response = await AuthService.delivery(infos);
-      commit("SET_DELIVERY", response.data);
+      commit("SET_DELIVERY", response.data[0]);
+    },
+    deliveryReset: async ({ commit, dispatch }) => {
+      commit("RESET_DELIVERY");
+    },
+    deliveryByOrder: async ({ commit, dispatch }, { infos }) => {
+      const response = await AuthService.deliveryByOrder(infos);
+      commit("SET_DELIVERY", response.data[0]);
     },
     deliveries: async ({ commit, dispatch }) => {
       const response = await AuthService.deliveries();

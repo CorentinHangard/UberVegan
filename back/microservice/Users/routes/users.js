@@ -91,7 +91,6 @@ router.post("/create", async function (req, res, next) {
     profiles
       .save()
       .then(() => {
-        console.log(1);
         const token = createJWT({
           id: user.usr_id,
           role: user.rol_id,
@@ -150,6 +149,7 @@ router.post("/create", async function (req, res, next) {
       })
       .catch((err) => console.log(err));
   } else {
+    console.log("err");
     res.status(500).send("Il manque des infos");
   }
 });
@@ -268,7 +268,7 @@ router.post("/authenticate", async (req, res) => {
         const date = new Date();
         await axios
           .post(
-            "http://localhost:3004/create",
+            "http://ms-logs-service:3004/create",
             {
               type: "connexion",
               content:

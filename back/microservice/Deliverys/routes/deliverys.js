@@ -5,7 +5,17 @@ var Deliverys = require("../models/deliverys");
 const { JWTContent } = require("../modules/jwt");
 
 router.get("/", async function (req, res, next) {
-  await Deliverys.find({ _id: req.body.id })
+  await Deliverys.find({ _id: req.query.id })
+    .then((del) => {
+      res.status(200).json(del);
+    })
+    .catch((err) => {
+      res.json(err);
+    });
+});
+
+router.get("/byorderid", async function (req, res, next) {
+  await Deliverys.find({ orderId: req.query.id })
     .then((del) => {
       res.status(200).json(del);
     })

@@ -35,10 +35,11 @@
           :readonly="!readonly"
         ></v-text-field>
       </v-row>
+      <br />
       <v-btn color="red" @click="cancel()" v-if="readonly" class="px-6">
         Annuler
       </v-btn>
-      <v-btn color="green" @click="save()" v-if="readonly" class="px-6">
+      <v-btn color="green" @click="save()" v-if="readonly" class="px-6 ml-5">
         Modifier
       </v-btn>
       <v-btn color="blue" @click="changerReadOnly()" v-if="!readonly">

@@ -1,58 +1,62 @@
 <template>
-<v-card max-width="1000" class="mx-auto pa-5" align="center" flat>
-   <h1 class="center">Historique des commandes</h1>
- <v-simple-table>
-    <template v-slot:default>
-      <thead>
-        <tr>
-          <th >Date</th>
-          <th >Restaurant</th>
-          <th >Détails de la commande</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="item in commandHistory" :key="item._id">
-          <td>{{ item.date }}</td>
-          <td>{{ item.restaurant.name }}</td>
-          <td>
-            <v-btn @click.stop="$set(dialogDetails, item._id, true)">
-              Details
-            </v-btn>
-            <v-dialog
-              v-model="dialogDetails[item._id]"
-              :key="item._id"
-              width="600"
-              persistent
-            >
-              <div v-bind:style="{ backgroundColor: color }">
-                <v-card-title> Commande du {{ item.date }} </v-card-title>
-                <v-card-text>
-                  {{ item.restaurant.name }}
-                  <br />
-                  {{item.prix}}
-                  <br />
-                  <div v-for="article in item.articles" :key="article.id">
-                    {{ article.name }}
-                  </div>
-                </v-card-text>
-                <v-card-actions>
-                  <v-spacer></v-spacer>
-                  <v-btn
-                    color="primary"
-                    flat
-                    @click.stop="$set(dialogDetails, item._id, false)"
-                    >Close</v-btn
-                  >
-                </v-card-actions>
-              </div>
-            </v-dialog>
-          </td>
-        </tr>
-      </tbody>
-    </template>
-  </v-simple-table>
-</v-card>
- 
+  <v-card max-width="1000" class="mx-auto pa-5" align="center" flat>
+    <h1 class="center">Historique des commandes</h1>
+    <v-simple-table>
+      <template v-slot:default>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Restaurant</th>
+            <th>Détails de la commande</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="item in commandHistory" :key="item._id">
+            <td>{{ item.date }}</td>
+            <td>{{ item.restaurant.name }}</td>
+            <td>
+              <v-btn @click.stop="$set(dialogDetails, item._id, true)">
+                Details
+              </v-btn>
+              <v-dialog
+                v-model="dialogDetails[item._id]"
+                :key="item._id"
+                width="600"
+                persistent
+              >
+                <div v-bind:style="{ backgroundColor: color }">
+                  <v-card-title> Commande du {{ item.date }} </v-card-title>
+                  <v-card-text>
+                    <span style="font-weight:bold">Restaurant:</span>
+                    {{ item.restaurant.name }}
+                    <br />
+                    <span style="font-weight:bold">Articles :</span>
+                    <br />
+                    <div
+                      v-for="article in item.articles"
+                      :key="article.id"
+                      class="ml-2"
+                    >
+                      - {{ article.name }}
+                    </div>
+                  </v-card-text>
+                  <v-card-actions>
+                    <v-spacer></v-spacer>
+                    <v-btn
+                      color="primary"
+                      flat
+                      @click.stop="$set(dialogDetails, item._id, false)"
+                      >Close</v-btn
+                    >
+                  </v-card-actions>
+                </div>
+              </v-dialog>
+            </td>
+          </tr>
+        </tbody>
+      </template>
+    </v-simple-table>
+  </v-card>
 </template>
 <script>
 export default {

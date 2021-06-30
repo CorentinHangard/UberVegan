@@ -93,8 +93,12 @@ export default {
   },
   async created() {
     await this.$store.dispatch("deliveries");
-    this.deliveries = this.$store.getters.getDeliveries;
-    this.deliveries.shift();
+    const deliveries = this.$store.getters.getDeliveries;
+    for (let index = 0; index < deliveries.length; index++) {
+      if (deliveries[index].status !== "delivered") {
+        this.deliveries.push(deliveries[index]);
+      }
+    }
   },
 };
 </script>

@@ -100,29 +100,16 @@ export default {
   },
 
   async created() {
-    await this.$store.dispatch("command", {
+    await this.$store.dispatch("commandsRestaurant", {
       infos: { id: this.$props.id },
     });
-    console.log(this.$store.getters.getCommand);
-    if (this.$store.getters.getCommand.status === "validated") {
-      console.log(this.$props.id);
-      await this.$store.dispatch("deliveryByOrder", {
-        infos: { id: this.$props.id },
-      });
-
-      this.isCommand = true;
-      this.command = this.$store.getters.getCommand;
-      this.delivery = this.$store.getters.getDelivery;
-      this.inLivraison = true;
-      if (this.$store.getters.getDelivery.status === "delivered") {
-        this.$store.dispatch("commandReset");
-        this.isCommand = false;
-        this.command = this.$store.getters.getCommand;
+    this.command = [];
+    const commands = this.$store.getters.getCommands;
+    for (let index = 0; index < commands.length; index++) {
+      if (commands[index].status === "payed") {
+        this.isCommand = true;
+        this.command = commands[index];
       }
-    } else {
-      this.isCommand = true;
-      console.log("fewr");
-      this.command = this.$store.getters.getCommand;
     }
   },
 };

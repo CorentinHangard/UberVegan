@@ -136,7 +136,7 @@ export default {
           icon: "mdi-bike",
           title: "Suivre ma livraison",
           to: {
-            name: "/",
+            name: "command",
           },
         },
         {
@@ -178,7 +178,8 @@ export default {
           icon: "mdi-truck-delivery",
           title: "Commandes",
           to: {
-            name: "Home",
+            name: "commandRestaurant",
+            params: { id: this.$store.getters.getUser.restaurant._id },
           },
         },
         {
@@ -200,6 +201,50 @@ export default {
           title: "Parrainer restaurateur",
           to: {
             name: "restaurateur-parrainageRestaurateur",
+          },
+        },
+      ];
+    }
+
+    if (
+      this.$store.getters.getInfos.user &&
+      this.$store.getters.getInfos.user.role === 1
+    ) {
+      this.itemsClient = [
+        {
+          icon: "mdi-account",
+          title: "Mon compte",
+          to: {
+            name: "profile",
+          },
+        },
+        {
+          icon: "mdi-hamburger",
+          title: "J'ai faim",
+          to: {
+            name: "Home",
+          },
+        },
+        {
+          icon: "mdi-bike",
+          title: "Suivre ma livraison",
+          to: {
+            name: "command",
+            params: { id: this.$store.getters.getCommand._id },
+          },
+        },
+        {
+          icon: "mdi-file-document-multiple",
+          title: "Historiques des commandes",
+          to: {
+            name: "commandHistory",
+          },
+        },
+        {
+          icon: "mdi-account-cowboy-hat",
+          title: "Je parraîne",
+          to: {
+            name: "ParrainageClient",
           },
         },
       ];

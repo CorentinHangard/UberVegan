@@ -76,7 +76,7 @@ export default {
       drawer: false,
       route: {
         name: "",
-        param: {
+        params: {
           id: "",
         },
       },
@@ -95,7 +95,7 @@ export default {
         this.route.name = "livraison";
       } else if (role == 3) {
         this.route.name = "restaurant";
-        this.route.param.id = this.$store.getters.getInfos.user.id;
+        this.route.params.id = this.$store.getters.getUser.restaurant._id;
       }
       return true;
     } else {
