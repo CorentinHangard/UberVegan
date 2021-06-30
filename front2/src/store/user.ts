@@ -36,6 +36,9 @@ const userStore: Module<any, any> = {
     RESET_CART: (state) => {
       state.cart = [];
     },
+    RESET_USER: (state) => {
+      Object.assign(state, getState());
+    },
   },
   actions: {
     cart: async ({ commit, dispatch }, { infos }) => {
@@ -53,7 +56,6 @@ const userStore: Module<any, any> = {
     },
     profileEdit: async ({ commit, dispatch }, { infos }) => {
       const response = await AuthService.profileEdit(infos);
-      console.log(response.data);
     },
   },
 };

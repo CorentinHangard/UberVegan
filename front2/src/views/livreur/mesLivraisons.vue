@@ -79,7 +79,6 @@ export default {
   },
   methods: {
     takeDelivery(deliverie) {
-      console.log(deliverie);
       this.$store.dispatch("deliveryTake", {
         infos: { id: deliverie._id },
       });
@@ -104,8 +103,6 @@ export default {
         this.deliveries.push(del[index]);
       }
     }
-
-    console.log(this.deliveries);
   },
 };
 </script>

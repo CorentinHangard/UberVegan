@@ -1,38 +1,37 @@
 <template>
   <v-card max-width="500" class="mx-auto pa-5" align="center" flat>
-    <h1 class="center">Mon profil</h1>
+    <h1 class="center">Modifier un article</h1>
     <br />
     <v-col align="center" justify="center">
       <v-row cols="12" sm="3" style="display: block">
         <v-text-field
-          v-model="user.profile.fullName"
-          label="Nom complet"
-          outlined
+          v-model="menue.name"
+          label="Nom"
+          prepend-icon="mdi-account"
           :readonly="!readonly"
         ></v-text-field>
-      </v-row>
-      <v-row cols="12" sm="3" style="display: block">
         <v-text-field
-          v-model="user.profile.phoneNumber"
-          label="N° de téléphone"
-          outlined
+          v-model="menue.description"
+          label="Description"
+          prepend-icon="mdi-android-messages"
           :readonly="!readonly"
         ></v-text-field>
-      </v-row>
-      <v-row cols="12" sm="3" style="display: block">
         <v-text-field
-          v-model="user.user.usr_email"
-          label="Adresse e-mail"
-          outlined
+          v-model="menue.price"
+          label="Prix"
+          prepend-icon="mdi-currency-eur"
           :readonly="!readonly"
         ></v-text-field>
-      </v-row>
-      <v-row cols="12" sm="3" style="display: block">
+        <!-- <v-text-field
+          v-model="menue.img"
+          label="Image"
+          prepend-icon="mdi-image"
+          :readonly="!readonly"
+        ></v-text-field> -->
         <v-text-field
-          v-model="user.user.usr_password"
-          label="Mot de passe"
-          outlined
-          :type="show1 ? 'text' : 'password'"
+          v-model="menue.category"
+          label="Catégorie"
+          prepend-icon="mdi-account"
           :readonly="!readonly"
         ></v-text-field>
       </v-row>
@@ -51,9 +50,10 @@
 <script>
 import Vuetify from "vuetify";
 export default {
+  props: ["id"],
   data() {
     return {
-      user: {},
+      menue: {},
       show1: false,
       dialog: false,
       readonly: false,
@@ -74,19 +74,20 @@ export default {
     },
     save() {
       const payload = {
-        usr_id: this.user.user.usr_id,
-        fullName: this.user.profile.fullName,
-        phoneNumber: this.user.profile.phoneNumber,
-        email: this.user.user.usr_email,
-        password: this.user.user.usr_password,
+        id: this.menue._id,
+        name: this.menue.name,
+        description: this.menue.description,
+        price: this.menue.price,
+        img: this.menue.img,
+        category: this.menue.category,
       };
-      this.$store.dispatch("profileEdit", { infos: payload });
+      this.$store.dispatch("articleEdit", { infos: payload });
       this.readonly = !this.readonly;
     },
   },
   async created() {
-    await this.$store.dispatch("profile");
-    this.user = this.$store.getters.getUser;
+    await this.$store.dispatch("article", { infos: { id: this.$props.id } });
+    this.menue = this.$store.getters.getArticle;
   },
 };
 </script>

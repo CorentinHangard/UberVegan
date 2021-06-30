@@ -1,39 +1,39 @@
 <template>
-<div>
-  <v-container width="75vw">
-    <v-row>
-      <v-alert
-        type="info"
-        icon="mdi-account-cowboy-hat"
-        dismissible
-        max-width="600"
-        justify="center"
-        align="center"
-        class="mx-auto my-4"
-      >
-        {{ message }}
-      </v-alert>
-      <v-col
-        xs="12"
-        sm="6"
-        md="3"
-        lg="3"
-        v-for="item in restaurants"
-        :key="item.id"
-      >
-        <Restaurant
-          v-bind="item"
-          :name="item.name"
-          :description="item.description"
-          :src="item.img"
-          :cod="item.costOfDelivery"
-          :id="item._id"
-        />
-      </v-col>
-    </v-row>
-  </v-container>
-</div>
-
+  <div>
+    <v-alert
+      v-if="isMessage"
+      type="info"
+      icon="mdi-account-cowboy-hat"
+      dismissible
+      max-width="600"
+      justify="center"
+      align="center"
+      class="mx-auto my-4"
+    >
+      {{ message }}
+    </v-alert>
+    <v-container width="75vw">
+      <v-row>
+        <v-col
+          xs="12"
+          sm="6"
+          md="3"
+          lg="3"
+          v-for="item in restaurants"
+          :key="item.id"
+        >
+          <Restaurant
+            v-bind="item"
+            :name="item.name"
+            :description="item.description"
+            :src="item.img"
+            :cod="item.costOfDelivery"
+            :id="item._id"
+          />
+        </v-col>
+      </v-row>
+    </v-container>
+  </div>
 </template>
 
 <script>

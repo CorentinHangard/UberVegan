@@ -14,6 +14,7 @@ import Restaurant from "../views/restaurant/Restaurant.vue";
 import Menu from "../views/restaurant/Menu.vue";
 import MenuCreate from "../views/restaurant/MenuCreate.vue";
 import ArticleCreate from "../views/restaurant/ArticleCreate.vue";
+import ArticleEdit from "../views/restaurant/ArticleEdit.vue";
 import Interdit from "../views/Interdit.vue";
 import CommandHistory from "../views/client/CommandHistory.vue"
 import roleMiddleware from '@/middleware/roleMiddleware';
@@ -69,11 +70,11 @@ const routes: Array<RouteConfig> = [
     path: "/parrainage",
     name: "ParrainageClient",
     component: clientParraine,
-    meta : {
-      requireAuth : true,
-      requireRole : true,
-      role : 1
-    }
+    meta: {
+      requireAuth: true,
+      requireRole: true,
+      role: 1,
+    },
   },
   {
     path: "/suivi/commandeClient",
@@ -142,6 +143,16 @@ const routes: Array<RouteConfig> = [
     path: "/restaurant/article/create",
     name: "articleCreate",
     component: ArticleCreate,
+    props: true,
+    meta: {
+      requireRole: true,
+      role: 3,
+    },
+  },
+  {
+    path: "/restaurant/article/edit/:id",
+    name: "articleEdit",
+    component: ArticleEdit,
     props: true,
     meta: {
       requireRole: true,

@@ -11,23 +11,23 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="item in commandHistory" :key="item.id">
-          <td style="width : 1%">{{ item.date }}</td>
-          <td style="width : 1%">{{ item.restaurant }}</td>
-          <td style="width : 1%">
-            <v-btn @click.stop="$set(dialogDetails, item.id, true)">
+        <tr v-for="item in commandHistory" :key="item._id">
+          <td>{{ item.date }}</td>
+          <td>{{ item.restaurant.name }}</td>
+          <td>
+            <v-btn @click.stop="$set(dialogDetails, item._id, true)">
               Details
             </v-btn>
             <v-dialog
-              v-model="dialogDetails[item.id]"
-              :key="item.id"
+              v-model="dialogDetails[item._id]"
+              :key="item._id"
               width="600"
               persistent
             >
               <div v-bind:style="{ backgroundColor: color }">
                 <v-card-title> Commande du {{ item.date }} </v-card-title>
                 <v-card-text>
-                  {{ item.restaurant }}
+                  {{ item.restaurant.name }}
                   <br />
                   {{item.prix}}
                   <br />
@@ -40,7 +40,7 @@
                   <v-btn
                     color="primary"
                     flat
-                    @click.stop="$set(dialogDetails, item.id, false)"
+                    @click.stop="$set(dialogDetails, item._id, false)"
                     >Close</v-btn
                   >
                 </v-card-actions>
@@ -58,72 +58,46 @@
 export default {
   data() {
     return {
-      commandHistory: [
-        {
-          id: 1,
-          date: "03-06-199",
-          restaurant: "1 rue du sel",
-          prix : "50 euros",
-          articles: [
-            {
-              id: 1,
-              name: " 1 menu B12",
-            },
-            {
-              id: 2,
-              name: " 2 menu C12",
-            },
-          ],
-        },
-        {
-          id: 2,
-          date: "03-06-199",
-          restaurant: "1 rue du sel",
-        },
-        {
-          id: 3,
-          date: "03-06-199",
-          restaurant: "1 rue du sel",
-        },
-        {
-          id: 4,
-          date: "03-06-199",
-          restaurant: "1 rue du sel",
-        },
-        {
-          id: 5,
-          date: "03-06-199",
-          restaurant: "1 rue du sel",
-        },
-        {
-          id: 6,
-          date: "03-06-199",
-          restaurant: "1 rue du sel",
-        },
-        {
-          id: 7,
-          date: "03-06-199",
-          restaurant: "1 rue du sel",
-        },
-        {
-          id: 8,
-          date: "03-06-199",
-          restaurant: "1 rue du sel",
-        },
-        {
-          id: 9,
-          date: "03-06-199",
-          restaurant: "1 rue du sel",
-        },
-        {
-          id: 10,
-          date: "03-06-199",
-          restaurant: "1 rue du sel",
-        },
-      ],
+      commandHistory: [],
       dialogDetails: {},
       color: "white",
     };
+  },
+  async created() {
+    await this.$store.dispatch("commands");
+    this.commandHistory = this.$store.getters.getCommands;
+    const updatedCommandHistory = [];
+
+    for (let index = 0; index < this.commandHistory.length; index++) {
+      updatedCommandHistory[index] = {
+        ...this.commandHistory[index],
+        articles: [],
+        restaurant: [],
+      };
+
+      await this.$store.dispatch("restaurant", {
+        infos: { id: this.commandHistory[index].restaurantId },
+      });
+      updatedCommandHistory[
+        index
+      ].restaurant = this.$store.getters.getRestaurant;
+
+      for (
+        let index2 = 0;
+        index2 < this.commandHistory[index].content.length;
+        index2++
+      ) {
+        await this.$store.dispatch("article", {
+          infos: {
+            id: this.commandHistory[index].content[index2],
+          },
+        });
+        updatedCommandHistory[index].articles.push(
+          this.$store.getters.getArticle
+        );
+      }
+    }
+    this.commandHistory = updatedCommandHistory;
   },
 };
 </script>

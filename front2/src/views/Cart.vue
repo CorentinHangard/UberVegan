@@ -28,7 +28,7 @@
       <transition-group name="fade">
         <li v-for="item in menus" :key="item.menu._id" class="checkout-product">
           <h3 class="product-name">{{ item.menu.name }}</h3>
-          <span class="product-count">Amount {{ item.count }}</span>
+          <span class="product-count">Q: {{ item.count }}</span>
           <span class="product-price">{{ item.menu.price }} €</span>
           <button class="product-remove" @click="remove(item.menu._id)">
             X
@@ -94,7 +94,6 @@ export default {
         });
     },
     remove(item) {
-      console.log(item._id);
       // this.$store.dispatch("resetCart");
       // this.menus = this.$store.getters.getMenu;
     },

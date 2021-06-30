@@ -69,11 +69,13 @@ const restaurantStore: Module<any, any> = {
     },
     menus: async ({ commit, dispatch }, { infos }) => {
       const response = await AuthService.menus(infos);
-      console.log(response.data);
       commit("SET_MENUS", response.data);
     },
     menuCreate: async ({ commit, dispatch }, { infos }) => {
       await AuthService.menuCreate(infos);
+    },
+    menuDelete: async ({ commit, dispatch }, { infos }) => {
+      await AuthService.menuDelete(infos);
     },
     article: async ({ commit, dispatch }, { infos }) => {
       const response = await AuthService.article(infos);
@@ -81,11 +83,13 @@ const restaurantStore: Module<any, any> = {
     },
     articles: async ({ commit, dispatch }, { infos }) => {
       const response = await AuthService.articles(infos);
-      console.log(response.data);
       commit("SET_ARTICLES", response.data);
     },
     articleCreate: async ({ commit, dispatch }, { infos }) => {
       await AuthService.articleCreate(infos);
+    },
+    articleEdit: async ({ commit, dispatch }, { infos }) => {
+      await AuthService.articleEdit(infos);
     },
   },
 };

@@ -70,11 +70,12 @@ export default {
           .dispatch("authenticate", { infos: this.data })
           .catch((err) => {
             if (err.toString().split("500")) {
-              this.message = "L'utilisateur n'existe pas";
+              this.message = "Email / Mot de passe incorrect";
             }
           })
-          .finally(() => {
+          .finally(async () => {
             if (this.$store.getters.isConnected) {
+              await this.$store.dispatch("profile");
               if (this.$store.getters.getInfos.user.role == 1) {
                 this.$router.push({ name: "Home" });
               } else if (this.$store.getters.getInfos.user.role == 2) {
@@ -82,7 +83,7 @@ export default {
               } else if (this.$store.getters.getInfos.user.role == 3) {
                 this.$router.push({
                   name: "restaurant",
-                  params: { id: this.$store.getters.getInfos.user.id },
+                  params: { id: this.$store.getters.getUser.restaurant._id },
                 });
               }
             }

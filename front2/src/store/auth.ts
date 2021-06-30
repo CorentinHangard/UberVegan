@@ -51,6 +51,7 @@ const authStore: Module<any, any> = {
       commit("SET_TOKENS_INFOS", data);
     },
     logout: ({ commit, dispatch }) => {
+      commit("RESET_USER", "");
       commit("RESET", "");
     },
   },

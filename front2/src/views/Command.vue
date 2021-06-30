@@ -48,7 +48,6 @@ export default {
       });
     },
     valider() {
-      console.log(this.command._id);
       this.$store.dispatch("commandValid", {
         infos: { id: this.command._id },
       });
@@ -59,7 +58,6 @@ export default {
       infos: { id: this.$props.id },
     });
     this.command = this.$store.getters.getCommand;
-    console.log(this.command);
   },
 };
 </script>

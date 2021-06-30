@@ -95,7 +95,6 @@ export default {
     await this.$store.dispatch("deliveries");
     this.deliveries = this.$store.getters.getDeliveries;
     this.deliveries.shift();
-    console.log(this.deliveries);
   },
 };
 </script>

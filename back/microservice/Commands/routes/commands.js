@@ -52,7 +52,6 @@ router.get("/history", async function (req, res, next) {
         Authorization: req.headers.authorization,
       },
     });
-    console.log(rep);
   } catch (error) {
     console.log(error);
     res.send(error);

@@ -4,12 +4,12 @@
       <v-container>
         <h1 class="center">Parrainer un utilisateur</h1>
         <div align="center" class="padding">
-          <v-text>
+          <p>
             Envoyez votre code promotionnel et bénéficiez d'une réduction sur
             vos courses. À chaque fois qu'un passager s'inscrit avec votre code
             d'invitation, il obtient une réduction sur sa course (le montant de
             la réduction dépend du lieu).
-          </v-text>
+          </p>
           <br />
           <img src="../../assets/parrainage.png" />
           <br />
@@ -61,6 +61,10 @@ export default {
 
       window.getSelection().removeAllRanges();
     },
+  },
+  async created() {
+    await this.$store.dispatch("profile");
+    this.codeParrainage = this.$store.getters.getUser.profile.sponsorCode;
   },
 };
 </script>

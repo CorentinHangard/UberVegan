@@ -8,12 +8,15 @@
         {{ article.price }}
       </div>
     </v-card-text>
+    <v-btn v-if="getUserRole" :to="{ name: 'articleEdit', params: { id: id } }">
+      Modifier
+    </v-btn>
   </v-card>
 </template>
 
 <script Lang="ts">
 export default {
-  props: ["id"],
+  props: ["id", "restoId"],
   data() {
     return {
       article: {},
@@ -25,6 +28,22 @@ export default {
       //   ? require("@/assets/restaurants/" + this.src)
       //   : "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.timeout.fr%2Fparis%2Frestaurants%2Ftrouver-un-restaurant-romantique&psig=AOvVaw07LZ0BQppe9IHAOkFC5tY5&ust=1625048270208000&source=images&cd=vfe&ved=0CAoQjRxqFwoTCKDP47rOvPECFQAAAAAdAAAAABAD";
       return "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.timeout.fr%2Fparis%2Frestaurants%2Ftrouver-un-restaurant-romantique&psig=AOvVaw07LZ0BQppe9IHAOkFC5tY5&ust=1625048270208000&source=images&cd=vfe&ved=0CAoQjRxqFwoTCKDP47rOvPECFQAAAAAdAAAAABAD";
+    },
+    getUserRole() {
+      const infos = this.$store.getters.getInfos;
+      if (infos.user) {
+        if (this.$store.getters.getInfos.user.role === 3) {
+          if (this.$store.getters.getUser.restaurant) {
+            if (
+              this.$props.restoId === this.$store.getters.getUser.restaurant._id
+            ) {
+              return true;
+            }
+          }
+        }
+      }
+
+      return false;
     },
   },
   async created() {

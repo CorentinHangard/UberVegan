@@ -31,9 +31,8 @@ const commandStore: Module<any, any> = {
       const response = await AuthService.command(infos);
       commit("SET_COMMAND", response.data[0]);
     },
-    commands: async ({ commit, dispatch }, { infos }) => {
-      const response = await AuthService.commands(infos);
-      console.log(response.data);
+    commands: async ({ commit, dispatch }) => {
+      const response = await AuthService.commands();
       commit("SET_COMMANDS", response.data);
     },
     commandCreate: async ({ commit, dispatch }, { infos }) => {

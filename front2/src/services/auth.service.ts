@@ -46,6 +46,9 @@ export default {
   async menuCreate(infos: any) {
     return await axios.post("ms-products/menu/create", infos);
   },
+  async menuDelete(infos: any) {
+    return await axios.delete("ms-products/menu/delete?id=" + infos.id);
+  },
   async article(infos: any) {
     return await axios.get("ms-products/article?id=" + infos.id);
   },
@@ -55,14 +58,16 @@ export default {
   async articleCreate(infos: any) {
     return await axios.post("ms-products/article/create", infos);
   },
+  async articleEdit(infos: any) {
+    return await axios.put("ms-products/article/edit", infos);
+  },
   async command(infos: any) {
     return await axios.get("ms-commands/?id=" + infos.id);
   },
-  async commands(infos: any) {
-    return await axios.get("ms-commands/?id=" + infos.id);
+  async commands() {
+    return await axios.get("ms-commands/history");
   },
   async commandCreate(infos: any) {
-    console.log(infos);
     return await axios.post("ms-commands/create", infos);
   },
   async commandPay(infos: any) {

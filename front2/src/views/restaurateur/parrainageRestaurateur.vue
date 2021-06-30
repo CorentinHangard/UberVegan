@@ -6,7 +6,9 @@
         <v-text
           >Envoyez votre code promotionnel et bénéficiez d'une réduction sur vos
           courses. À chaque fois qu'un passager s'inscrit avec votre code
-          d'invitation, vous pourrez envoyer une commande sans frais de livraison (et donc d'être plus compétitif sur les prix 🙂), les frais de livraisons seront pour UberVegan !
+          d'invitation, vous pourrez envoyer une commande sans frais de
+          livraison (et donc d'être plus compétitif sur les prix 🙂), les frais
+          de livraisons seront pour UberVegan !
         </v-text>
         <br />
         <img src="~/assets/images/parrainage.png" />
@@ -49,7 +51,6 @@ export default {
   methods: {
     copyFunction() {
       let testingCodeToCopy = document.querySelector("#testing-code");
-      console.log(testingCodeToCopy);
       testingCodeToCopy.setAttribute("type", "text");
       testingCodeToCopy.select();
 

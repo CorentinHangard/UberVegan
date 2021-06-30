@@ -6,7 +6,7 @@
     fixed
     app
   >
-    <div align="center" class="padding">
+    <div align="center" class="pt-10">
       <v-btn v-if="!isCon" class="blue" to="/login"> Se connecter </v-btn>
     </div>
     <v-list v-if="getUserRole == 1">
@@ -76,7 +76,7 @@
   </v-navigation-drawer>
 </template>
 
-<script >
+<script>
 import Vue from "vue";
 export default {
   props: ["clipped", "drawer", "isCon", ""],
@@ -116,34 +116,76 @@ export default {
           },
         },
       ],
-
-      itemsRestaurant: [
+      itemsRestaurant: [],
+      itemsClient: [
         {
-          icon: "mdi-food-fork-drink",
-          title: "Mes articles",
+          icon: "mdi-account",
+          title: "Mon compte",
           to: {
-            name: "restaurateur-article",
+            name: "profile",
           },
         },
         {
-          icon: "mdi-food",
-          title: "Mes menus",
+          icon: "mdi-hamburger",
+          title: "J'ai faim",
           to: {
-            name: "restaurateur-menu",
+            name: "Home",
+          },
+        },
+        {
+          icon: "mdi-bike",
+          title: "Suivre ma livraison",
+          to: {
+            name: "/",
+          },
+        },
+        {
+          icon: "mdi-file-document-multiple",
+          title: "Historiques des commandes",
+          to: {
+            name: "commandHistory",
+          },
+        },
+        {
+          icon: "mdi-account-cowboy-hat",
+          title: "Je parraîne",
+          to: {
+            name: "ParrainageClient",
+          },
+        },
+      ],
+      miniVariant: false,
+      right: true,
+      rightDrawer: false,
+      title: "Vuetify.js",
+    };
+  },
+  async created() {
+    if (
+      this.$store.getters.getInfos.user &&
+      this.$store.getters.getInfos.user.role === 3
+    ) {
+      this.itemsRestaurant = [
+        {
+          icon: "mdi-food",
+          title: "Mon restaurant",
+          to: {
+            name: "restaurant",
+            params: { id: this.$store.getters.getUser.restaurant._id },
           },
         },
         {
           icon: "mdi-truck-delivery",
           title: "Commandes",
           to: {
-            name: "restaurateur-commande",
+            name: "Home",
           },
         },
         {
           icon: "mdi-bike",
           title: "Suivre une livraison",
           to: {
-            name: "restaurateur-suiviLivraison",
+            name: "SuiviCommandClient",
           },
         },
         {
@@ -160,51 +202,8 @@ export default {
             name: "restaurateur-parrainageRestaurateur",
           },
         },
-      ],
-
-      itemsClient: [
-        {
-          icon: "mdi-account",
-          title: "Mon compte",
-          to: {
-            name: "profile",
-          },
-        },
-        {
-          icon: "mdi-hamburger",
-          title: "J'ai faim",
-          to: {
-            name: "Home",
-          },
-        },
-          {
-          icon: "mdi-bike",
-          title: "Suivre ma livraison",
-          to: {
-            name: "SuiviCommandClient",
-          },
-        },
-        {
-          icon: "mdi-file-document-multiple",
-          title: "Historiques des commandes",
-          to: {
-            name: "commandHistory",
-          },
-        },
-         {
-          icon: "mdi-account-cowboy-hat",
-          title: "Je parraîne",
-          to: {
-            name: "ParrainageClient",
-          },
-        },
-      
-      ],
-      miniVariant: false,
-      right: true,
-      rightDrawer: false,
-      title: "Vuetify.js",
-    };
+      ];
+    }
   },
 
   computed: {

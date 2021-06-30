@@ -1,6 +1,6 @@
 <template>
-  <v-container>
-    <h1 class="center">Inscription</h1>
+  <v-card max-width="400" class="mx-auto pa-5" align="center" flat>
+    <h1 class="center">Inscription Restaurateur</h1>
     <v-form ref="form" lazy-validation>
       <div align="center" class="padding">
         <v-text-field
@@ -22,7 +22,7 @@
         <v-text-field
           v-model="user.address"
           label="Adresse"
-          prepend-icon="mdi-phone"
+          prepend-icon="mdi-home"
           :rules="rules.address"
           required
         ></v-text-field>
@@ -53,7 +53,7 @@
         <v-text-field
           v-model="user.resName"
           label="Entreprise"
-          prepend-icon="mdi-lock"
+          prepend-icon="mdi-domain"
           :rules="rules.resName"
           required
         ></v-text-field>
@@ -61,23 +61,23 @@
         <v-text-field
           v-model="user.resDesc"
           label="Description entreprise"
-          prepend-icon="mdi-lock"
+          prepend-icon="mdi-android-messages"
           :rules="rules.resDesc"
           required
         ></v-text-field>
 
-        <v-text-field
+        <!-- <v-text-field
           v-model="user.resImg"
           label="Image de l'entreprise"
-          prepend-icon="mdi-lock"
+          prepend-icon="mdi-image"
           :rules="rules.resImg"
           required
-        ></v-text-field>
+        ></v-text-field> -->
 
         <v-text-field
           v-model="user.rescod"
           label="Cout de livraison"
-          prepend-icon="mdi-lock"
+          prepend-icon="mdi-currency-eur"
           :rules="rules.rescod"
           required
         ></v-text-field>
@@ -85,7 +85,7 @@
         <v-text-field
           v-model="user.resPrep"
           label="Temps de préparation"
-          prepend-icon="mdi-lock"
+          prepend-icon="mdi-av-timer"
           :rules="rules.resPrep"
           required
         ></v-text-field>
@@ -94,14 +94,14 @@
         <v-btn color="blue" @click="validate()">
           Valider
         </v-btn>
-        <p>
+        <p class="mt-5">
           Déjà un compte ?
           <router-link :to="{ name: 'login' }">Se connecter</router-link>
         </p>
       </div>
       <br />
     </v-form>
-  </v-container>
+  </v-card>
 </template>
 <script>
 export default {
@@ -162,7 +162,6 @@ export default {
         resPrep: this.user.resPrep,
         rolId: this.user.rolId,
       };
-      console.log(payload);
       this.$store.dispatch("profileCreate", { infos: payload });
       this.$router.push({ path: "/" });
     },

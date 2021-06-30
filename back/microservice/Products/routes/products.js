@@ -97,8 +97,7 @@ router.delete("/menu/delete", async function (req, res, next) {
   const tokenContent = JWTContent(token).user;
 
   if (tokenContent.role === 3) {
-    const menu = await Menues.findOne({ _id: req.body.id });
-
+    const menu = await Menues.findOne({ _id: req.query.id });
     await menu.remove();
     res.status(201).send("Un menu bien supprimé");
   } else {

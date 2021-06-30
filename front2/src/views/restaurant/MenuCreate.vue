@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-card max-width="400" class="mx-auto pa-5" align="center" flat>
     <h1 class="center">Créer un menu</h1>
     <v-form ref="form" lazy-validation>
       <div align="center" class="padding">
@@ -13,24 +13,24 @@
         <v-text-field
           v-model="menue.description"
           label="Description"
-          prepend-icon="mdi-account"
+          prepend-icon="mdi-android-messages"
           :rules="rules.description"
           required
         ></v-text-field>
         <v-text-field
           v-model="menue.price"
           label="Prix"
-          prepend-icon="mdi-account"
+          prepend-icon="mdi-currency-eur"
           :rules="rules.price"
           required
         ></v-text-field>
-        <v-text-field
+        <!-- <v-text-field
           v-model="menue.img"
           label="Image"
-          prepend-icon="mdi-account"
+          prepend-icon="mdi-image"
           :rules="rules.img"
           required
-        ></v-text-field>
+        ></v-text-field> -->
         <v-col cols="12">
           <v-autocomplete
             v-model="menue.articlesListId"
@@ -46,18 +46,15 @@
           ></v-autocomplete>
         </v-col>
       </div>
+      <br />
       <div class="center">
         <v-btn color="blue" @click="validate()">
           Valider
         </v-btn>
-        <p>
-          Déjà un compte ?
-          <router-link :to="{ name: 'menueCreate' }">Se connecter</router-link>
-        </p>
       </div>
       <br />
     </v-form>
-  </v-container>
+  </v-card>
 </template>
 <script>
 export default {
@@ -93,7 +90,6 @@ export default {
           img: this.menue.img,
           articlesListId: this.menue.articlesListId,
         };
-        console.log(payload);
         this.$store.dispatch("menuCreate", { infos: payload }).finally();
         this.$router.push({ path: "/" });
       }
@@ -104,7 +100,6 @@ export default {
       infos: { id: this.$props.id },
     });
     this.articles = this.$store.getters.getArticles;
-    console.log(this.articles);
   },
 };
 </script>

@@ -1,6 +1,6 @@
 <template>
-  <v-container>
-    <h1 class="center">Inscription</h1>
+  <v-card max-width="400" class="mx-auto pa-5" align="center" flat>
+    <h1 class="center">Inscription Livereur</h1>
     <v-form ref="form" lazy-validation>
       <div align="center" class="padding">
         <v-text-field
@@ -22,7 +22,7 @@
         <v-text-field
           v-model="user.address"
           label="Adresse"
-          prepend-icon="mdi-phone"
+          prepend-icon="mdi-home"
           :rules="rules.address"
           required
         ></v-text-field>
@@ -54,14 +54,14 @@
         <v-btn color="blue" @click="validate()">
           Valider
         </v-btn>
-        <p>
+        <p class="mt-5">
           Déjà un compte ?
           <router-link :to="{ name: 'login' }">Se connecter</router-link>
         </p>
       </div>
       <br />
     </v-form>
-  </v-container>
+  </v-card>
 </template>
 <script>
 export default {
@@ -102,7 +102,6 @@ export default {
         sponsor: this.user.sponsor,
         rolId: this.user.rolId,
       };
-      console.log(payload);
       this.$store.dispatch("profileCreate", { infos: payload }).finally();
       this.$router.push({ path: "/" });
     },
