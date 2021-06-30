@@ -167,8 +167,23 @@ router.put("/take", async function (req, res, next) {
     await delivery
       .updateOne(deliveryUpdate)
       .exec()
-      .then(() => {
+      .then(async () => {
         res.status(201).send("Livraison prise en charge");
+        try {
+          await axios.post(
+            "http://localhost:3005/send",
+            {
+              message: "Commande prise en charge",
+            },
+            {
+              headers: {
+                Authorization: req.headers.authorization,
+              },
+            }
+          );
+        } catch (error) {
+          console.log(error);
+        }
       });
   } else {
     res.status(401).send("Non authorized");

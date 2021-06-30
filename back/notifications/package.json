@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node app"
   },
   "dependencies": {
     "axios": "^0.21.1",
@@ -19,6 +19,7 @@
     "path": "^0.12.7",
     "sequelize": "^6.6.4",
     "socket.io": "^4.1.2",
+    "socket.io-client": "^4.1.2",
     "tedious": "^11.0.9",
     "ws": "^7.5.1"
   }

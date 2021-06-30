@@ -32,8 +32,8 @@
       "url": "http://localhost:3004/",
       "nonAuth": []
     },
-    "ms-paiments": {
-      "apiName": "ms-paiments",
+    "ms-notifications": {
+      "apiName": "ms-notifications",
       "protocol": "http",
       "host": "http://localhost",
       "port": 3005,

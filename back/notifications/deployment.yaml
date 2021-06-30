@@ -1,0 +1,42 @@
+# Deployment file
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ms-deliverys-deployment
+  labels:
+    app: ms-deliverys
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ms-deliverys
+  template:
+    metadata:
+      labels:
+        app: ms-deliverys
+    spec:
+      containers:
+        - name: ms-deliverys
+          image: ms_deliverys_image
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 3002
+---
+# Service file
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: ms-deliverys-service
+spec:
+  # Décommenter la ligne suivante pour fonctionner en local
+  type: LoadBalancer
+  selector:
+    app: ms-deliverys
+  ports:
+    - protocol: TCP
+      port: 3002
+      targetPort: 3002
+      # Décommenter la ligne suivante pour fonctionner en local
+      nodePort: 30002
