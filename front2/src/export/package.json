@@ -1,0 +1,20 @@
+{
+    "name" : "uberveganmenugroupetroiscesirouen",
+    "version": "0.1.6",
+    "scripts": {
+        "build-bundle" : "vue-cli-service build --target lib --name uberveganmenugroupetroiscesirouen ./Menu.vue"
+
+    },
+    "main" : "./dist/uberveganmenugroupetroiscesirouen.common.js",
+    "files": [  "dist/*",  "src/*",  "public/*",  "*.json",  "*.js", "*.vue"],
+    "dependencies": {
+
+        "vue": "^2.6.11",
+        "vue-class-component": "^7.2.3",
+        "vue-property-decorator": "^9.1.2",
+        "vue-router": "^3.2.0",
+        "vuetify": "^2.5.6",
+        "vuex": "^3.4.0",
+        "vuex-persistedstate": "^4.0.0-beta.3"
+    }
+}

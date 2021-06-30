@@ -32,12 +32,11 @@
   </v-card>
 </template>
 <script>
-import Menu from "@/components/Menu.vue";
+//import Menu from "@/components/Menu.vue";
+import MenuImp from "uberveganmenugroupetroiscesirouen"
 
 export default {
-  components: {
-    Menu,
-  },
+  components: {...MenuImp},
   mounted() {
     console.log(this.restaurants[0].id);
   },

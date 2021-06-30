@@ -6,6 +6,7 @@ import Cart from "../views/Cart.vue";
 import Command from "../views/Command.vue";
 import CommandRestaurant from "../views/CommandRestaurant.vue";
 import Inscription from "../views/authentification/Inscription.vue";
+
 import InscriptionLivreur from "../views/authentification/InscriptionLivreur.vue";
 import InscriptionRestaurateur from "../views/authentification/InscriptionRestaurateur.vue";
 import Connexion from "../views/authentification/Connexion.vue";
@@ -183,6 +184,7 @@ const routes: Array<RouteConfig> = [
     component: Interdit,
   },
 ];
+
 
 const router = new VueRouter({
   mode: "history",
