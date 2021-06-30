@@ -19,6 +19,7 @@ import CommandHistory from "../views/client/CommandHistory.vue"
 import roleMiddleware from '@/middleware/roleMiddleware';
 import authMiddleware from '@/middleware/auth';
 import clientParraine from '../views/client/Parrainage.vue'
+import SuiviCommand from '../views/client/SuiviCommand.vue'
 
 Vue.use(VueRouter);
 
@@ -68,6 +69,16 @@ const routes: Array<RouteConfig> = [
     path: "/parrainage",
     name: "ParrainageClient",
     component: clientParraine,
+    meta : {
+      requireAuth : true,
+      requireRole : true,
+      role : 1
+    }
+  },
+  {
+    path: "/suivi/commandeClient",
+    name: "SuiviCommandClient",
+    component: SuiviCommand,
     meta : {
       requireAuth : true,
       requireRole : true,

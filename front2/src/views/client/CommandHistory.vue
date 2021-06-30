@@ -1,18 +1,20 @@
 <template>
-  <v-simple-table>
+<v-card max-width="1000" class="mx-auto pa-5" align="center" flat>
+   <h1 class="center">Historique des commandes</h1>
+ <v-simple-table>
     <template v-slot:default>
       <thead>
         <tr>
-          <th class="text-left">Date</th>
-          <th class="text-left">Restaurant</th>
-          <th class="text-left">Détails de la commande</th>
+          <th >Date</th>
+          <th >Restaurant</th>
+          <th >Détails de la commande</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="item in commandHistory" :key="item.id">
-          <td>{{ item.date }}</td>
-          <td>{{ item.restaurant }}</td>
-          <td>
+          <td style="width : 1%">{{ item.date }}</td>
+          <td style="width : 1%">{{ item.restaurant }}</td>
+          <td style="width : 1%">
             <v-btn @click.stop="$set(dialogDetails, item.id, true)">
               Details
             </v-btn>
@@ -26,6 +28,8 @@
                 <v-card-title> Commande du {{ item.date }} </v-card-title>
                 <v-card-text>
                   {{ item.restaurant }}
+                  <br />
+                  {{item.prix}}
                   <br />
                   <div v-for="article in item.articles" :key="article.id">
                     {{ article.name }}
@@ -47,6 +51,8 @@
       </tbody>
     </template>
   </v-simple-table>
+</v-card>
+ 
 </template>
 <script>
 export default {
@@ -57,6 +63,7 @@ export default {
           id: 1,
           date: "03-06-199",
           restaurant: "1 rue du sel",
+          prix : "50 euros",
           articles: [
             {
               id: 1,

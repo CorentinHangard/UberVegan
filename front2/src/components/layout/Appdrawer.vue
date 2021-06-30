@@ -174,14 +174,14 @@ export default {
           icon: "mdi-hamburger",
           title: "J'ai faim",
           to: {
-            name: "/",
+            name: "Home",
           },
         },
           {
           icon: "mdi-bike",
           title: "Suivre ma livraison",
           to: {
-            name: "/",
+            name: "SuiviCommandClient",
           },
         },
         {

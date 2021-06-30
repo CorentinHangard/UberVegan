@@ -26,17 +26,21 @@
         <v-card>
           <v-list-item-content class="justify-center">
             <div class="mx-auto text-center">
-              <v-btn depressed rounded text to="/profile">
-                Mon Compte
-              </v-btn>
-              <v-divider class="my-3"></v-divider>
-              <v-btn depressed rounded text to="/livreur/livraison">
-                Commandes
-              </v-btn>
-              <v-divider class="my-3"></v-divider>
-              <v-btn depressed rounded text to="/livreur/mesLivraisons">
-                Mes commandes
-              </v-btn>
+              <v-btn depressed rounded text to="/profile"> Mon Compte </v-btn>
+              <div v-if="role == 2">
+                <v-divider class="my-3"></v-divider>
+                <v-btn depressed rounded text to="/livreur/livraison">
+                  Commandes
+                </v-btn>
+              </div>
+
+              <div v-if="role == 2">
+                <v-divider class="my-3"></v-divider>
+                <v-btn depressed rounded text to="/livreur/mesLivraisons">
+                  Mes commandes
+                </v-btn>
+              </div>
+
               <v-divider class="my-3"></v-divider>
               <v-btn depressed rounded text @click="logout">
                 Déconnexion
@@ -70,34 +74,34 @@ export default {
     return {
       clipped: false,
       drawer: false,
-      route : {
-        name : '',
-        param : {
-          id : ''
-        }
-      }
+      route: {
+        name: "",
+        param: {
+          id: "",
+        },
+      },
+      role: null,
     };
   },
-  
-  mounted ()  {
-    
-      const infos = this.$store.getters.getInfos;
-      if (infos.user) {
-        const role = this.$store.getters.getInfos.user.role;
-        if(role == 1){
-          this.route.name = 'Home'
-        }else if ( role == 2){
-          this.route.name = 'livraison'
-        }else if (role == 3 ) {
-          this.route.name = 'restaurant'
-          this.route.param.id = this.$store.getters.getInfos.user.id 
-        }
-        return true
-      }else{
-          this.route.name = 'Home'
-        }
-      return false;
-  
+
+  mounted() {
+    const infos = this.$store.getters.getInfos;
+    if (infos.user) {
+      const role = this.$store.getters.getInfos.user.role;
+      this.role = this.$store.getters.getInfos.user.role;
+      if (role == 1) {
+        this.route.name = "Home";
+      } else if (role == 2) {
+        this.route.name = "livraison";
+      } else if (role == 3) {
+        this.route.name = "restaurant";
+        this.route.param.id = this.$store.getters.getInfos.user.id;
+      }
+      return true;
+    } else {
+      this.route.name = "Home";
+    }
+    return false;
   },
 };
 </script>
