@@ -23,6 +23,9 @@ router.get("/", async function(req, res, next) {
                     res.json(err);
                 });
         }
+    } else if (tokenContent.role === 5) {
+        var logs = await Logs.find({ type: "commande" });
+        res.status(200).json(logs);
     } else {
         res.status(401).send("Non authorized");
     }

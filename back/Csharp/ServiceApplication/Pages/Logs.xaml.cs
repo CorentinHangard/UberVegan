@@ -20,7 +20,17 @@ namespace ServiceApplication.Pages
         public Logs()
         {
             InitializeComponent();
-            dataGetter("http://localhost:3000/ms-logs/?type=All", "GET");
+
+            if (Login.role == "5")
+            {
+                dataGetter("http://localhost:3000/ms-logs", "GET");
+            }
+            else
+            {
+                dataGetter("http://localhost:3000/ms-logs/?type=All", "GET");
+            }
+
+            
         } 
         
         public void dataGetter(string addr, string method)
@@ -66,6 +76,7 @@ namespace ServiceApplication.Pages
         {
             this.NavigationService.Navigate(new Login());
             Login.token = "";
+            Login.role = "";
         }
     }
 }

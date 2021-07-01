@@ -43,6 +43,7 @@ namespace ServiceApplication.Pages
         {
             this.NavigationService.Navigate(new Login());
             Login.token = "";
+            Login.role = "";
         }
 
         private void LogsButton(object sender, RoutedEventArgs e)
