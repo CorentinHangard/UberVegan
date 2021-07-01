@@ -31,7 +31,7 @@ metadata:
   name: ms-irttrackings-service
 spec:
   # Décommenter la ligne suivante pour fonctionner en local
-  type: LoadBalancer
+  # type: LoadBalancer
   selector:
     app: ms-irttrackings
   ports:
@@ -39,4 +39,4 @@ spec:
       port: 3003
       targetPort: 3003
       # Décommenter la ligne suivante pour fonctionner en local
-      nodePort: 30003
+      # nodePort: 30003

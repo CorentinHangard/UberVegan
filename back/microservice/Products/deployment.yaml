@@ -31,7 +31,7 @@ metadata:
   name: ms-products-service
 spec:
   # Décommenter la ligne suivante pour fonctionner en local
-  type: LoadBalancer
+  # type: LoadBalancer
   selector:
     app: ms-products
   ports:
@@ -39,4 +39,4 @@ spec:
       port: 3006
       targetPort: 3006
       # Décommenter la ligne suivante pour fonctionner en local
-      nodePort: 30006
+      # nodePort: 30006
