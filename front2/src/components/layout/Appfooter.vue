@@ -42,7 +42,7 @@ export default{
             {link:"Politiques de confidentialité",
             target:"/politique"},
             {link:"Contact",
-            target:"http://localhost:8080"}
+            target:"/contact"}
         ]
         }
     }

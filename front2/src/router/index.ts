@@ -29,6 +29,7 @@ import SuiviCommand from "../views/client/SuiviCommand.vue";
 import Developpeur from "../views/developpeur/Developpeur.vue";
 import CGU from "../views/CGU.vue";
 import politique from "../views/politique.vue";
+import contact from "../views/contact.vue";
 
 Vue.use(VueRouter);
 
@@ -47,6 +48,11 @@ const routes: Array<RouteConfig> = [
     path: "/politique",
     name: "politique",
     component: politique,
+  },
+  {
+    path: "/contact",
+    name: "contact",
+    component: contact,
   },
   {
     path: "/login",
