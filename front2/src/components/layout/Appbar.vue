@@ -81,7 +81,12 @@ export default {
 
   mounted() {
     const infos = this.$store.getters.getInfos;
-    this.name = this.$store.getters.getUser.profile.fullName.charAt(0);
+    if (this.$store.getters.getUser.profile) {
+      this.name = this.$store.getters.getUser.profile.fullName.charAt(0);
+    } else {
+      this.name = "D";
+    }
+
     if (infos.user) {
       const role = this.$store.getters.getInfos.user.role;
       this.role = this.$store.getters.getInfos.user.role;

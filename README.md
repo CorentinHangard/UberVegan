@@ -1,6 +1,6 @@
 # UberVegan
 
-# Table d'adressage
+## Table d'adressage
 
 Front -> `8080`
 
@@ -17,7 +17,7 @@ Microservices :
 - Stats -> `3007`
 - Users -> `3008`
 
-# Dashboard
+## Dashboard
 
 ```
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.3.1/aio/deploy/recommended.yaml

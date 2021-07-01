@@ -25,7 +25,6 @@ router.get("/", async function (req, res, next) {
       },
     });
 
-    console.log(user);
     if (user.rol_id === 3) {
       restaurant = await Restaurants.findOne({ profileId: profile._id });
     }
@@ -50,6 +49,8 @@ router.get("/", async function (req, res, next) {
       user: user.dataValues,
       restaurant: restaurant,
     });
+  } else if (user.rol_id === 4) {
+    res.status(200).json(user);
   } else if (user.rol_id === 5 || user.rol_id === 6) {
     const user = await model.user.findAll();
     res.status(200).json(user);
