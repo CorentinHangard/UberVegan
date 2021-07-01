@@ -12,6 +12,8 @@ database.initMongoDB();
 database.initMSSQLDB();
 
 var app = express();
+const swaggerUi = require('swagger-ui-express')
+const swaggerFile = require('./doc/swagger_output.json')
 
 app.use(logger("dev"));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -19,6 +21,7 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
+app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile))
 app.disable("etag");
 app.use("/", deliverysRouter);
 
