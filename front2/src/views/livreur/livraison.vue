@@ -29,6 +29,12 @@
           <v-card-title>Information client</v-card-title>
           <v-card-text>
             <v-row align="center" class="mx-0">
+              <v-icon>mdi-account</v-icon>
+              <div class="grey--text ms-4">
+                {{ deliverie.user.profile.fullName }}
+              </div>
+            </v-row>
+            <v-row align="center" class="mx-0">
               <v-icon>mdi-home</v-icon>
               <div class="grey--text ms-4">
                 {{ deliverie.user.profile.address }}
@@ -41,8 +47,22 @@
               </div>
             </v-row>
           </v-card-text>
-          <v-card-title>Statut de la commande :</v-card-title>
-          <v-chip>{{ deliverie.status }}</v-chip>
+
+          <v-card-title>
+            Statut commande :
+            <v-chip
+              class="ml-1"
+              v-if="deliverie.status === 'created'"
+              color="light-blue lighten-2"
+              >{{ deliverie.status }}</v-chip
+            >
+            <v-chip
+              class="ml-1"
+              v-if="deliverie.status === 'refused'"
+              color="red darken-1"
+              >{{ deliverie.status }}</v-chip
+            >
+          </v-card-title>
 
           <v-card-actions>
             <v-btn @click="refuseDelivery(deliverie)" color="error">

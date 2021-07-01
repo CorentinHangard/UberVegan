@@ -6,14 +6,15 @@
     >
       <v-img height="150" v-bind:src="img"></v-img>
       <v-row align="center" class="px-5">
-        <v-col cols="8" align="left">
+        <v-col align="left">
           <v-card-title class="px-0">{{ name }}</v-card-title>
         </v-col>
-        <v-col cols="4" align="right">{{ price }} €</v-col>
+      </v-row>
+      <v-row align="center" class="px-5">
+        <v-col align="right">{{ price }} €</v-col>
       </v-row>
     </router-link>
-    <div v-if="isValid">
-      <v-divider />
+    <div v-if="getUserRole || isValid">
       <br />
     </div>
     <v-row v-if="role == 1">
@@ -65,7 +66,7 @@ export default {
       // return this.src != "img"
       //   ? require("@/assets/restaurants/" + this.src)
       //   : "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.timeout.fr%2Fparis%2Frestaurants%2Ftrouver-un-restaurant-romantique&psig=AOvVaw07LZ0BQppe9IHAOkFC5tY5&ust=1625048270208000&source=images&cd=vfe&ved=0CAoQjRxqFwoTCKDP47rOvPECFQAAAAAdAAAAABAD";
-      return require("@/assets/restaurants/sushi.jpg");
+      return require("@/assets/restaurants/menu.jpg");
     },
     getUserRole() {
       const infos = this.$store.getters.getInfos;

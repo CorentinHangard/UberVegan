@@ -27,19 +27,19 @@
             {{ deliverie.restaurant[0].address }}
           </div>
         </v-row>
-        <v-row align="center" class="mx-0">
-          <v-icon>mdi-phone</v-icon>
-          <div class="grey--text ms-4">
-            {{ deliverie.restaurant[0].phoneNumber }}
-          </div>
-        </v-row>
         <div class="my-4 text-subtitle-1">
-          Prix de la commande : {{ deliverie.order[0].totalPrice }} euros
+          Prix de la commande : {{ deliverie.order[0].totalPrice }} €
         </div>
         <v-divider class="mx-4"></v-divider>
       </v-card-text>
       <v-card-title>Information du client</v-card-title>
       <v-card-text>
+        <v-row align="center" class="mx-0">
+          <v-icon>mdi-account</v-icon>
+          <div class="grey--text ms-4">
+            {{ deliverie.user.profile.fullName }}
+          </div>
+        </v-row>
         <v-row align="center" class="mx-0">
           <v-icon>mdi-home</v-icon>
           <div class="grey--text ms-4">
@@ -53,8 +53,21 @@
           </div>
         </v-row>
       </v-card-text>
-      <v-card-title>Information de la commande :</v-card-title>
-      <v-card-text>{{ deliverie.status }}</v-card-text>
+      <v-card-title>
+        Statut commande :
+        <v-chip
+          class="ml-1"
+          v-if="deliverie.status === 'accepted'"
+          color="light-green darken-1"
+          >{{ deliverie.status }}</v-chip
+        >
+        <v-chip
+          class="ml-1"
+          v-if="deliverie.status === 'took'"
+          color="amber lighten-1"
+          >{{ deliverie.status }}</v-chip
+        >
+      </v-card-title>
       <v-card-actions>
         <v-btn @click="takeDelivery(deliverie)" color="info"> Récupérée </v-btn>
         <v-spacer />

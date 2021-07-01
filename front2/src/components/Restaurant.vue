@@ -24,7 +24,7 @@ export default {
       // return this.src != "img"
       //   ? require("@/assets/restaurants/" + this.src)
       //   : "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.timeout.fr%2Fparis%2Frestaurants%2Ftrouver-un-restaurant-romantique&psig=AOvVaw07LZ0BQppe9IHAOkFC5tY5&ust=1625048270208000&source=images&cd=vfe&ved=0CAoQjRxqFwoTCKDP47rOvPECFQAAAAAdAAAAABAD";
-      return require("@/assets/restaurants/viande.jpg");
+      return require("@/assets/restaurants/salade.jpg");
     },
   },
 };
