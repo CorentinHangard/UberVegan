@@ -1,45 +1,38 @@
 <template>
-  <v-row justify="center" align="center">
-    <v-container>
-      <h1 class="center">Parrainer un restaurateur</h1>
-      <div align="center" class="padding">
-        <v-text
-          >Envoyez votre code promotionnel et bénéficiez d'une réduction sur vos
-          courses. À chaque fois qu'un passager s'inscrit avec votre code
-          d'invitation, vous pourrez envoyer une commande sans frais de
-          livraison (et donc d'être plus compétitif sur les prix 🙂), les frais
-          de livraisons seront pour UberVegan !
-        </v-text>
-        <br />
-        <img src="~/assets/images/parrainage.png" />
-        <br />
-        <span class="title">Votre code de parrainage : </span>
-        <span class="code text-red">{{ codeParrainage }}</span>
-        <span
-          class="btn btn-info text-white copy-btn ml-auto"
-          @click.stop.prevent="copyFunction"
-        >
-          <v-spacer />
+  <v-card max-width="1000" class="mx-auto pa-5" align="center" flat>
+    <v-row justify="center" align="center">
+      <v-container>
+        <h1 class="center">Parrainer un restaurateur</h1>
+        <div align="center" class="padding">
+          <p>
+            Envoyez votre code promotionnel et bénéficiez d'une réduction sur
+            vos livraisons. À chaque fois qu'un restaurateur s'inscrit avec votre code
+            d'invitation, vous pourrez tous deux offrir une livraison au client.
+          </p>
           <br />
-          <v-btn color="light-green">Copier le code</v-btn>
-        </span>
-        <input type="hidden" id="testing-code" :value="codeParrainage" />
-      </div>
-    </v-container>
-  </v-row>
+          <img src="../../assets/parrainage.png" />
+          <br />
+          <span class="title">Votre code de parrainage : </span>
+          <span class="code text-red">{{ codeParrainage }}</span>
+          <span
+            class="btn btn-info text-white copy-btn ml-auto"
+            @click.stop.prevent="copyFunction"
+          >
+            <v-spacer />
+            <br />
+            <v-btn color="light-green">Copier le code</v-btn>
+          </span>
+          <input type="hidden" id="testing-code" :value="codeParrainage" />
+        </div>
+      </v-container>
+    </v-row>
+  </v-card>
 </template>
-
 <script>
-import Logo from "~/components/Logo.vue";
-import VuetifyLogo from "~/components/VuetifyLogo.vue";
-
 export default {
-  middleware: ["auth", "restaurateurMiddleware"],
+  middleware: "auth",
   layout: "restaurateurLayout",
-  components: {
-    Logo,
-    VuetifyLogo,
-  },
+  components: {},
 
   data() {
     return {
@@ -56,6 +49,7 @@ export default {
 
       try {
         var successful = document.execCommand("copy");
+        testingCodeToCopy.setAttribute("type", "hidden");
         var msg = successful ? "successful" : "unsuccessful";
         alert("Code de parrainage copié :)");
       } catch (err) {
@@ -63,9 +57,13 @@ export default {
       }
 
       /* unselect the range */
-      testingCodeToCopy.setAttribute("type", "hidden");
+
       window.getSelection().removeAllRanges();
     },
+  },
+  async created() {
+    await this.$store.dispatch("profile");
+    this.codeParrainage = this.$store.getters.getUser.profile.sponsorCode;
   },
 };
 </script>

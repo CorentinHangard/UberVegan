@@ -14,6 +14,11 @@
         ></v-progress-linear>
       </template>
 
+      <div v-if="!this.deliveries" class="checkout-message">
+        <h3>Pas d'article...</h3>
+        <router-link to="/">Retour vers la page principale</router-link>
+      </div>
+
       <v-card-title>{{ deliverie.restaurant[0].name }}</v-card-title>
 
       <v-card-text>
@@ -83,12 +88,14 @@ export default {
       this.$store.dispatch("deliveryAccept", {
         infos: { id: deliverie._id },
       });
+      window.location.reload();
     },
 
     refuseDelivery(deliverie) {
       this.$store.dispatch("deliveryRefuse", {
         infos: { id: deliverie._id },
       });
+      window.location.reload();
     },
   },
   async created() {

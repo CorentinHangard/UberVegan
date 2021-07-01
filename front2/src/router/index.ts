@@ -24,8 +24,11 @@ import roleMiddleware from "@/middleware/roleMiddleware";
 import statusMiddleware from "@/middleware/statusMiddleware";
 import authMiddleware from "@/middleware/auth";
 import clientParraine from "../views/client/Parrainage.vue";
+import restaurateurParraine from "../views/restaurateur/parrainageRestaurateur.vue";
 import SuiviCommand from "../views/client/SuiviCommand.vue";
 import Developpeur from "../views/developpeur/Developpeur.vue";
+import CGU from "../views/CGU.vue";
+import politique from "../views/politique.vue";
 
 Vue.use(VueRouter);
 
@@ -34,6 +37,16 @@ const routes: Array<RouteConfig> = [
     path: "/",
     name: "Home",
     component: Home,
+  },
+  {
+    path: "/CGU",
+    name: "CGU",
+    component: CGU,
+  },
+  {
+    path: "/politique",
+    name: "politique",
+    component: politique,
   },
   {
     path: "/login",
@@ -166,6 +179,16 @@ const routes: Array<RouteConfig> = [
     component: ArticleEdit,
     props: true,
     meta: {
+      requireRole: true,
+      role: 3,
+    },
+  },
+  {
+    path: "/restaurant/parrainage",
+    name: "ParrainageRestaurateur",
+    component: restaurateurParraine,
+    meta: {
+      requireAuth: true,
       requireRole: true,
       role: 3,
     },

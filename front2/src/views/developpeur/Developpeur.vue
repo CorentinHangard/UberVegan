@@ -33,10 +33,10 @@
 </template>
 <script>
 //import Menu from "@/components/Menu.vue";
-import MenuImp from "uberveganmenugroupetroiscesirouen"
+// import MenuImp from "uberveganmenugroupetroiscesirouen"
 
 export default {
-  components: {...MenuImp},
+  // components: {...MenuImp},
   mounted() {
     console.log(this.restaurants[0].id);
   },

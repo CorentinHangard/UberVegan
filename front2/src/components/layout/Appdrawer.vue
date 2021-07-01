@@ -6,8 +6,8 @@
     fixed
     app
   >
-    <div align="center" class="pt-10">
-      <v-btn v-if="!isCon" class="blue" to="/login"> Se connecter </v-btn>
+    <div v-if="!isCon" align="center" class="pt-10">
+      <v-btn  class="blue" to="/login"> Se connecter </v-btn>
     </div>
     <v-list v-if="getUserRole == 1">
       <v-list-item
@@ -105,14 +105,14 @@ export default {
           icon: "mdi-bike",
           title: "Gestion livraison",
           to: {
-            name: "livreur-livraison",
+            name: "livraison",
           },
         },
         {
-          icon: "mdi-account-cowboy-hat",
-          title: "Parrainer livreur",
+          icon: "mdi-bike",
+          title: "Mes livraisons",
           to: {
-            name: "livreur-parrainageLivreur",
+            name: "mesLivraisons",
           },
         },
       ],
@@ -200,7 +200,7 @@ export default {
           icon: "mdi-account-cowboy-hat",
           title: "Parrainer restaurateur",
           to: {
-            name: "restaurateur-parrainageRestaurateur",
+            name: "ParrainageRestaurateur",
           },
         },
       ];

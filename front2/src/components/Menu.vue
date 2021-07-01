@@ -1,5 +1,6 @@
 <template>
   <v-card max-width="400" class="mx-auto pa-5" align="center">
+    <v-alert type="success" v-if='isValid'>Menu ajouté au panier</v-alert>
     <router-link
       :to="{ name: 'menu', params: { id: id } }"
       style="text-decoration: none; color: inherit;"
@@ -17,14 +18,14 @@
     <br />
     <v-row>
       <v-col>
-        <v-btn color="green" @click="ajoutCart">
+        <v-btn color="success" @click="ajoutCart">
           Ajouter au panier
         </v-btn>
       </v-col>
     </v-row>
     <v-row>
       <v-col>
-        <v-btn color="red" v-if="getUserRole" @click="supprimer">
+        <v-btn color="error" v-if="getUserRole" @click="supprimer">
           Supprimer
         </v-btn>
       </v-col>
@@ -34,12 +35,18 @@
 
 <script Lang="ts">
 export default {
+  data(){
+    return {
+      isValid: false
+    }
+  },
   props: ["name", "description", "src", "price", "id", "restoId"],
   methods: {
     ajoutCart() {
       this.$store
         .dispatch("cart", { infos: { id: this.id, count: 1 } })
         .finally();
+      this.isValid = true
     },
     supprimer() {
       this.$store.dispatch("menuDelete", { infos: { id: this.id } }).finally();

@@ -9,9 +9,18 @@
           style="height: 50%; width: 50%; display: flex"
       /></router-link>
       <v-spacer />
-      <v-btn v-if="isConnectedVal" icon to="/cart">
-        <v-icon> mdi-cart </v-icon>
-      </v-btn>
+      <v-badge
+        color="blue"
+        content="3"
+        left
+        inline
+        v-if="isConnectedVal"
+      >
+        <v-btn v-if="isConnectedVal" icon to="/cart">
+          <v-icon> mdi-cart </v-icon>
+        </v-btn>
+      </v-badge>
+
       <v-btn v-if="!isConnectedVal" class="blue" to="/login">
         Se connecter
       </v-btn>
@@ -27,20 +36,6 @@
           <v-list-item-content class="justify-center">
             <div class="mx-auto text-center">
               <v-btn depressed rounded text to="/profile"> Mon Compte </v-btn>
-              <div v-if="role == 2">
-                <v-divider class="my-3"></v-divider>
-                <v-btn depressed rounded text to="/livreur/livraison">
-                  Commandes
-                </v-btn>
-              </div>
-
-              <div v-if="role == 2">
-                <v-divider class="my-3"></v-divider>
-                <v-btn depressed rounded text to="/livreur/mesLivraisons">
-                  Mes commandes
-                </v-btn>
-              </div>
-
               <v-divider class="my-3"></v-divider>
               <v-btn depressed rounded text @click="logout">
                 Déconnexion

@@ -1,5 +1,6 @@
 <template>
   <div class="checkout-box">
+    <h2>Mon panier : </h2>
     <ul class="checkout-list" v-if="menus.length">
       <transition-group name="fade">
         <li v-for="item in menus" :key="item.menu._id" class="checkout-product">
@@ -15,11 +16,11 @@
     </div>
     <h3 class="total" v-if="menus.length">Total: {{ totalPrice }} €</h3>
     <v-card v-if="menus.length" align="right" flat>
-      <v-btn @click="reset()">
+      <v-btn @click="reset()" color='error'>
         Annuler
       </v-btn>
-      <v-btn @click="commander()" class="ml-5">
-        Commander
+      <v-btn @click="commander()" class="ml-5" color='success'>
+        Valider
       </v-btn>
     </v-card>
   </div>

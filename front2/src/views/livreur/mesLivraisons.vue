@@ -14,6 +14,8 @@
         ></v-progress-linear>
       </template>
 
+      <v-alert type="success" v-if='isValid'> Commande livrée </v-alert>
+
       <v-card-title>{{ deliverie.restaurant[0].name }}</v-card-title>
 
       <v-card-text>
@@ -52,9 +54,7 @@
       <v-card-title>Information de la commande :</v-card-title>
       <v-card-text>{{ deliverie.status }}</v-card-text>
       <v-card-actions>
-        <v-btn @click="takeDelivery(deliverie)" color="blue">
-          Récupérée
-        </v-btn>
+        <v-btn @click="takeDelivery(deliverie)" color="blue"> Récupérée </v-btn>
         <v-spacer />
         <v-btn @click="deliverDelivery(deliverie)" color="green">
           Livrée
@@ -75,6 +75,7 @@ export default {
     return {
       loading: false,
       deliveries: [],
+      isValid: false
     };
   },
   methods: {
@@ -82,12 +83,14 @@ export default {
       this.$store.dispatch("deliveryTake", {
         infos: { id: deliverie._id },
       });
+      window.location.reload();
     },
 
     deliverDelivery(deliverie) {
       this.$store.dispatch("deliveryDelivered", {
         infos: { id: deliverie._id },
       });
+      this.isValid = true
     },
   },
   async created() {
