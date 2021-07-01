@@ -190,13 +190,6 @@ export default {
           },
         },
         {
-          icon: "mdi-history",
-          title: "Historique commandes",
-          to: {
-            name: "restaurateur-historiqueCommande",
-          },
-        },
-        {
           icon: "mdi-account-cowboy-hat",
           title: "Parrainer restaurateur",
           to: {
