@@ -51,7 +51,6 @@
       </v-card-text>
       <v-card-title>Information de la commande :</v-card-title>
       <v-card-text>{{ deliverie.status }}</v-card-text>
-     
     </v-card>
   </v-row>
 </template>
@@ -69,20 +68,15 @@ export default {
       deliveries: [],
     };
   },
-  methods: {
-
-  },
+  methods: {},
   async created() {
     await this.$store.dispatch("deliveries");
     const del = this.$store.getters.getDeliveries;
     const user = this.$store.getters.getDeliveries;
 
     for (let index = 0; index < del.length; index++) {
-        this.deliveries.push(del[index]);
-      
+      this.deliveries.push(del[index]);
     }
-
-    console.log(this.deliveries);
   },
 };
 </script>

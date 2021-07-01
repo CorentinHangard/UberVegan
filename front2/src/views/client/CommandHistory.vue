@@ -27,8 +27,18 @@
                 <div v-bind:style="{ backgroundColor: color }">
                   <v-card-title> Commande du {{ item.date }} </v-card-title>
                   <v-card-text>
-                    <span style="font-weight:bold">Restaurant:</span>
-                    {{ item.restaurant.name }}
+                    <span style="font-weight:bold">Restaurant: </span>
+                    <span>{{ item.restaurant.name }}</span>
+                    <br />
+                    <span style="font-weight:bold"
+                      >Status de la commande:
+                    </span>
+                    <span>{{ item.status }}</span>
+                    <br />
+                    <span style="font-weight:bold" v-if="item.delivery"
+                      >Status de la livraison:
+                    </span>
+                    <span v-if="item.delivery">{{ item.delivery.status }}</span>
                     <br />
                     <span style="font-weight:bold">Articles :</span>
                     <br />
@@ -77,6 +87,7 @@ export default {
         ...this.commandHistory[index],
         articles: [],
         restaurant: [],
+        delivery: [],
       };
 
       await this.$store.dispatch("restaurant", {
@@ -85,6 +96,11 @@ export default {
       updatedCommandHistory[
         index
       ].restaurant = this.$store.getters.getRestaurant;
+
+      await this.$store.dispatch("deliveryByOrder", {
+        infos: { id: this.commandHistory[index]._id },
+      });
+      updatedCommandHistory[index].delivery = this.$store.getters.getDelivery;
 
       for (
         let index2 = 0;
@@ -102,6 +118,7 @@ export default {
       }
     }
     this.commandHistory = updatedCommandHistory;
+    console.log(this.commandHistory);
   },
 };
 </script>

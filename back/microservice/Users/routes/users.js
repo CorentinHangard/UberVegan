@@ -94,6 +94,7 @@ router.post("/create", async function (req, res, next) {
         const token = createJWT({
           id: user.usr_id,
           role: user.rol_id,
+          status: user.usr_status,
         });
         res.status(201).json(token);
       })
@@ -142,6 +143,7 @@ router.post("/create", async function (req, res, next) {
             const token = createJWT({
               id: user.usr_id,
               role: user.rol_id,
+              status: user.usr_status,
             });
             res.status(201).json(token);
           })

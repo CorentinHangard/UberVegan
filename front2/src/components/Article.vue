@@ -1,11 +1,15 @@
 <template>
   <v-card align="center" class="pb-5">
     <v-img height="150" v-bind:src="img"></v-img>
-    <v-card-title>{{ article.name }}</v-card-title>
+    <v-row align="center" class="px-5">
+      <v-col cols="8" align="left">
+        <v-card-title class="px-0">{{ article.name }}</v-card-title>
+      </v-col>
+      <v-col cols="4" align="right">{{ article.price }} €</v-col>
+    </v-row>
     <v-card-text>
       <v-row>
         <v-col align="left">{{ article.description }}</v-col>
-        <v-col align="right">{{ article.price }} €</v-col>
       </v-row>
     </v-card-text>
     <v-btn

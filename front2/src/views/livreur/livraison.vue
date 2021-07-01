@@ -1,5 +1,10 @@
 <template>
-  <v-row justify="center" align="center">
+  <div class="checkout-box">
+    <h2>Les livraisons disponibles :</h2>
+    <div v-if="deliveries.length === 0" class="pt-5 pl-10">
+      <h3>Pas de livraison pour le moment...</h3>
+      <!-- <router-link to="/">Retour vers la page principale</router-link> -->
+    </div>
     <v-card
       class="mx-auto my-4"
       max-width="374"
@@ -13,11 +18,6 @@
           indeterminate
         ></v-progress-linear>
       </template>
-
-      <div v-if="!this.deliveries" class="checkout-message">
-        <h3>Pas d'article...</h3>
-        <router-link to="/">Retour vers la page principale</router-link>
-      </div>
 
       <v-card-title>{{ deliverie.restaurant[0].name }}</v-card-title>
 
@@ -67,7 +67,7 @@
         </v-btn>
       </v-card-actions>
     </v-card>
-  </v-row>
+  </div>
 </template>
 
 <script>
@@ -109,3 +109,18 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.checkout-box {
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  margin: 50px auto;
+  box-sizing: border-box;
+  padding: 1em;
+}
+.checkout-message {
+  font-size: 1.5em;
+}
+</style>

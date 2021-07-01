@@ -9,5 +9,6 @@ INSERT INTO T_ROLE_ROL (rol_name) VALUES ('restorer');
 INSERT INTO T_ROLE_ROL (rol_name) VALUES ('developer');
 INSERT INTO T_ROLE_ROL (rol_name) VALUES ('service commercial');
 INSERT INTO T_ROLE_ROL (rol_name) VALUES ('service technique');
+INSERT INTO T_USER_USR (usr_email, usr_password, usr_status, rol_id) VALUES ('login@dev.com','123456',0,4);
 INSERT INTO T_USER_USR (usr_email, usr_password, usr_status, rol_id) VALUES ('login@servicecom.com','123456',0,5);
-INSERT INTO T_USER_USR (usr_email, usr_password, usr_status, rol_id) VALUES ('login@servicetec.com','123456',0,6);
+INSERT INTO T_USER_USR (usr_email, usr_password, usr_status, rol_id) VALUES ('login@servicecom.com','123456',0,6);

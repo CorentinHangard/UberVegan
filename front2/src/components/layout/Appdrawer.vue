@@ -7,7 +7,7 @@
     app
   >
     <div v-if="!isCon" align="center" class="pt-10">
-      <v-btn  class="blue" to="/login"> Se connecter </v-btn>
+      <v-btn class="blue" to="/login"> Se connecter </v-btn>
     </div>
     <v-list v-if="getUserRole == 1">
       <v-list-item
@@ -180,13 +180,6 @@ export default {
           to: {
             name: "commandRestaurant",
             params: { id: this.$store.getters.getUser.restaurant._id },
-          },
-        },
-        {
-          icon: "mdi-bike",
-          title: "Suivre une livraison",
-          to: {
-            name: "SuiviCommandClient",
           },
         },
         {

@@ -11,12 +11,12 @@
       <v-spacer />
       <v-badge
         color="blue"
-        content="3"
+        :content="cartCount"
         left
         inline
-        v-if="isConnectedVal"
+        v-if="isConnectedVal && role == 1"
       >
-        <v-btn v-if="isConnectedVal" icon to="/cart">
+        <v-btn icon to="/cart">
           <v-icon> mdi-cart </v-icon>
         </v-btn>
       </v-badge>
@@ -28,7 +28,7 @@
         <template v-slot:activator="{ on }">
           <v-btn icon x-large v-on="on">
             <v-avatar color="green" size="40">
-              <span class="white--text text-h5">CC</span>
+              <span class="white--text text-h5">{{ name }}</span>
             </v-avatar>
           </v-btn>
         </template>
@@ -81,6 +81,7 @@ export default {
 
   mounted() {
     const infos = this.$store.getters.getInfos;
+    this.name = this.$store.getters.getUser.profile.fullName.charAt(0);
     if (infos.user) {
       const role = this.$store.getters.getInfos.user.role;
       this.role = this.$store.getters.getInfos.user.role;
@@ -97,6 +98,22 @@ export default {
       this.route.name = "Home";
     }
     return false;
+  },
+  computed: {
+    cartCount() {
+      if (this.$store.getters.getCart.length != 0) {
+        var count = 0;
+        for (
+          let index = 0;
+          index < this.$store.getters.getCart.length;
+          index++
+        ) {
+          count += this.$store.getters.getCart[index].count;
+        }
+        return count;
+      }
+      return "0";
+    },
   },
 };
 </script>

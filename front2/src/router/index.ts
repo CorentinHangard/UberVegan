@@ -222,7 +222,6 @@ const routes: Array<RouteConfig> = [
   },
 ];
 
-
 const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
@@ -279,11 +278,9 @@ router.beforeEach((to, from, next) => {
       next();
     }
   } else {
-    console.log("test middleware");
     next();
   }
   if (to.matched.some((record) => record.meta.requireStatus)) {
-    console.log(statusMiddleware());
     if (statusMiddleware() != 0) {
       next({
         path: "/status",

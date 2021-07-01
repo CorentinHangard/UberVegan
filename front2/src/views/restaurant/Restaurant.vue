@@ -1,5 +1,11 @@
 <template>
   <v-container>
+    <v-btn @click="$router.go(-1)">
+      <v-icon dark small class="pr-1">
+        mdi-arrow-left
+      </v-icon>
+      Retour
+    </v-btn>
     <v-card max-width="800" class="mx-auto" align="center" flat>
       <v-col>
         <v-row align="center" justify="center">
@@ -42,7 +48,7 @@
         <v-col
           xs="12"
           sm="6"
-          md="3"
+          md="4"
           lg="3"
           v-for="item in menus"
           :key="item._id"

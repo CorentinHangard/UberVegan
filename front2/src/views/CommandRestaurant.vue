@@ -1,64 +1,84 @@
 <template>
   <v-container>
-    <v-alert
-      v-if="isMessage"
-      type="info"
-      icon="mdi-account-cowboy-hat"
-      dismissible
-      max-width="600"
-      justify="center"
-      align="center"
-      class="mx-auto my-4"
-    >
-      {{ message }}
-    </v-alert>
-    <v-card
-      class="mx-auto mt-10"
-      max-width="400"
-      align="center"
-      flat
-      v-if="isCommand"
-    >
-      <v-row>
-        <v-col
-          ><h1>Commande n°</h1>
-          {{ this.command._id }}</v-col
-        >
-      </v-row>
-      <v-row>
-        <v-col><span>Etat de la commande :</span></v-col>
-        <v-col>{{ this.command.status }}</v-col>
-      </v-row>
-      <v-row v-if="inLivraison">
-        <v-col><span>Etat de la livraison :</span></v-col>
-        <v-col>{{ this.delivery.status }}</v-col>
-      </v-row>
-      <br />
-      <v-btn
-        color="green"
-        v-if="getUserRoleRestaurateur && !inLivraison"
-        @click="valider()"
-      >
-        valider
-      </v-btn>
+    <v-card max-width="1000" class="mx-auto pa-5" align="center" flat>
+      <v-simple-table>
+        <template v-slot:default>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>ID de la commande</th>
+              <th>Status de la commande</th>
+              <th>Options</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="item in command" :key="item._id">
+              <td>{{ item.date }}</td>
+              <td>{{ item._id }}</td>
+              <td>{{ item.status }}</td>
+              <td>
+                <v-btn v-if="item.status === 'payed'" @click="valider(item._id)"
+                  >Valider</v-btn
+                >
+                <v-btn @click.stop="$set(dialogDetails, item._id, true)">
+                  Details
+                </v-btn>
+                <v-dialog
+                  v-model="dialogDetails[item._id]"
+                  :key="item._id"
+                  width="600"
+                  persistent
+                >
+                  <div v-bind:style="{ backgroundColor: color }">
+                    <v-card-title> Commande n° {{ item._id }} </v-card-title>
+                    <v-card-text>
+                      <span style="font-weight:bold">Status:</span>
+                      {{ item.status }}
+                      <br />
+                      <span style="font-weight:bold">Articles :</span>
+                      <br />
+                      <div
+                        v-for="article in item.articles"
+                        :key="article.id"
+                        class="ml-2"
+                      >
+                        - {{ article.name }}
+                      </div>
+                    </v-card-text>
+                    <v-card-actions>
+                      <v-spacer></v-spacer>
+                      <v-btn
+                        color="primary"
+                        flat
+                        @click.stop="$set(dialogDetails, item._id, false)"
+                        >Close</v-btn
+                      >
+                    </v-card-actions>
+                  </div>
+                </v-dialog>
+              </td>
+            </tr>
+          </tbody>
+        </template>
+      </v-simple-table>
     </v-card>
   </v-container>
 </template>
 
 <script>
-import io from "socket.io-client";
 export default {
   props: ["id"],
   data() {
     return {
       command: [],
       delivery: [],
+      dialogDetails: {},
       user: {},
       inLivraison: false,
       message: "",
       isMessage: false,
       isCommand: false,
-      socket: io("localhost:3005"),
+      color: "white",
     };
   },
   computed: {
@@ -84,33 +104,44 @@ export default {
     },
   },
   methods: {
-    valider() {
+    valider(id) {
       this.$store.dispatch("commandValid", {
-        infos: { id: this.command._id },
+        infos: { id: id },
       });
       window.location.reload();
     },
-  },
-  mounted() {
-    this.socket.on("MESSAGE", (data) => {
-      console.log("took");
-      this.isMessage = true;
-      this.message = data.message;
-    });
   },
 
   async created() {
     await this.$store.dispatch("commandsRestaurant", {
       infos: { id: this.$props.id },
     });
-    this.command = [];
-    const commands = this.$store.getters.getCommands;
-    for (let index = 0; index < commands.length; index++) {
-      if (commands[index].status === "payed") {
-        this.isCommand = true;
-        this.command = commands[index];
+    this.command = this.$store.getters.getCommands;
+    const updatedCommandHistory = [];
+
+    for (let index = 0; index < this.command.length; index++) {
+      updatedCommandHistory[index] = {
+        ...this.command[index],
+        articles: [],
+        restaurant: [],
+      };
+
+      for (
+        let index2 = 0;
+        index2 < this.command[index].content.length;
+        index2++
+      ) {
+        await this.$store.dispatch("article", {
+          infos: {
+            id: this.command[index].content[index2],
+          },
+        });
+        updatedCommandHistory[index].articles.push(
+          this.$store.getters.getArticle
+        );
       }
     }
+    this.command = updatedCommandHistory;
   },
 };
 </script>

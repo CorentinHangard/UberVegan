@@ -42,6 +42,20 @@
         valider
       </v-btn>
     </v-card>
+    <v-card
+      class="mx-auto mt-10"
+      max-width="400"
+      align="center"
+      flat
+      v-if="!isCommand"
+    >
+      <v-row>
+        <v-col>
+          <h1>Pas de livraison en cours...</h1>
+          <router-link to="/">Retour vers la page principale</router-link>
+        </v-col>
+      </v-row>
+    </v-card>
   </v-container>
 </template>
 
@@ -103,9 +117,7 @@ export default {
     await this.$store.dispatch("command", {
       infos: { id: this.$props.id },
     });
-    console.log(this.$store.getters.getCommand);
     if (this.$store.getters.getCommand.status === "validated") {
-      console.log(this.$props.id);
       await this.$store.dispatch("deliveryByOrder", {
         infos: { id: this.$props.id },
       });
@@ -121,7 +133,6 @@ export default {
       }
     } else {
       this.isCommand = true;
-      console.log("fewr");
       this.command = this.$store.getters.getCommand;
     }
   },

@@ -1,52 +1,60 @@
 <template>
-  <v-card max-width="500" class="mx-auto pa-5" align="center" flat>
-    <h1 class="center">Modifier un article</h1>
-    <br />
-    <v-col align="center" justify="center">
-      <v-row cols="12" sm="3" style="display: block">
-        <v-text-field
-          v-model="menue.name"
-          label="Nom"
-          prepend-icon="mdi-account"
-          :readonly="!readonly"
-        ></v-text-field>
-        <v-text-field
-          v-model="menue.description"
-          label="Description"
-          prepend-icon="mdi-android-messages"
-          :readonly="!readonly"
-        ></v-text-field>
-        <v-text-field
-          v-model="menue.price"
-          label="Prix"
-          prepend-icon="mdi-currency-eur"
-          :readonly="!readonly"
-        ></v-text-field>
-        <!-- <v-text-field
+  <v-container>
+    <v-btn @click="$router.go(-1)">
+      <v-icon dark small class="pr-1">
+        mdi-arrow-left
+      </v-icon>
+      Retour
+    </v-btn>
+    <v-card max-width="500" class="mx-auto pa-5" align="center" flat>
+      <h1 class="center">Modifier un article</h1>
+      <br />
+      <v-col align="center" justify="center">
+        <v-row cols="12" sm="3" style="display: block">
+          <v-text-field
+            v-model="menue.name"
+            label="Nom"
+            prepend-icon="mdi-account"
+            :readonly="!readonly"
+          ></v-text-field>
+          <v-text-field
+            v-model="menue.description"
+            label="Description"
+            prepend-icon="mdi-android-messages"
+            :readonly="!readonly"
+          ></v-text-field>
+          <v-text-field
+            v-model="menue.price"
+            label="Prix"
+            prepend-icon="mdi-currency-eur"
+            :readonly="!readonly"
+          ></v-text-field>
+          <!-- <v-text-field
           v-model="menue.img"
           label="Image"
           prepend-icon="mdi-image"
           :readonly="!readonly"
         ></v-text-field> -->
-        <v-text-field
-          v-model="menue.category"
-          label="Catégorie"
-          prepend-icon="mdi-account"
-          :readonly="!readonly"
-        ></v-text-field>
-      </v-row>
-      <br />
-      <v-btn color="red" @click="cancel()" v-if="readonly" class="px-6">
-        Annuler
-      </v-btn>
-      <v-btn color="green" @click="save()" v-if="readonly" class="px-6 ml-5">
-        Modifier
-      </v-btn>
-      <v-btn color="blue" @click="changerReadOnly()" v-if="!readonly">
-        Activer la modification
-      </v-btn>
-    </v-col>
-  </v-card>
+          <v-text-field
+            v-model="menue.category"
+            label="Catégorie"
+            prepend-icon="mdi-account"
+            :readonly="!readonly"
+          ></v-text-field>
+        </v-row>
+        <br />
+        <v-btn color="red" @click="cancel()" v-if="readonly" class="px-6">
+          Annuler
+        </v-btn>
+        <v-btn color="green" @click="save()" v-if="readonly" class="px-6 ml-5">
+          Modifier
+        </v-btn>
+        <v-btn color="blue" @click="changerReadOnly()" v-if="!readonly">
+          Activer la modification
+        </v-btn>
+      </v-col>
+    </v-card>
+  </v-container>
 </template>
 <script>
 import Vuetify from "vuetify";

@@ -14,7 +14,8 @@
             <v-col>
               <span
                 >Voici le composant Menu permettant l'affichage des menus dans
-                l'application. Pour le télécharger veuillez entrer la commande suivante dans votre commande prompt : npm i UberVeganMenu
+                l'application. Pour le télécharger veuillez entrer la commande
+                suivante dans votre commande prompt : npm i UberVeganMenu
               </span>
             </v-col>
 
@@ -33,13 +34,10 @@
 </template>
 <script>
 //import Menu from "@/components/Menu.vue";
-// import MenuImp from "uberveganmenugroupetroiscesirouen"
+import Menu from "uberveganmenugroupetroiscesirouen";
 
 export default {
-  // components: {...MenuImp},
-  mounted() {
-    console.log(this.restaurants[0].id);
-  },
+  components: { Menu },
   data() {
     return {
       restaurants: [

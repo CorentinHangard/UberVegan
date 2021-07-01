@@ -1,60 +1,68 @@
 <template>
-  <v-card max-width="400" class="mx-auto pa-5" align="center" flat>
-    <h1 class="center">Créer un menu</h1>
-    <v-form ref="form" lazy-validation>
-      <div align="center" class="padding">
-        <v-text-field
-          v-model="menue.name"
-          label="Nom"
-          prepend-icon="mdi-account"
-          :rules="rules.name"
-          required
-        ></v-text-field>
-        <v-text-field
-          v-model="menue.description"
-          label="Description"
-          prepend-icon="mdi-android-messages"
-          :rules="rules.description"
-          required
-        ></v-text-field>
-        <v-text-field
-          v-model="menue.price"
-          label="Prix"
-          prepend-icon="mdi-currency-eur"
-          :rules="rules.price"
-          required
-        ></v-text-field>
-        <!-- <v-text-field
+  <v-container>
+    <v-btn @click="$router.go(-1)">
+      <v-icon dark small class="pr-1">
+        mdi-arrow-left
+      </v-icon>
+      Retour
+    </v-btn>
+    <v-card max-width="400" class="mx-auto pa-5" align="center" flat>
+      <h1 class="center">Créer un menu</h1>
+      <v-form ref="form" lazy-validation>
+        <div align="center" class="padding">
+          <v-text-field
+            v-model="menue.name"
+            label="Nom"
+            prepend-icon="mdi-account"
+            :rules="rules.name"
+            required
+          ></v-text-field>
+          <v-text-field
+            v-model="menue.description"
+            label="Description"
+            prepend-icon="mdi-android-messages"
+            :rules="rules.description"
+            required
+          ></v-text-field>
+          <v-text-field
+            v-model="menue.price"
+            label="Prix"
+            prepend-icon="mdi-currency-eur"
+            :rules="rules.price"
+            required
+          ></v-text-field>
+          <!-- <v-text-field
           v-model="menue.img"
           label="Image"
           prepend-icon="mdi-image"
           :rules="rules.img"
           required
         ></v-text-field> -->
-        <v-col cols="12">
-          <v-autocomplete
-            v-model="menue.articlesListId"
-            :items="articles"
-            item-text="name"
-            item-value="_id"
-            dense
-            chips
-            small-chips
-            label="Articles"
-            multiple
-            solo
-          ></v-autocomplete>
-        </v-col>
-      </div>
-      <br />
-      <div class="center">
-        <v-btn color="blue" @click="validate()">
-          Valider
-        </v-btn>
-      </div>
-      <br />
-    </v-form>
-  </v-card>
+          <v-col cols="12">
+            <v-autocomplete
+              v-model="menue.articlesListId"
+              :items="articles"
+              item-text="name"
+              item-value="_id"
+              dense
+              chips
+              small-chips
+              label="Articles"
+              multiple
+              solo
+            ></v-autocomplete>
+          </v-col>
+        </div>
+        <br />
+        <div class="center">
+          <v-btn color="blue" @click="validate()">
+            Valider
+          </v-btn>
+        </div>
+        <br />
+      </v-form>
+    </v-card>
+  </v-container>
 </template>
 <script>
 export default {
