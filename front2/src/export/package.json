@@ -1,8 +1,8 @@
 {
     "name" : "uberveganmenugroupetroiscesirouen",
-    "version": "0.1.6",
+    "version": "0.1.8",
     "scripts": {
-        "build-bundle" : "vue-cli-service build --target lib --name uberveganmenugroupetroiscesirouen ./Menu.vue"
+        "build-bundle" : "vue-cli-service build --target lib --name uberveganmenugroupetroiscesirouen ../components/Menu.vue"
 
     },
     "main" : "./dist/uberveganmenugroupetroiscesirouen.common.js",

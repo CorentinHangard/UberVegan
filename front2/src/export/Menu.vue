@@ -19,7 +19,8 @@
 </template>
 
 <script Lang="ts">
-export default {
+import Vue from "vue";
+export default Vue.extend ({
   props: ["name", "description", "src", "price", "id", "restoId"],
   methods: {
     ajoutCart() {
@@ -55,7 +56,7 @@ export default {
       return false;
     },
   },
-};
+});
 </script>
 
 <style></style>
