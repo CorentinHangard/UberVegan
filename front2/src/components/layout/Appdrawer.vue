@@ -7,7 +7,7 @@
     app
   >
     <div v-if="!isCon" align="center" class="pt-10">
-      <v-btn class="blue" to="/login"> Se connecter </v-btn>
+      <v-btn class="info" to="/login"> Se connecter </v-btn>
     </div>
     <v-list v-if="getUserRole == 1">
       <v-list-item

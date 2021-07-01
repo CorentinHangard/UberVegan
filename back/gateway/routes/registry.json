@@ -6,7 +6,7 @@
       "host": "ms-commands-service",
       "port": 3001,
       "url": "http://ms-commands-service:3001/",
-      "nonAuth": []
+      "nonAuth": ["doc"]
     },
     "ms-deliveries": {
       "apiName": "ms-deliveries",
@@ -14,7 +14,7 @@
       "host": "ms-deliverys-service",
       "port": 3002,
       "url": "http://ms-deliverys-service:3002/",
-      "nonAuth": []
+      "nonAuth": ["doc"]
     },
     "ms-irttrackings": {
       "apiName": "ms-irttrackings",
@@ -22,7 +22,7 @@
       "host": "http://localhost",
       "port": 3003,
       "url": "http://localhost:3003/",
-      "nonAuth": []
+      "nonAuth": ["doc"]
     },
     "ms-logs": {
       "apiName": "ms-logs",
@@ -30,7 +30,7 @@
       "host": "ms-logs-service",
       "port": 3004,
       "url": "http://ms-logs-service:3004/",
-      "nonAuth": []
+      "nonAuth": ["doc"]
     },
     "ms-products": {
       "apiName": "ms-products",
@@ -38,7 +38,7 @@
       "host": "ms-products-service",
       "port": 3006,
       "url": "http://ms-products-service:3006/",
-      "nonAuth": ["menu", "menus", "article", "articles"]
+      "nonAuth": ["menu", "menus", "article", "articles", "doc"]
     },
     "ms-stats": {
       "apiName": "ms-stats",
@@ -46,7 +46,7 @@
       "host": "ms-stats-service",
       "port": 3007,
       "url": "http://ms-stats-service:3007/",
-      "nonAuth": []
+      "nonAuth": ["doc"]
     },
     "ms-users": {
       "apiName": "ms-users",
@@ -54,7 +54,16 @@
       "host": "ms-users-service",
       "port": 3008,
       "url": "http://ms-users-service:3008/",
-      "nonAuth": ["authenticate", "create", "restaurants", "restaurant"]
+      "nonAuth": [
+        "authenticate",
+        "create",
+        "restaurants",
+        "restaurant",
+        "doc",
+        "swagger-ui-standalone-preset.js",
+        "swagger-ui-bundle.js",
+        "swagger-ui-init.js"
+      ]
     }
   }
 }

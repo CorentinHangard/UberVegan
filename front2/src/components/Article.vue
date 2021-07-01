@@ -13,7 +13,7 @@
       </v-row>
     </v-card-text>
     <v-btn
-      color="light-blue"
+      color="info"
       v-if="getUserRole"
       :to="{ name: 'articleEdit', params: { id: id } }"
     >

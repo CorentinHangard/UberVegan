@@ -36,7 +36,7 @@ router.all("/:apiName/*", (req, res) => {
           res.status(response.status).send(response.data);
         })
         .catch((error) => {
-          res.status(error.response.status).send(error);
+          res.send(500, error);
         });
     } else {
       if (req.headers.authorization) {

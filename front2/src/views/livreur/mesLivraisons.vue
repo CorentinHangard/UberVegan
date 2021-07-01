@@ -14,7 +14,9 @@
         ></v-progress-linear>
       </template>
 
-      <v-alert type="success" v-if='isValid'> Commande livrée </v-alert>
+      <v-alert type="success" v-if="deliverie.isValid">
+        Commande livrée
+      </v-alert>
 
       <v-card-title>{{ deliverie.restaurant[0].name }}</v-card-title>
 
@@ -54,9 +56,9 @@
       <v-card-title>Information de la commande :</v-card-title>
       <v-card-text>{{ deliverie.status }}</v-card-text>
       <v-card-actions>
-        <v-btn @click="takeDelivery(deliverie)" color="blue"> Récupérée </v-btn>
+        <v-btn @click="takeDelivery(deliverie)" color="info"> Récupérée </v-btn>
         <v-spacer />
-        <v-btn @click="deliverDelivery(deliverie)" color="green">
+        <v-btn @click="deliverDelivery(deliverie)" color="success">
           Livrée
         </v-btn>
       </v-card-actions>
@@ -75,7 +77,7 @@ export default {
     return {
       loading: false,
       deliveries: [],
-      isValid: false
+      isValid: false,
     };
   },
   methods: {
@@ -90,20 +92,19 @@ export default {
       this.$store.dispatch("deliveryDelivered", {
         infos: { id: deliverie._id },
       });
-      this.isValid = true
+      deliverie.isValid = true;
     },
   },
   async created() {
     await this.$store.dispatch("deliveries");
     const del = this.$store.getters.getDeliveries;
-    const user = this.$store.getters.getDeliveries;
 
     for (let index = 0; index < del.length; index++) {
       if (
         del[index].status &&
         (del[index].status === "accepted" || del[index].status === "took")
       ) {
-        this.deliveries.push(del[index]);
+        this.deliveries.push({ ...del[index], isValid: false });
       }
     }
   },

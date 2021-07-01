@@ -5,24 +5,34 @@
         <template v-slot:default>
           <thead>
             <tr>
-              <th>Date</th>
+              <!-- <th>Date</th> -->
               <th>ID de la commande</th>
-              <th>Status de la commande</th>
+              <th>Statut de la commande</th>
+              <th>Statut de la livraison</th>
               <th>Options</th>
             </tr>
           </thead>
           <tbody>
             <tr v-for="item in command" :key="item._id">
-              <td>{{ item.date }}</td>
+              <!-- <td>{{ item.date }}</td> -->
               <td>{{ item._id }}</td>
               <td>{{ item.status }}</td>
+              <td v-if="item.delivery">{{ item.delivery.status }}</td>
+              <td v-if="!item.delivery">Ø</td>
               <td>
-                <v-btn v-if="item.status === 'payed'" @click="valider(item._id)"
-                  >Valider</v-btn
+                <v-btn
+                  @click.stop="$set(dialogDetails, item._id, true)"
+                  color="info"
                 >
-                <v-btn @click.stop="$set(dialogDetails, item._id, true)">
                   Details
                 </v-btn>
+                <v-btn
+                  v-if="item.status === 'payed'"
+                  @click="valider(item._id)"
+                  class="ml-5"
+                  color="success"
+                  >Valider</v-btn
+                >
                 <v-dialog
                   v-model="dialogDetails[item._id]"
                   :key="item._id"
@@ -32,8 +42,21 @@
                   <div v-bind:style="{ backgroundColor: color }">
                     <v-card-title> Commande n° {{ item._id }} </v-card-title>
                     <v-card-text>
-                      <span style="font-weight:bold">Status:</span>
-                      {{ item.status }}
+                      <span style="font-weight:bold">Date: </span>
+                      <span>{{ item.date }}</span>
+                      <br />
+                      <span style="font-weight:bold"
+                        >Status de la commande:
+                      </span>
+                      <span>{{ item.status }}</span>
+                      <br />
+                      <span style="font-weight:bold"
+                        >Status de la livraison:
+                      </span>
+                      <span v-if="!item.delivery">Pas encore disponible</span>
+                      <span v-if="item.delivery">{{
+                        item.delivery.status
+                      }}</span>
                       <br />
                       <span style="font-weight:bold">Articles :</span>
                       <br />
@@ -124,7 +147,13 @@ export default {
         ...this.command[index],
         articles: [],
         restaurant: [],
+        delivery: [],
       };
+
+      await this.$store.dispatch("deliveryByOrder", {
+        infos: { id: this.command[index]._id },
+      });
+      updatedCommandHistory[index].delivery = this.$store.getters.getDelivery;
 
       for (
         let index2 = 0;
@@ -141,7 +170,7 @@ export default {
         );
       }
     }
-    this.command = updatedCommandHistory;
+    this.command = updatedCommandHistory.reverse();
   },
 };
 </script>

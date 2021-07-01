@@ -6,8 +6,9 @@
         <div align="center" class="padding">
           <p>
             Envoyez votre code promotionnel et bénéficiez d'une réduction sur
-            vos livraisons. À chaque fois qu'un restaurateur s'inscrit avec votre code
-            d'invitation, vous pourrez tous deux offrir une livraison au client.
+            vos livraisons. À chaque fois qu'un restaurateur s'inscrit avec
+            votre code d'invitation, vous pourrez tous deux offrir une livraison
+            au client.
           </p>
           <br />
           <img src="../../assets/parrainage.png" />

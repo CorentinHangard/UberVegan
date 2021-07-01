@@ -117,8 +117,7 @@ export default {
         );
       }
     }
-    this.commandHistory = updatedCommandHistory;
-    console.log(this.commandHistory);
+    this.commandHistory = updatedCommandHistory.reverse();
   },
 };
 </script>

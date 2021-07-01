@@ -1,5 +1,5 @@
 <template>
-  <v-card align="center" class="">
+  <v-card max-width="400" align="center" class="">
     <router-link
       :to="{ name: 'menu', params: { id: id } }"
       style="text-decoration: none; color: inherit;"

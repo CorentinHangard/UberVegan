@@ -21,7 +21,7 @@
         </v-btn>
       </v-badge>
 
-      <v-btn v-if="!isConnectedVal" class="blue" to="/login">
+      <v-btn v-if="!isConnectedVal" class="info" to="/login">
         Se connecter
       </v-btn>
       <v-menu v-if="isConnectedVal">

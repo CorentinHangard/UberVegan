@@ -85,4 +85,7 @@ export default {
   async statsCommand() {
     return await axios.get("ms-stats/menu");
   },
+  async users() {
+    return await axios.get("ms-users/doc");
+  },
 };

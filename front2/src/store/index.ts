@@ -8,6 +8,7 @@ import userStore from "./user";
 import deliveryStore from "./delivery";
 import restaurantStore from "./restaurant";
 import commandStore from "./command";
+import docsStore from "./docs";
 
 Vue.use(Vuex);
 
@@ -18,6 +19,7 @@ export default new Vuex.Store({
     deliveryStore,
     restaurantStore,
     commandStore,
+    docsStore,
   },
   plugins: [
     createPersitedState({

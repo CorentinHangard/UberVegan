@@ -35,7 +35,7 @@
       </v-row>
       <br />
       <v-btn
-        color="green"
+        color="success"
         v-if="getUserRoleRestaurateur && !inLivraison"
         @click="valider()"
       >

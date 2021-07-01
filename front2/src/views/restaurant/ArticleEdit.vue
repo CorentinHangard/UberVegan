@@ -43,13 +43,18 @@
           ></v-text-field>
         </v-row>
         <br />
-        <v-btn color="red" @click="cancel()" v-if="readonly" class="px-6">
+        <v-btn color="error" @click="cancel()" v-if="readonly" class="px-6">
           Annuler
         </v-btn>
-        <v-btn color="green" @click="save()" v-if="readonly" class="px-6 ml-5">
+        <v-btn
+          color="success"
+          @click="save()"
+          v-if="readonly"
+          class="px-6 ml-5"
+        >
           Modifier
         </v-btn>
-        <v-btn color="blue" @click="changerReadOnly()" v-if="!readonly">
+        <v-btn color="info" @click="changerReadOnly()" v-if="!readonly">
           Activer la modification
         </v-btn>
       </v-col>

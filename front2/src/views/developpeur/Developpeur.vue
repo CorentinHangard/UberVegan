@@ -11,13 +11,12 @@
 
           <br />
           <v-row>
-            <v-col></v-col>
             <v-col>
               <div>
                 <span
                   >Voici le composant Menu permettant l'affichage des menus dans
                   l'application. Pour le télécharger veuillez entrer la commande
-                  suivante dans votre command prompt :
+                  suivante dans votre command prompt :<br />
                   <strong>npm i uberveganmenugroupetroiscesirouen</strong>
                 </span>
               </div>
@@ -31,7 +30,6 @@
                 :price="restaurants[0].cod"
               />
             </v-col>
-            <v-col></v-col>
           </v-row>
           <br />
           <br />

@@ -30,6 +30,7 @@ import Developpeur from "../views/developpeur/Developpeur.vue";
 import CGU from "../views/CGU.vue";
 import politique from "../views/politique.vue";
 import contact from "../views/contact.vue";
+import Docs from "../views/Docs.vue";
 
 Vue.use(VueRouter);
 
@@ -219,6 +220,11 @@ const routes: Array<RouteConfig> = [
     path: "/status",
     name: "status",
     component: Status,
+  },
+  {
+    path: "/docs",
+    name: "docs",
+    component: Docs,
   },
 ];
 

@@ -9,7 +9,7 @@
       justify="center"
       align="center"
       class="mx-auto ma-5"
-      color="red"
+      color="error"
     >
       {{ message }}
     </v-alert>
@@ -36,7 +36,7 @@
           ></v-text-field>
         </div>
         <br />
-        <v-btn color="blue" @click="validate()">
+        <v-btn color="info" @click="validate()">
           Connexion
         </v-btn>
         <br />
@@ -85,9 +85,8 @@ export default {
                   name: "restaurant",
                   params: { id: this.$store.getters.getUser.restaurant._id },
                 });
-              }else if (this.$store.getters.getInfos.user.role == 4) {
+              } else if (this.$store.getters.getInfos.user.role == 4) {
                 this.$router.push({ name: "developpeur" });
-
               }
             }
           });

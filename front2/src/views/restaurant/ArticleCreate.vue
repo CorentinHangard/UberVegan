@@ -47,7 +47,7 @@
         </div>
         <br />
         <div class="center">
-          <v-btn color="blue" @click="validate()">
+          <v-btn color="info" @click="validate()">
             Valider
           </v-btn>
         </div>
